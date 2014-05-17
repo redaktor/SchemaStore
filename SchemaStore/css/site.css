@@ -27,8 +27,6 @@ header, #main {
         #main article img {
             float: left;
             padding: 1em;
-            border: 2px dashed silver;
-            border-radius: 5px;
         }
 
             #main article img.left {
@@ -59,7 +57,7 @@ header, #main {
         #main ul li a {
             color: dodgerblue;
             background: no-repeat left center;
-            padding-left: 20px;
+            padding-left: 25px;
         }
 
             #main ul li a[href*=bower] {
