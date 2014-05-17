@@ -1,16 +1,36 @@
-﻿body {
+﻿@media screen and (max-width:800px) {
+    @-ms-viewport{
+        width: 690px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    @-ms-viewport {
+        width: 440px;
+    }
+}
+
+body {
     font: 1.3em/1.5 'Century Gothic', Verdana, Geneva, 'DejaVu Sans', sans-serif;
     margin: 0;
+    -ms-text-size-adjust: 120%;
 }
 
 img {
     max-width: 100%;
 }
 
+aside {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
 header, #main {
     margin: 1em auto;
     max-width: 950px;
-    min-width: 600px;
+    /*min-width: 650px;*/
     padding: 0 1em;
 }
 
@@ -93,11 +113,5 @@ footer {
     font-size: .7em;
     margin-top: 5em;
     padding: 2em 0;
-}
-
-aside {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: 0;
+    width: 100%;
 }
