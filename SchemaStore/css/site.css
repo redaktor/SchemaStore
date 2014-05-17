@@ -1,0 +1,100 @@
+﻿body {
+    font: 1.3em/1.5 'Century Gothic', Verdana, Geneva, 'DejaVu Sans', sans-serif;
+    margin: 0;
+}
+
+header, #main {
+    margin: 1em auto;
+    max-width: 960px;
+}
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+
+    header p {
+        margin: 0;
+        font-size: 1.5em;
+    }
+
+    #main article {
+        -webkit-column-break-inside: avoid;
+        overflow: hidden;
+        margin-top: 1.5em;
+    }
+
+        #main article img {
+            float: left;
+            padding: 1em;
+            border: 2px dashed silver;
+            border-radius: 5px;
+        }
+
+            #main article img.left {
+                float: left;
+                margin-right: 2em;
+            }
+
+            #main article img.right {
+                float: right;
+                margin-left: 2em;
+            }
+
+        #main article p {
+            margin: 0;
+        }
+
+    #main ul {
+        -moz-columns: auto 3;
+        -webkit-columns: auto 3;
+        columns: auto 3;
+        -moz-column-gap: 1em;
+        -webkit-column-gap: 1em;
+        column-gap: 1em;
+        padding: 0;
+        list-style: none;
+    }
+
+        #main ul li a {
+            color: dodgerblue;
+            background: no-repeat left center;
+            padding-left: 20px;
+        }
+
+            #main ul li a[href*=bower] {
+                background-image: url(/img/icons/bower.png);
+            }
+
+            #main ul li a[href*=package] {
+                background-image: url(/img/icons/npm.png);
+            }
+
+            #main ul li a[href*=coffee] {
+                background-image: url(/img/icons/coffee.png);
+            }
+
+            #main ul li a[href*=tslint] {
+                background-image: url(/img/icons/typescript.png);
+            }
+
+            #main ul li a[href*=jshint],
+            #main ul li a[href*=jscs] {
+                background-image: url(/img/icons/javascript.png);
+            }
+
+footer {
+    background-color: darkslategray;
+    color: white;
+    text-align: center;
+    font-size: .7em;
+    margin-top: 5em;
+    padding: 2em 0;
+}
+
+#github {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
