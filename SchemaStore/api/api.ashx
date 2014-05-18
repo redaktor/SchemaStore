@@ -5,37 +5,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Web;
+using Newtonsoft.Json;
 
 public class api : IHttpHandler
 {
     public void ProcessRequest(HttpContext context)
-    {   
+    {
         Uri url = context.Request.Url;
         string domain = url.Scheme + "://" + url.Authority + "/schemas/";
-        
-        string folder = context.Server.MapPath("~/schemas/");
-        var files = Directory.EnumerateFiles(folder, "*.json");
-        Uri root = new Uri(folder);
-            
-        foreach (string file in files)
-        {
-            Uri absolute = new Uri(file);
-            Uri relative = root.MakeRelativeUri(absolute);
-            
-            context.Response.Write(domain + relative + Environment.NewLine);    
-        }
 
-        SetHeaders(files, context);
+        string folder = context.Server.MapPath("~/schemas/");        
+        Uri root = new Uri(folder);
+        
+        var urls = from f in Directory.EnumerateFiles(folder, "*.json")
+                   select domain + root.MakeRelativeUri(new Uri(f));
+        
+        var serializer = JsonSerializer.Create();
+        serializer.Serialize(context.Response.Output, urls);
+
+        SetHeaders(folder, context);
     }
 
-    private static void SetHeaders(IEnumerable<string> files, HttpContext context)
+    private static void SetHeaders(string folder, HttpContext context)
     {
         context.Response.ContentType = "text/plain";
 
         // Set cache dependencies on the schema files and this .ashx file
-        context.Response.AddFileDependencies(files.ToArray());
+        context.Response.AddFileDependency(folder);
         context.Response.AddFileDependency(context.Request.PhysicalPath);
-        
+
         // Caches the response on both the server and client
         context.Response.Cache.SetValidUntilExpires(true);
         context.Response.Cache.SetExpires(DateTime.Now.AddDays(7));

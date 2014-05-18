@@ -44,15 +44,15 @@ header, #main {
             margin-bottom: 1em;
         }
 
-        #main article img.left {
-            float: left;
-            margin-right: 2em;
-        }
+            #main article img.left {
+                float: left;
+                margin-right: 2em;
+            }
 
-        #main article img.right {
-            float: right;
-            margin-left: 2em;
-        }
+            #main article img.right {
+                float: right;
+                margin-left: 2em;
+            }
 
 #schemas {
     -moz-column-width: 220px;
@@ -101,6 +101,10 @@ footer {
     padding: 2em 0;
     width: 100%;
 }
+
+    footer a {
+        color: white;
+    }
 
 @media screen and (max-width:800px) {
     @-ms-viewport {
