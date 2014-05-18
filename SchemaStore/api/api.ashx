@@ -11,19 +11,25 @@ public class api : IHttpHandler
 {
     public void ProcessRequest(HttpContext context)
     {
+        string folder = context.Server.MapPath("~/schemas/");
+        
+        WriteJsonToOutput(folder, context);
+        SetHeaders(folder, context);
+    }
+
+    private static void WriteJsonToOutput(string folder, HttpContext context)
+    {
+        Uri root = new Uri(folder);
         Uri url = context.Request.Url;
         string domain = url.Scheme + "://" + url.Authority + "/schemas/";
 
-        string folder = context.Server.MapPath("~/schemas/");        
-        Uri root = new Uri(folder);
-        
         var urls = from f in Directory.EnumerateFiles(folder, "*.json")
                    select domain + root.MakeRelativeUri(new Uri(f));
-        
-        var serializer = JsonSerializer.Create();
-        serializer.Serialize(context.Response.Output, urls);
 
-        SetHeaders(folder, context);
+        var settings = new JsonSerializerSettings { Formatting = Formatting.Indented };        
+        var serializer = JsonSerializer.Create(settings);
+        
+        serializer.Serialize(context.Response.Output, urls);
     }
 
     private static void SetHeaders(string folder, HttpContext context)
