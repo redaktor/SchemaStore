@@ -67,7 +67,7 @@ header, #main {
 
     #schemas li a {
         color: dodgerblue;
-        background: no-repeat left center;
+        background: url(/img/icons/json.png) no-repeat left center;
         padding-left: 25px;
     }
 
