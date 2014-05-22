@@ -91,6 +91,14 @@ header, #main {
             background-image: url(/img/icons/json-ld.png);
         }
 
+        #schemas li a[href*=composer] {
+            background-image: url(/img/icons/composer.png);
+        }
+
+        #schemas li a[href*="project.json"] {
+            background-image: url(/img/icons/aspnet.png);
+        }
+
         #schemas li a[href*=jshint],
         #schemas li a[href*=jscs] {
             background-image: url(/img/icons/javascript.png);
