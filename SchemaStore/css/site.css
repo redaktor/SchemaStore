@@ -87,6 +87,10 @@ header, #main {
             background-image: url(/img/icons/typescript.png);
         }
 
+        #schemas li a[href*=json-ld] {
+            background-image: url(/img/icons/json-ld.png);
+        }
+
         #schemas li a[href*=jshint],
         #schemas li a[href*=jscs] {
             background-image: url(/img/icons/javascript.png);
