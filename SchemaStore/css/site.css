@@ -36,7 +36,7 @@ header, #main {
         margin-top: 1.5em;
     }
 
-        #main article p {
+        #main article p:first-child {
             margin: 0;
         }
 
