@@ -1,0 +1,38 @@
+﻿{
+  "title": "JSON schema for Azure Webjobs configuration files",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  
+  "type": "object",
+  "additionalProperties": true,
+
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the Azure Webjob."
+    },
+    "startTime": {
+      "type": "string",
+      "format":  "date-time",
+      "description": "The start time of a scheduled job. Example. 2014-05-01T00:00Z"
+    },
+    "endTime": {
+      "type": "string",
+      "format":  "date-time",
+      "description": "The end time of a scheduled job. Example. 2014-05-01T00:00Z"
+    },
+    "intervalType": {
+      "type": "string",
+      "enum": ["second", "minute", "hour", "day", "week", "month"],
+      "description": "The frequency metric used with the 'interval' property."
+    },
+    "interval": {
+      "type": "integer",
+      "description": "The interval of how often the Azure Webjob should run. Use it with the 'intervalType' property."
+    },
+    "runMode": {
+      "type": "string",
+      "enum": ["scheduled", "continuous", "triggered"],
+      "description": "Determines the run mode of the Azure Webjob. \n\n Triggered: manually triggered \n Scheduled: runs on a specific schedule \n Continuous: runs all the time"
+    }
+  }
+}

@@ -55,9 +55,9 @@ header, #main {
             }
 
 #schemas {
-    -moz-column-width: 220px;
-    -webkit-column-width: 220px;
-    column-width: 220px;
+    -moz-column-width: 300px;
+    -webkit-column-width: 300px;
+    column-width: 300px;
     -moz-column-gap: 1em;
     -webkit-column-gap: 1em;
     column-gap: 1em;
@@ -95,9 +95,13 @@ header, #main {
             background-image: url(/img/icons/composer.png);
         }
 
-        #schemas li a[href*="project.json"],
-        #schemas li a[href*=".job"] {
+        #schemas li a[href*="project.json"] {
             background-image: url(/img/icons/aspnet.png);
+        }
+
+        #schemas li a[href*="webjob"],
+        #schemas li a[href*=".job"] {
+            background-image: url(/img/icons/windows.png);
         }
 
         #schemas li a[href*=jshint],
