@@ -1,0 +1,77 @@
+﻿{
+    "$schema": "http://schemastore.org/api/json/schema.json",
+    "version": 1.0,
+
+    "schemas": [
+        {
+            "name": "Bower package description file",
+            "fileMatch": "bower.json|.bower.json",
+            "url": "http://schemastore.org/schemas/json/bower.json"
+        },
+        {
+            "name": "Bower configuration file",
+            "fileMatch": ".bowerrc",
+            "url": "http://schemastore.org/schemas/json/bowerrc.json"
+        },        
+        {
+            "name": "CoffeeLint configuration file",
+            "fileMatch": "coffeelint.json",
+            "url": "http://schemastore.org/schemas/json/coffeelint.json"
+        },
+        {
+            "name": "PHP Composer configuration file",
+            "fileMatch": "composer.json",
+            "url": "https://raw.githubusercontent.com/composer/composer/master/res/composer-schema.json"
+        },
+        {
+            "name": "JSCS configuration file",
+            "fileMatch": "jscsrc.json|.jscsrc",
+            "url": "http://schemastore.org/schemas/json/jscsrc.json"
+        },
+        {
+            "name": "JSHint configuration file",
+            "fileMatch": ".jshintrc",
+            "url": "http://schemastore.org/schemas/json/jshintrc.json"
+        },
+        {
+            "name": "JSON Linked Data files (.jsonld)",
+            "fileMatch": ".*.jsonld",
+            "url": "http://json-ld.org/schemas/jsonld-schema.json"
+        },
+        {
+            "name": "Google Chrome extension manifest file",
+            "fileMatch": "manifest.json",
+            "url": "http://schemastore.org/schemas/json/manifest.json"
+        },
+        {
+            "name": "NPM configuration file",
+            "fileMatch": "package.json",
+            "url": "http://schemastore.org/schemas/json/package.json"
+        },
+        {
+            "name": "ASP.NET vNext project configuration file",
+            "fileMatch": "project.json",
+            "url": "http://schemastore.org/schemas/json/project.json"
+        },
+        {
+            "name": "Azure Webjob settings file",
+            "fileMatch": "settings.job",
+            "url": "http://schemastore.org/schemas/json/settings.job.json"
+        },
+        {
+            "name": "TypeScript Lint configuration file",
+            "fileMatch": "tslint.json",
+            "url": "http://schemastore.org/schemas/json/tslint.json"
+        },
+        {
+            "name": "Azure Webjob list file",
+            "fileMatch": "webjoblist.json",
+            "url": "http://schemastore.org/schemas/json/webjoblist.json"
+        },
+        {
+            "name": "Azure Webjobs publish settings file",
+            "fileMatch": "webjobpublishsettings.json",
+            "url": "http://schemastore.org/schemas/json/webjobpublishsettings.json"
+        }
+    ]
+}

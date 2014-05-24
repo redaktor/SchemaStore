@@ -1,0 +1,41 @@
+﻿{
+    "title": "JSON schema for Bower configuration files",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    
+    "type": "object",
+    "additionalProperties": false,
+    
+    "properties": {
+        "schemas": {
+            "type": "array",
+            "description": "A list of Azure Webjobs.",
+            
+            "items": {
+                "type": "object",
+                "minLength": 1,
+                
+                "properties": {
+                    "fileMatch": {
+                        "type": "string"
+                    },
+
+                    "url": {
+                        "type": "string"
+                    },
+
+                    "name": {
+                        "type": "string"
+                    }
+                },
+
+                "required": [ "name", "url" ]
+            }
+        },
+
+        "version": {
+            "type": "integer"
+        }
+    },
+
+    "required": [ "schemas", "version" ]
+}
