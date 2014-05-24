@@ -4,10 +4,7 @@
     
     "type": "object",
     "additionalProperties": false,
-<<<<<<< HEAD
     "required": [ "schemas", "version" ],
-=======
->>>>>>> 9726f4efbbeb0f3e4d4eac198b5981f85f162edf
     
     "properties": {
         "schemas": {
@@ -20,26 +17,17 @@
                 
                 "properties": {
                     "fileMatch": {
-<<<<<<< HEAD
                         "description": "A regex for matching file names with a schema.",
-=======
->>>>>>> 9726f4efbbeb0f3e4d4eac198b5981f85f162edf
                         "type": "string"
                     },
 
                     "url": {
-<<<<<<< HEAD
                         "description": "An absolute URL to the schema location",
-=======
->>>>>>> 9726f4efbbeb0f3e4d4eac198b5981f85f162edf
                         "type": "string"
                     },
 
                     "name": {
-<<<<<<< HEAD
                         "description": "The name of the schema",
-=======
->>>>>>> 9726f4efbbeb0f3e4d4eac198b5981f85f162edf
                         "type": "string"
                     }
                 },
@@ -49,16 +37,10 @@
         },
 
         "version": {
-<<<<<<< HEAD
             "description": "The schema version of the catalog",
-            "type": "integer"
-        }
-    }
-=======
             "type": "integer"
         }
     },
 
     "required": [ "schemas", "version" ]
->>>>>>> 9726f4efbbeb0f3e4d4eac198b5981f85f162edf
 }
