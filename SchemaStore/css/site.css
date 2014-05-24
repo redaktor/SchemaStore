@@ -71,7 +71,7 @@ header, #main {
         padding-left: 25px;
     }
 
-        #schemas li a[href*=bower] {
+        /*#schemas li a[href*=bower] {
             background-image: url(/img/icons/bower.png);
         }
 
@@ -107,7 +107,7 @@ header, #main {
         #schemas li a[href*=jshint],
         #schemas li a[href*=jscs] {
             background-image: url(/img/icons/javascript.png);
-        }
+        }*/
 
 footer {
     background-color: darkslategray;

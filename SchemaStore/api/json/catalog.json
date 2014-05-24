@@ -1,5 +1,5 @@
 ﻿{
-    "$schema": "http://schemastore.org/api/json/schema.json",
+    "$schema": "http://schemastore.org/schemas/json/schema-catalog.json",
     "version": 1.0,
     "schemas": [
         {
@@ -51,6 +51,10 @@
             "name": "ASP.NET vNext project configuration file",
             "fileMatch": "project.json",
             "url": "http://schemastore.org/schemas/json/project.json"
+        },
+        {
+            "name": "JSON Schema catalog files compatible with SchemaStore.org",
+            "url": "http://schemastore.org/schemas/json/schema-catalog.json"
         },
         {
             "name": "Azure Webjob settings file",
