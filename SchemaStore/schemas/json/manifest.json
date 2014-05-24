@@ -1,9 +1,10 @@
 ﻿{
+    "title": "JSON schema for Google Chrome extension manifest files",
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Manifest",
-    "description": "A Google Chrome extension manifest",
+    
     "type": "object",
     "required": [ "manifest_version", "name", "version" ],
+
     "properties": {
         "manifest_version": {
             "type": "number",
