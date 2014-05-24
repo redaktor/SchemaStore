@@ -1,5 +1,5 @@
 ﻿{
-    "title": "JSON schema for Bower configuration files",
+    "title": "JSON schema for SchemaStore.org catalog files",
     "$schema": "http://json-schema.org/draft-04/schema#",
     
     "type": "object",
