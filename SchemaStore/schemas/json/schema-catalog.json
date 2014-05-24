@@ -3,13 +3,12 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     
     "type": "object",
-    "additionalProperties": false,
     "required": [ "schemas", "version" ],
     
     "properties": {
         "schemas": {
             "type": "array",
-            "description": "A list of Azure Webjobs.",
+            "description": "A list of JSON schema references.",
             
             "items": {
                 "type": "object",
@@ -40,7 +39,5 @@
             "description": "The schema version of the catalog",
             "type": "integer"
         }
-    },
-
-    "required": [ "schemas", "version" ]
+    }
 }

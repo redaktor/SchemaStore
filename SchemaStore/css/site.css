@@ -8,13 +8,6 @@ img {
     max-width: 100%;
 }
 
-aside {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: 0;
-}
-
 header, #main {
     margin: 1em auto;
     max-width: 950px;
@@ -29,6 +22,13 @@ header, #main {
     header p {
         margin: 0;
         font-size: 1.5em;
+    }
+
+    header aside {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
     }
 
     #main article {
@@ -71,7 +71,7 @@ header, #main {
         padding-left: 25px;
     }
 
-        /*#schemas li a[href*=bower] {
+/*#schemas li a[href*=bower] {
             background-image: url(/img/icons/bower.png);
         }
 
