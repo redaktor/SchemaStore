@@ -24,7 +24,7 @@
         },
         {
             "name": "JSCS configuration file",
-            "fileMatch": "jscsrc.json|.jscsrc",
+            "fileMatch": ".jscsrc|jscsrc.json",
             "url": "http://schemastore.org/schemas/json/jscsrc.json"
         },
         {
