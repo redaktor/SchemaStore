@@ -1,7 +1,7 @@
 (function () {
 
     var ul = document.getElementById("schemas");
-    
+
     function TestLinks() {
         var links = ul.querySelectorAll("a");
 
@@ -13,20 +13,20 @@
 
     function GetSchemas(link) {
         // Using a script element since we can't trust CORS implemented on all the remote hosts
-        var elemScript = document.createElement("script");
+        var script = document.createElement("script");
 
-        elemScript.onerror = function () {
-            link.style.color = "red";
-            link.innerHTML += " &#10007;";
+        script.onerror = function () {
+            link.style.color = "darkorange";
+            link.innerHTML = "&#9888; " + link.innerHTML;
         };
 
-        elemScript.onload = function () {
+        script.onload = function () {
             link.style.color = "green";
-            link.innerHTML += " &#10003;";
+            link.innerHTML = "&#10003; " + link.innerHTML;
         };
 
-        elemScript.src = link.href + "?rnd=" + Math.random();
-        document.head.appendChild(elemScript);
+        script.src = link.href + "?rnd=" + Math.random();
+        document.head.appendChild(script);
     }
 
     function SetStyles(link) {
