@@ -23,6 +23,11 @@
             "url": "https://raw.githubusercontent.com/composer/composer/master/res/composer-schema.json"
         },
         {
+            "name": "Web component file",
+            "fileMatch": "component.json",
+            "url": "http://schemastore.org/schemas/json/component.json"
+        },
+        {
             "name": "JSCS configuration file",
             "fileMatch": ".jscsrc|jscsrc.json",
             "url": "http://schemastore.org/schemas/json/jscsrc.json"
@@ -33,7 +38,7 @@
             "url": "http://schemastore.org/schemas/json/jshintrc.json"
         },
         {
-            "name": "JSON Linked Data files (.jsonld)",
+            "name": "JSON Linked Data files",
             "fileMatch": ".*.jsonld",
             "url": "http://json-ld.org/schemas/jsonld-schema.json"
         },
@@ -51,6 +56,11 @@
             "name": "ASP.NET vNext project configuration file",
             "fileMatch": "project.json",
             "url": "http://schemastore.org/schemas/json/project.json"
+        },
+        {
+            "name": "Windows App resource file",
+            "fileMatch": ".*.resjson",
+            "url": "http://schemastore.org/schemas/json/resjson.json"
         },
         {
             "name": "JSON Schema catalog files compatible with SchemaStore.org",
