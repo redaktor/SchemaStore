@@ -38,7 +38,7 @@
 
     window.addEventListener("load", function load(event) {
         window.removeEventListener("load", load, false); //remove listener, no longer needed
-        TestLinks();
+        setTimeout(function () { TestLinks() }, 500);
     }, false);
 
 })();
