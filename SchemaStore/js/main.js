@@ -13,7 +13,7 @@
             var li = document.createElement("li");
             var a = document.createElement("a");
             a.href = schema.url;
-            a.title = schema.name;
+            a.title = schema.description;
             a.innerHTML = schema.name;
 
             li.appendChild(a);
