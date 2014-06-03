@@ -1,9 +1,12 @@
 (function () {
 
     var ul = document.getElementById("schemas");
+    var progress = document.querySelector("progress");
+    var links;
 
     function TestLinks() {
-        var links = ul.querySelectorAll("a");
+        links = ul.querySelectorAll("a");
+        progress.max = links.length;
 
         for (var i = 0; i < links.length; i++) {
             SetStyles(links[i]);
@@ -18,22 +21,28 @@
         script.onerror = function () {
             link.style.color = "darkorange";
             link.innerHTML = "&#9888; " + link.innerHTML;
+            link.title = "Could be a security issue where browsers (IE) blocks based on the MIME type. In that case, it's false alarm.";
+            reportProgress();
         };
 
         script.onload = function () {
             link.style.color = "green";
             link.innerHTML = "&#10003; " + link.innerHTML;
+            reportProgress();
         };
 
         script.src = link.href + "?rnd=" + Math.random();
         document.head.appendChild(script);
     }
 
+    function reportProgress() {
+        progress.value = 1 + progress.value;
+    }
+
     function SetStyles(link) {
         link.style.background = "none";
         link.style.padding = "0";
         link.style.textDecoration = "none";
-        link.innerHTML = link.href.substring(link.href.lastIndexOf("/") + 1);
     }
 
     window.addEventListener("load", function load(event) {

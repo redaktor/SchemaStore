@@ -9,6 +9,23 @@
 	<meta name="author" content="Mads Kristensen" itemprop="creator" />
 
 	<link href="css/site.css" rel="stylesheet" />
+	<style>
+		progress {
+			width: 100%;
+			background: #f1f1f1;
+			color: green;
+			border: none;
+			height: 15px;
+		}
+
+			progress::-moz-progress-bar {
+				background: green;
+			}
+
+			progress::-webkit-progress-bar {
+				background: #f1f1f1;
+			}
+	</style>
 </head>
 <body>
 
@@ -18,6 +35,7 @@
 	</header>
 
 	<div role="main" id="main">
+		<progress value="0"></progress>
 		<ul id="schemas" />
 	</div>
 
