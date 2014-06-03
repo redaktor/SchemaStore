@@ -28,10 +28,15 @@
                     "name": {
                         "description": "The name of the schema",
                         "type": "string"
+                    },
+
+                    "description": {
+                        "description": "A description of the schema",
+                        "type": "string"
                     }
                 },
 
-                "required": [ "name", "url" ]
+                "required": [ "name", "url", "description" ]
             }
         },
 

@@ -14,9 +14,7 @@
             var a = document.createElement("a");
             a.href = schema.url;
             a.title = schema.name;
-            a.innerHTML = schema.fileMatch
-                            ? schema.fileMatch.split("|", 1)[0].replace(/.\*/gi, "*")
-                            : schema.url.substring(schema.url.lastIndexOf("/") + 1);
+            a.innerHTML = schema.name;
 
             li.appendChild(a);
             ul.appendChild(li);
