@@ -6,23 +6,23 @@
   "additionalProperties": true,
 
   "properties": {
-    "name": {
+    "webJobName": {
       "type": "string",
       "description": "The name of the Azure Webjob."
     },
     "startTime": {
       "type": "string",
       "format":  "date-time",
-      "description": "The start time of a scheduled job. Example. 2014-05-01T00:00Z"
+      "description": "The start time of a scheduled job. Example. 2014-06-11T00:00:00-08:00"
     },
     "endTime": {
       "type": "string",
       "format":  "date-time",
-      "description": "The end time of a scheduled job. Example. 2014-05-01T00:00Z"
+      "description": "The end time of a scheduled job. Example. 2014-06-12T00:00:00-08:00"
     },
-    "intervalType": {
+    "jobRecurrenceFrequency": {
       "type": "string",
-      "enum": ["second", "minute", "hour", "day", "week", "month"],
+      "enum": ["Second", "Minute", "Hour", "Day", "Week", "Month"],
       "description": "The frequency metric used with the 'interval' property."
     },
     "interval": {
@@ -31,7 +31,7 @@
     },
     "runMode": {
       "type": "string",
-      "enum": ["scheduled", "continuous", "triggered"],
+      "enum": ["Scheduled", "Continuous", "Triggered"],
       "description": "Determines the run mode of the Azure Webjob. \n\n Triggered: manually triggered \n Scheduled: runs on a specific schedule \n Continuous: runs all the time"
     }
   }
