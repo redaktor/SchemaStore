@@ -31,7 +31,7 @@
     },
     "runMode": {
       "type": "string",
-      "enum": ["Scheduled", "Continuous", "Triggered"],
+      "enum": ["Scheduled", "Continuous", "OnDemand"],
       "description": "Determines the run mode of the Azure Webjob. \n\n Triggered: manually triggered \n Scheduled: runs on a specific schedule \n Continuous: runs all the time"
     }
   }
