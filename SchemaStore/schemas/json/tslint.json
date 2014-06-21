@@ -136,7 +136,7 @@
         "typedef": {
           "type": "array",
           "items": {
-            "enum": ["callSignature", "catchClause", "indexSignature", "parameter", "propertySignature", "variableDeclarator"]
+            "enum": ["callSignature", "indexSignature", "parameter", "propertySignature", "variableDeclarator"]
           }
         },
         "typedef-whitespace": {
