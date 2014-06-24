@@ -22,7 +22,7 @@
           }
         },
         "curly": {
-          "description": "Enforces braces for  if/for/do/while statements",
+          "description": "Enforces braces for if/for/do/while statements",
           "type": "boolean"
         },
         "eofline": {
@@ -30,7 +30,7 @@
           "type": "boolean"
         },
         "forin": {
-          "description": "Enforces a for...in  tatement to be filtered with an if statement",
+          "description": "Enforces a for...in  statement to be filtered with an if statement",
           "type": "boolean"
         },
         "indent": {
@@ -60,6 +60,10 @@
         "max-line-length": {
           "description": "Sets the maximum length of a line",
           "type": "array"
+        },
+        "no-any": {
+          "description": "diallows usages of any as a type decoration",
+          "type": "boolean"
         },
         "no-arg": {
           "description": "Disallows access to arguments.callee",
@@ -106,6 +110,10 @@
         },
         "no-string-literal": {
           "description": "Disallows object access via string literals",
+          "type": "boolean"
+        },
+        "no-switch-case-fall-through": {
+          "description": "Disallows falling through case statements",
           "type": "boolean"
         },
         "no-trailing-comma": {
