@@ -53,7 +53,7 @@
         "$ref": "#/definitions/configType"
       },
       "properties": {
-        "net45": {
+        "net451": {
           "$ref": "#/definitions/configType"
         },
         "k10": {
