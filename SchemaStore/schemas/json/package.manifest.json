@@ -1,8 +1,9 @@
 ﻿{
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "propertyEditors",
+    "title": "A schema for Umbraco's package.manifest files.",
     "description": "An array of Umbraco Property Editors",
     "type": "object",
+
     "definitions": {
         "editor": {
             "description": "This describes details about the editor",
@@ -27,45 +28,14 @@
                 },
                 "isReadOnly": {
                     "type": "boolean",
-                    "description": "If set to true this makes the property editor read only"
-                }
-            }
-        },
-        "preValues": {
-            "type": "object",
-            "properties": {
-                "prevalues": {
-                    "type": "object",
-                    "description": "This is an object that stores an array of prevalue fields or options to configure yout property editor",
-                    "properties": {
-                        "fields": {
-                            "type": "object",
-                            "description": "This is the collection of prevalue fields",
-                            "properties": {
-                                "key": {
-                                    "type": "string",
-                                    "description": "A unique key for the prevalue field"
-                                },
-                                "label": {
-                                    "type": "string",
-                                    "description": "The user friendly label for the prevalue"
-                                },
-                                "description": {
-                                    "type": "string",
-                                    "description": "A more detailed description for the user"
-                                },
-                                "view": {
-                                    "type": "string",
-                                    "description": "The type of editor to use for this prevalue field"
-                                }
-                            }
-                        }
-                    }
+                    "description": "If set to true this makes the property editor read only",
+                    "default": false
                 }
             }
         },
         "editors": {
             "type": "object",
+            "required": [ "name", "alias", "editor" ],
             "properties": {
                 "alias": {
                     "type": "string",
@@ -79,13 +49,60 @@
                 "editor": {
                     "$ref": "#/definitions/editor"
                 },
+                "isParameterEditor": {
+                    "type": "boolean",
+                    "description": "Enables the property editor as a macro parameter editor can be true/false",
+                    "default": false
+                },
                 "name": {
                     "type": "string",
                     "description": "The friendly name of the property editor, shown in the Umbraco backoffice"
                 }
             }
+        },
+        "preValues": {
+            "type": "object",
+            "properties": {
+                "prevalues": {
+                    "type": "object",
+                    "description": "This is an object that stores an array of prevalue fields or options to configure yout property editor",
+                    "properties": {
+                        "fields": {
+                            "$ref": "#/definitions/fields"
+                        }
+                    }
+                }
+            }
+        },
+        "fields": {
+            "type": "array",
+            "description": "This is the collection of prevalue fields",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "A unique key for the prevalue field",
+                        "maxLength": 1
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The user friendly label for the prevalue"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A more detailed description for the user"
+                    },
+                    "view": {
+                        "type": "string",
+                        "description": "The type of editor to use for this prevalue field"
+                    }
+                }
+            }
         }
     },
+
     "properties": {
         "javascript": {
             "type": "array",
@@ -108,6 +125,7 @@
         "propertyEditors": {
             "type": "array",
             "description": "Returns an array of editor objects, each object specifies an editor to make available to data types as an editor component. These editors are primarily property editors for content, media and members, but can also be made available as a macro parameter editor.",
+            "minItems": 1,
             "items": {
                 "anyOf": [
                     { "$ref": "#/definitions/editors" },
@@ -118,6 +136,7 @@
         "parameterEditors": {
             "type": "array",
             "description": "Returns an array of editor objects, each object specifies an editor to make available to macro parameters as an editor component. These editors work solely as parameter editors, and will not show up on the property editors list.",
+            "minItems": 1,
             "items": {
                 "$ref": "#/definitions/editors"
             }
