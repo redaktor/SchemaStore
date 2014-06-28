@@ -63,6 +63,12 @@
             "url": "http://schemastore.org/schemas/json/package.json"
         },
         {
+            "name": "package.manifest",
+            "description": "Umbraco package configuration file",
+            "fileMatch": "package.manifest",
+            "url": "http://schemastore.org/schemas/json/package.manifest.json"
+        },
+        {
             "name": "project.json",
             "description": "ASP.NET vNext project configuration file",
             "fileMatch": "project.json",
