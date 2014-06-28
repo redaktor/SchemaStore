@@ -10,11 +10,6 @@ img {
     border: none;
 }
 
-h3{
-    font-size: 1em;
-    font-weight: normal;
-}
-
 header, #main {
     margin: 1em auto;
     max-width: 950px;
@@ -45,6 +40,11 @@ header, #main {
 
         #main article p:first-child {
             margin: 0;
+        }
+
+        #main article:first-child h2 {
+            font-size: 1em;
+            font-weight: normal;
         }
 
         #main article img {
