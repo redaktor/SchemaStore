@@ -33,6 +33,12 @@
             "url": "http://schemastore.org/schemas/json/component.json"
         },
         {
+            "name": "global.json",
+            "description": "ASP.NET global configuration file",
+            "fileMatch": "global.json",
+            "url": "http://schemastore.org/schemas/json/global.json"
+        },
+        {
             "name": ".jscsrc",
             "description": "JSCS configuration file",
             "fileMatch": ".jscsrc|jscsrc.json",
