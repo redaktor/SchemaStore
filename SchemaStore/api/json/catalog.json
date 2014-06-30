@@ -109,13 +109,13 @@
             "url": "http://schemastore.org/schemas/json/tslint.json"
         },
         {
-            "name": "Azure WebJobs List",
+            "name": "WebJobs List",
             "description": "Azure Webjob list file",
             "fileMatch": "webjobs-list.json",
             "url": "http://schemastore.org/schemas/json/webjobs-list.json"
         },
         {
-            "name": "Azure WebJobs Publish Settings",
+            "name": "WebJobs Publish Settings",
             "description": "Azure Webjobs publish settings file",
             "fileMatch": "webjobpublishsettings.json",
             "url": "http://schemastore.org/schemas/json/webjob-publish-settings.json"
