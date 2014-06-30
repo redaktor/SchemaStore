@@ -6,6 +6,11 @@
 
         var catalog = JSON.parse(req.responseText);
         var ul = document.getElementById("schemas");
+        var p = document.getElementById("count");
+
+        if (p) {
+            p.innerHTML = p.innerHTML.replace("{0}", catalog.schemas.length);
+        }
 
         for (var i = 0; i < catalog.schemas.length; i++) {
 
