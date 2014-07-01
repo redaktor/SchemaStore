@@ -1,7 +1,7 @@
-﻿{
+{
   "title": "JSON schema for Azure Webjob settings.job files",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  
+
   "type": "object",
   "additionalProperties": true,
 

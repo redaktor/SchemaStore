@@ -1,9 +1,9 @@
-﻿{
+{
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "JSON schema for component.json files",
 
     "type": "object",
-    
+
     "properties": {
         "private": {
             "description": "A boolean specifying whether the component is private, defaulting to  false.",
@@ -90,9 +90,8 @@
         "dependencies": {
             "description": "Runtime dependencies.",
             "type": "object",
-            "properties": {
-                "type": "string",
-                "minItems": 1
+            "additionalProperties": {
+                "type": "string"
             }
         },
         "locals": {

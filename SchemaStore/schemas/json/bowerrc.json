@@ -1,19 +1,12 @@
-﻿{
-  "title": "JSON schema for .bowerrc files",
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "bowerrc": {
-      "type": "object",
-      "additionalProperties": true,
-      "properties": {
-        "directory": {
-          "type": "string"
-        }
-      },
-      "required": [ "directory" ]
-    }
-  },
+{
+    "title": "JSON schema for .bowerrc files",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [ "directory" ],
 
-  "oneOf": [ { "$ref": "#/definitions/bowerrc" } ],
-  "type": "object"
+    "properties": {
+        "directory": {
+            "type": "string"
+        }
+    }
 }

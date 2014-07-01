@@ -1,7 +1,7 @@
-﻿{
+{
     "title": "Schema for JSON-LD files",
     "$schema": "http://json-schema.org/draft-04/schema#",
-    
+
     "definitions":{
         "context": {
             "additionalProperties": true,

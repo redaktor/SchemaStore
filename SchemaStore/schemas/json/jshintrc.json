@@ -1,4 +1,4 @@
-﻿{
+{
   "title": "JSON schema for JSHint configuration files",
   "$schema": "http://json-schema.org/draft-04/schema#",
 
@@ -12,7 +12,6 @@
           "type": "integer"
         },
 
-        // Enforcing
         "bitwise": {
           "description": "Prohibit bitwise operators (&, |, ^, etc.)",
           "type": "boolean"
@@ -107,7 +106,6 @@
           "type": ["boolean", "integer"]
         },
 
-        // Relaxing
         "asi": {
           "description": "Tolerate Automatic Semicolon Insertion (no semicolons)",
           "type": "boolean"

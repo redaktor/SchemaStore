@@ -1,4 +1,4 @@
-﻿{
+{
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "A schema for Umbraco's package.manifest files.",
     "description": "An array of Umbraco Property Editors",

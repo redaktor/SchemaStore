@@ -1,19 +1,21 @@
-﻿{
+{
     "title": "JSON schema for SchemaStore.org catalog files",
     "$schema": "http://json-schema.org/draft-04/schema#",
-    
+
     "type": "object",
     "required": [ "schemas", "version" ],
-    
+    "additionalProperties": true,
+
     "properties": {
         "schemas": {
             "type": "array",
             "description": "A list of JSON schema references.",
-            
+
             "items": {
                 "type": "object",
+                "required": [ "name", "url", "description" ],
                 "minLength": 1,
-                
+
                 "properties": {
                     "fileMatch": {
                         "description": "A regex for matching file names with a schema.",
@@ -34,9 +36,7 @@
                         "description": "A description of the schema",
                         "type": "string"
                     }
-                },
-
-                "required": [ "name", "url", "description" ]
+                }
             }
         },
 
