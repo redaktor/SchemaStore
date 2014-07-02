@@ -20,7 +20,7 @@
         }
     },
     "properties": {
-        "data": {
+        "Data": {
             "$ref": "#/definitions/data"
         }
     },

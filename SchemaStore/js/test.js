@@ -1,6 +1,6 @@
 (function () {
 
-    var ul = document.getElementById("schemas");
+    var ul = document.querySelector("#schemalist ul");
     var progress = document.querySelector("progress");
     var links;
 

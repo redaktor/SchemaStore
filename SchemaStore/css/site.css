@@ -61,18 +61,26 @@ header, #main {
                 margin-left: 2em;
             }
 
-#schemas {
-    -moz-column-width: 300px;
-    -webkit-column-width: 300px;
-    column-width: 300px;
-    -moz-column-gap: 1em;
-    -webkit-column-gap: 1em;
-    column-gap: 1em;
-    padding: 0;
-    list-style: none;
+#schemalist {
+    max-height: 0;
+    -moz-transition: 2s;
+    -o-transition: 2s;
+    -webkit-transition: 2s;
+    transition: 2s;
 }
 
-    #schemas li a {
+    #schemalist ul {
+        -moz-column-width: 300px;
+        -webkit-column-width: 300px;
+        column-width: 300px;
+        -moz-column-gap: 1em;
+        -webkit-column-gap: 1em;
+        column-gap: 1em;
+        padding: 0;
+        list-style: none;
+    }
+
+    #schemalist li a {
         color: dodgerblue;
         background: url(/img/icons/json.png) no-repeat left 6px;
         padding-left: 25px;

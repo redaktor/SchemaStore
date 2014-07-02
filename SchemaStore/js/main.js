@@ -5,7 +5,7 @@
     req.onload = function () {
 
         var catalog = JSON.parse(req.responseText);
-        var ul = document.getElementById("schemas");
+        var ul = document.querySelector("#schemalist ul");
         var p = document.getElementById("count");
 
         if (p) {
@@ -24,6 +24,8 @@
             li.appendChild(a);
             ul.appendChild(li);
         }
+
+        ul.parentNode.style.maxHeight = "999px";
     };
     req.send(null);
 
