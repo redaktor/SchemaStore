@@ -45,6 +45,17 @@
             "url": "http://schemastore.org/schemas/json/global.json"
         },
         {
+            "name": "Grunt base task",
+            "description": "Schema for standard Grunt tasks",
+            "url": "http://schemastore.org/schemas/json/grunt-task.json"
+        },
+        {
+            "name": "Grunt JSHint task",
+            "description": "Grunt JSHint task configuration file",
+            "fileMatch": "jshint.json",
+            "url": "http://schemastore.org/schemas/json/grunt-jshint-task.json"
+        },
+        {
             "name": ".jscsrc",
             "description": "JSCS configuration file",
             "fileMatch": ".jscsrc|jscsrc.json",
