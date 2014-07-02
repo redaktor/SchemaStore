@@ -33,6 +33,12 @@
             "url": "http://schemastore.org/schemas/json/component.json"
         },
         {
+            "name": "config.json",
+            "description": "ASP.NET project config file",
+            "fileMatch": "config.json",
+            "url": "http://schemastore.org/schemas/json/config.json"
+        },
+        {
             "name": "global.json",
             "description": "ASP.NET global configuration file",
             "fileMatch": "global.json",

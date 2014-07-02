@@ -1,0 +1,32 @@
+{
+    "title": "JSON schema for the ASP.NET project config file",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+        "data": {
+            "type": "object",
+            "description": "Contains information about one or more database connections, such as the connection string and data provider.",
+            "required": [ "ConnectionString" ],
+            "properties": {
+                "ConnectionString": {
+                    "type": "string",
+                    "description": "The full connection string required to connect to a database."
+                },
+                "Provider": {
+                    "type": "string",
+                    "description": "The ADO.NET data provider used by Entity Framework."
+                }
+            }
+        }
+    },
+    "properties": {
+        "data": {
+            "$ref": "#/definitions/data"
+        }
+    },
+    "additionalProperties": {
+        "not": {
+            "type": "array"
+        }
+    }
+}
