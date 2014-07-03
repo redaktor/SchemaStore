@@ -18,8 +18,8 @@
 
                 "properties": {
                     "fileMatch": {
-                        "description": "A regex for matching file names with a schema.",
-                        "type": "string"
+                        "description": "A Mimimatch expression for matching up file names with a schema.",
+                        "type": [ "string", "array" ]
                     },
 
                     "url": {

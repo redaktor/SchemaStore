@@ -5,7 +5,7 @@
         {
             "name": "bower.json",
             "description": "Bower package description file",
-            "fileMatch": "bower.json|.bower.json",
+            "fileMatch": [ "bower.json", ".bower.json" ],
             "url": "http://schemastore.org/schemas/json/bower.json"
         },
         {
@@ -45,20 +45,21 @@
             "url": "http://schemastore.org/schemas/json/global.json"
         },
         {
-            "name": "Grunt base task",
-            "description": "Schema for standard Grunt tasks",
-            "url": "http://schemastore.org/schemas/json/grunt-task.json"
-        },
-        {
             "name": "Grunt JSHint task",
             "description": "Grunt JSHint task configuration file",
             "fileMatch": "jshint.json",
             "url": "http://schemastore.org/schemas/json/grunt-jshint-task.json"
         },
         {
+            "name": "Grunt base task",
+            "description": "Schema for standard Grunt tasks",
+            "fileMatch": "grunt/*.json",
+            "url": "http://schemastore.org/schemas/json/grunt-task.json"
+        },
+        {
             "name": ".jscsrc",
             "description": "JSCS configuration file",
-            "fileMatch": ".jscsrc|jscsrc.json",
+            "fileMatch": [ ".jscsrc", "jscsrc.json" ],
             "url": "http://schemastore.org/schemas/json/jscsrc.json"
         },
         {
@@ -70,7 +71,7 @@
         {
             "name": "*.jsonld",
             "description": "JSON Linked Data files",
-            "fileMatch": ".*.jsonld",
+            "fileMatch": "*.jsonld",
             "url": "http://json-ld.org/schemas/jsonld-schema.json"
         },
         {
@@ -100,7 +101,7 @@
         {
             "name": "*.resjson",
             "description": "Windows App localization file",
-            "fileMatch": ".*.resjson",
+            "fileMatch": "*.resjson",
             "url": "http://schemastore.org/schemas/json/resjson.json"
         },
         {
