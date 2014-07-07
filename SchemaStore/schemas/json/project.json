@@ -1,128 +1,127 @@
 {
-  "title": "JSON schema for ASP.NET project.json files",
-  "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "JSON schema for ASP.NET project.json files",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
 
-  "definitions": {
-    "compilationOptions": {
-      "properties": {
-        "define": {
-          "type": "array",
-          "items" : {
-              "enum" : ["TRACE", "DEBUG"]
-          }
-        },
-        "warningsAsErrors": {
-          "type": "boolean"
-        },
-        "allowUnsafe": {
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "dependencies": {
-      "additionalProperties": {
-          "type": ["string", "object"],
-          "properties": {
-            "version": {
-              "type": "string"
+    "definitions": {
+        "compilationOptions": {
+            "properties": {
+                "define": {
+                    "type": "array",
+                    "items": {
+                        "enum": [ "TRACE", "DEBUG" ],
+                        "uniqueItems": true
+                    }
+                },
+                "warningsAsErrors": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "allowUnsafe": {
+                    "type": "boolean",
+                    "default": false
+                }
             },
-            "type": {
-              "type": "string",
-              "default": "private",
-              "enum": ["dev", "private"]
+            "type": "object"
+        },
+        "dependencies": {
+            "type": "object",
+            "additionalProperties": {
+                "type": [ "string", "object" ],
+                "properties": {
+                    "version": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "default": "private",
+                        "enum": [ "dev", "private" ]
+                    }
+                }
             }
-          }
-      },
-      "type": "object"
-    },
-    "configType": {
-      "properties": {
-        "dependencies": {
-          "$ref": "#/definitions/dependencies"
         },
-        "compilationOptions": {
-          "$ref": "#/definitions/compilationOptions"
-        }
-      },
-      "required": ["dependencies"],
-      "type": "object"
-    },
-    "configurations": {
-      "additionalProperties": {
-        "$ref": "#/definitions/configType"
-      },
-      "properties": {
-        "net451": {
-          "$ref": "#/definitions/configType"
-        },
-        "k10": {
-          "$ref": "#/definitions/configType"
-        }
-      },
-      "type": "object"
-    },
-    "Project": {
-      "properties": {
-        "compilationOptions": {
-          "$ref": "#/definitions/compilationOptions"
-        },
-        "dependencies": {
-          "$ref": "#/definitions/dependencies"
+        "configType": {
+            "type": "object",
+            "properties": {
+                "dependencies": {
+                    "$ref": "#/definitions/dependencies"
+                },
+                "compilationOptions": {
+                    "$ref": "#/definitions/compilationOptions"
+                }
+            }
         },
         "configurations": {
-          "$ref": "#/definitions/configurations"
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/configType"
+            },
+            "properties": {
+                "net451": {
+                    "$ref": "#/definitions/configType"
+                },
+                "k10": {
+                    "$ref": "#/definitions/configType"
+                }
+            }
+        }
+    },
+
+    "properties": {
+        "compilationOptions": {
+            "$ref": "#/definitions/compilationOptions"
+        },
+        "dependencies": {
+            "$ref": "#/definitions/dependencies"
+        },
+        "configurations": {
+            "$ref": "#/definitions/configurations"
         },
         "name": {
-          "description": "The name of the application",
-          "type": "string"
+            "description": "The name of the application",
+            "type": "string"
         },
         "version": {
-          "description": "The version of the application. Example: 1.2.0.0",
-          "type": "string"
+            "description": "The version of the application. Example: 1.2.0.0",
+            "type": "string"
         },
         "authors": {
-          "type": "array",
-          "items" : {
-              "type": "string"
-          }
+            "type": "array",
+            "items": {
+                "type": "string",
+                "uniqueItems": true
+            }
         },
         "code": {
-          "description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
-          "default": "**\\*.cs",
-          "type": "string"
+            "description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
+            "type": "string",
+            "default": "**\\*.cs"
         },
         "shared": {
-          "description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
-          "default": "Compiler\\Shared\\**\\*.cs",
-          "type": "string"
+            "description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
+            "type": "string",
+            "default": "Compiler\\Shared\\**\\*.cs"
         },
         "exclude": {
-          "description": "RegEx pattern to indicate all the code files to be excluded from compilation. (data type: semicolon separated RegEx pattern(s)).",
-          "default": "",
-          "type": "string"
+            "description": "RegEx pattern to indicate all the code files to be excluded from compilation. (data type: semicolon separated RegEx pattern(s)).",
+            "type": "string",
+            "default": ""
         },
         "preprocess": {
-          "description": "RegEx pattern to indicate all the code files to be preprocessed. (data type: semicolon separated RegEx pattern(s)).",
-          "default": "Compiler\\Preprocess\\**\\*.cs",
-          "type": "string"
+            "description": "RegEx pattern to indicate all the code files to be preprocessed. (data type: semicolon separated RegEx pattern(s)).",
+            "type": "string",
+            "default": "Compiler\\Preprocess\\**\\*.cs"
         },
         "resources": {
-          "description": "RegEx pattern to indicate all the files that needs to be compiled as resources. (data type: semicolon separated RegEx pattern(s)).",
-          "default": "Compiler\\Resources\\**\\*.cs",
-          "type": "string"
+            "description": "RegEx pattern to indicate all the files that needs to be compiled as resources. (data type: semicolon separated RegEx pattern(s)).",
+            "type": "string",
+            "default": "Compiler\\Resources\\**\\*.cs"
         },
         "commands": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
         }
-      },
-      "type": "object"
     }
-  },
-
-  "oneOf": [ { "$ref": "#/definitions/Project" } ],
-  "type": "object"
 }
