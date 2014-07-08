@@ -53,7 +53,7 @@
         {
             "name": "Grunt base task",
             "description": "Schema for standard Grunt tasks",
-            "fileMatch": "grunt/*.json",
+            "fileMatch": [ "grunt/*.json", "*-tasks.json" ],
             "url": "http://schemastore.org/schemas/json/grunt-task.json"
         },
         {
