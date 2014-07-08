@@ -2,6 +2,7 @@
     "title": "JSON schema for ASP.NET project.json files",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
+    "additionalProperties": false,
 
     "definitions": {
         "compilationOptions": {
