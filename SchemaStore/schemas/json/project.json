@@ -82,6 +82,10 @@
             "description": "The name of the application",
             "type": "string"
         },
+        "description": {
+            "description": "The description of the application",
+            "type": "string"
+        },
         "version": {
             "description": "The version of the application. Example: 1.2.0.0",
             "type": "string"
