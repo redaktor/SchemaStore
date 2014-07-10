@@ -6,7 +6,7 @@
         "options": {
             "description": "Set the options for JSHint",
             "anyOf": [
-                { "$ref": "http://schemastore.org/schemas/json/jshintrc.json#/definitions/jshintrc" },
+                { "$ref": "http://schemastore.org/schemas/json/jshintrc.json#" },
                 {
                     "properties": {
                         "jshintrc": {
