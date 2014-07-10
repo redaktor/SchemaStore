@@ -7,6 +7,7 @@
     "definitions": {
         "info": {
             "type": "object",
+            "description": "General information about the API.",
             "properties": {
                 "version": {
                     "type": "string",
@@ -21,11 +22,12 @@
                     "description": "A longer description of the API. Should be different from the title."
                 },
                 "termsOfService": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The terms of service for the API."
                 },
                 "contact": {
                     "type": "string",
-                    "format": "email"
+                    "description": "Contact information for the owners of the API."
                 },
                 "license": {
                     "type": "string"
@@ -38,7 +40,8 @@
         },
         "mimetype": {
             "type": "string",
-            "pattern": "^[a-z0-9-]+/[a-z0-9-+]+$"
+            "pattern": "^[a-z0-9-]+/[a-z0-9-+]+$",
+            "description": "The MIME type of the HTTP message."
         },
         "httpmethod": {
             "type": "object",
@@ -107,9 +110,7 @@
         },
         "response": {
             "type": "object",
-            "additionalProperties": {
-                "type": "string"
-            },
+            "additionalProperties": true,
             "properties": {
                 "description": {
                     "type": "string"
@@ -119,32 +120,36 @@
                 },
                 "items": {
                     "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
+                    "additionalProperties": true
                 }
             }
         }
     },
 
+    "required": [ "swagger", "info", "host" ],
+
     "properties": {
         "swagger": {
             "type": "number",
-            "enum": [ 2.0 ]
+            "enum": [ 2.0 ],
+            "description": "The Swagger version of this document."
         },
         "info": {
             "$ref": "#/definitions/info"
         },
         "host": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "description": "The fully qualified URI to the host of the API."
         },
         "basePath": {
             "type": "string",
-            "pattern": "^/"
+            "pattern": "^/",
+            "description": "The base path to the API. Example: '/api'."
         },
         "schemes": {
             "type": "array",
+            "description": "The transfer protocol of the API.",
             "items": {
                 "type": "string",
                 "enum": [ "http", "https" ]
@@ -152,18 +157,21 @@
         },
         "consumes": {
             "type": "array",
+            "description": "A list of MIME types accepted by the API.",
             "items": {
                 "$ref": "#/definitions/mimetype"
             }
         },
         "produces": {
             "type": "array",
+            "description": "A list of MIME types the API can produce.",
             "items": {
                 "$ref": "#/definitions/mimetype"
             }
         },
         "paths": {
             "type": "object",
+            "description": "Relative paths to the individual endpoints. They should be relative to the 'basePath'.",
             "additionalProperties": {
                 "type": "object",
                 "properties": {
@@ -184,6 +192,7 @@
         },
         "models": {
             "type": "object",
+            "description": "One or more JSON objects describing the models being consumed and produced by the API.",
             "additionalProperties": true
         }
     }
