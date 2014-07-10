@@ -1,4 +1,3 @@
-/// <vs BeforeBuild='default' />
 
 module.exports = function (grunt) {
     "use strict";
