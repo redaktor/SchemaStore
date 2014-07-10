@@ -9,7 +9,8 @@
     "patternProperties": {
         "^_": {
             "description": "Any property starting with _ is valid.",
-            "additionalProperties": true
+            "additionalProperties": true,
+            "additionalItems": true
         }
     },
 
