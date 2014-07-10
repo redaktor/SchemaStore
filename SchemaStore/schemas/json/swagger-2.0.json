@@ -9,13 +9,16 @@
             "type": "object",
             "properties": {
                 "version": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A semantic version number of the API."
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A unique and precise title of the API."
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A longer description of the API. Should be different from the title."
                 },
                 "termsOfService": {
                     "type": "string"
@@ -35,7 +38,7 @@
         },
         "mimetype": {
             "type": "string",
-            "pattern": "^[a-z0-9-]+/[a-z0-9-]+$"
+            "pattern": "^[a-z0-9-]+/[a-z0-9-+]+$"
         },
         "httpmethod": {
             "type": "object",
@@ -104,6 +107,9 @@
         },
         "response": {
             "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
             "properties": {
                 "description": {
                     "type": "string"
@@ -113,14 +119,9 @@
                 },
                 "items": {
                     "type": "object",
-                    "properties": {
-                        "$ref": {
-                            "type": "string"
-                        }
+                    "additionalProperties": {
+                        "type": "string"
                     }
-                },
-                "$ref": {
-                    "type": "string"
                 }
             }
         }
@@ -165,8 +166,19 @@
             "type": "object",
             "additionalProperties": {
                 "type": "object",
-                "additionalProperties": {
-                    "$ref": "#/definitions/httpmethod"
+                "properties": {
+                    "get": {
+                        "$ref": "#/definitions/httpmethod"
+                    },
+                    "put": {
+                        "$ref": "#/definitions/httpmethod"
+                    },
+                    "post": {
+                        "$ref": "#/definitions/httpmethod"
+                    },
+                    "delete": {
+                        "$ref": "#/definitions/httpmethod"
+                    }
                 }
             }
         },
