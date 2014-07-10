@@ -1,12 +1,10 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-
     "definitions": {
         "dynamic": {
             "type": "object",
             "required": [ "src" ],
-
             "properties": {
                 "expand": {
                     "description": "Must be set to true to use properties other than 'src' and 'dest'",
@@ -102,6 +100,11 @@
                 { "$ref": "#/definitions/fileArrayFormat" },
                 { "$ref": "#/definitions/fileObjectFormat" }
             ]
+        }
+    },
+    "properties": {
+        "options": {
+            "type": "object"
         }
     },
     "additionalProperties": {

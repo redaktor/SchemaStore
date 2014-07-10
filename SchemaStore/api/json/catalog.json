@@ -51,6 +51,12 @@
             "url": "http://schemastore.org/schemas/json/grunt-jshint-task.json"
         },
         {
+            "name": "Grunt Watch task",
+            "description": "Grunt Watch task configuration file",
+            "fileMatch": "watch.json",
+            "url": "http://schemastore.org/schemas/json/grunt-watch-task.json"
+        },
+        {
             "name": "Grunt base task",
             "description": "Schema for standard Grunt tasks",
             "fileMatch": [ "grunt/*.json", "*-tasks.json" ],

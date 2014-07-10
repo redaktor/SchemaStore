@@ -1,4 +1,5 @@
 {
+    "title": "JSON schema for the Grunt JSHint task",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "definitions": {
