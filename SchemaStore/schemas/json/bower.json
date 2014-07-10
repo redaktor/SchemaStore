@@ -1,8 +1,18 @@
 {
     "title": "JSON schema for Bower configuration files",
     "$schema": "http://json-schema.org/draft-04/schema#",
+
     "type": "object",
     "required": [ "name" ],
+
+    "additionalProperties": false,
+    "patternProperties": {
+        "^_": {
+            "description": "Any property starting with _ is valid.",
+            "additionalProperties": true
+        }
+    },
+
     "properties": {
         "name": {
             "description": "The name of your package.",

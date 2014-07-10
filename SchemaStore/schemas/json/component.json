@@ -13,9 +13,9 @@
         "name": {
             "description": "A public component MUST have a 'name'. This is what will be passed to  require().",
             "type": "string",
-            "pattern": " /^[0-9a-z-_]+$/"
+            "pattern": "^[0-9a-z-_]+$"
         },
-        "repository": {
+        "repo": {
             "description": "The public component MUST have a 'repository' property, this is registry end-point consisting of  <username>/<project> , for example 'visionmedia/page.js' or 'component/dialog'.",
             "type": "string"
         },
@@ -126,8 +126,11 @@
                 "minItems": 1
             }
         },
+        "demo": {
+            "type": "string"
+        },
         "development": {
-            "$ref":  "#"
+            "$ref": "#"
         },
         "license": {
             "description": "The license string such as 'MIT' may be used for search output and other reporting, developers SHOULD specify this field",
