@@ -33,7 +33,7 @@ module.exports = function (grunt) {
         if (file.indexOf('.') > -1)
             return;
 
-        var schema = grunt.file.readJSON("schemas/json/" + file + ".json");
+        var schema = grunt.file.readJSON("schemas/json/" + file.replace("_", ".") + ".json");
 
         grunt.config.set("tv4." + file, {
             options: {

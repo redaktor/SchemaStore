@@ -1,0 +1,177 @@
+{
+    "title": "A JSON Schema for Swagger 2.0 API.",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+
+    "definitions": {
+        "info": {
+            "type": "object",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "termsOfService": {
+                    "type": "string"
+                },
+                "contact": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "license": {
+                    "type": "string"
+                },
+                "licenseUrl": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "mimetype": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+/[a-z0-9-]+$"
+        },
+        "httpmethod": {
+            "type": "object",
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "produces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mimetype"
+                    }
+                },
+                "parameters": {
+                    "type": "array",
+                    "additionalItems": {
+                        "$ref": "#/definitions/parameters"
+                    }
+                },
+                "responses": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^[0-9]+$": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "properties": {
+                        "default": {
+                            "$ref": "#/definitions/response"
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "summary": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "string"
+                },
+                "format": {
+                    "type": "string"
+                }
+            }
+        },
+        "response": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "$ref": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "$ref": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+
+    "properties": {
+        "swagger": {
+            "type": "number",
+            "enum": [ 2.0 ]
+        },
+        "info": {
+            "$ref": "#/definitions/info"
+        },
+        "host": {
+            "type": "string",
+            "format": "uri"
+        },
+        "basePath": {
+            "type": "string",
+            "pattern": "^/"
+        },
+        "schemes": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [ "http", "https" ]
+            }
+        },
+        "consumes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/mimetype"
+            }
+        },
+        "produces": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/mimetype"
+            }
+        },
+        "paths": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": {
+                    "$ref": "#/definitions/httpmethod"
+                }
+            }
+        },
+        "models": {
+            "type": "object",
+            "additionalProperties": true
+        }
+    }
+}
