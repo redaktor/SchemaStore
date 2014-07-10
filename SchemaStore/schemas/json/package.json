@@ -1,9 +1,17 @@
 {
     "title": "JSON schema for NPM package.json files",
     "$schema": "http://json-schema.org/draft-04/schema#",
+
     "type": "object",
-    "additionalProperties": true,
     "required": [ "name", "version" ],
+
+    "additionalProperties": false,
+    "patternProperties": {
+        "^_": {
+            "description": "Any property starting with _ is valid.",
+            "additionalProperties": true
+        }
+    },
 
     "definitions": {
         "person": {
@@ -86,6 +94,12 @@
                 "$ref": "#/definitions/person"
             }
         },
+        "maintainers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/person"
+            }
+        },
         "files": {
             "type": "array",
             "items": {
@@ -150,7 +164,8 @@
             }
         },
         "config": {
-            "type": "object"
+            "type": "object",
+            "additionalProperties": true
         },
         "dependencies": {
             "$ref": "#/definitions/dependency"
@@ -173,6 +188,9 @@
             }
         },
         "optionalDependencies": {
+            "$ref": "#/definitions/dependency"
+        },
+        "peerDependencies": {
             "$ref": "#/definitions/dependency"
         },
         "engines": {
@@ -205,7 +223,19 @@
             "description": "If set to true, then npm will refuse to publish it."
         },
         "publishConfig": {
-            "type": "object"
+            "type": "object",
+            "additionalProperties": true
+        },
+        "dist": {
+            "type": "object",
+            "properties": {
+                "shasum": {
+                    "type": "string"
+                },
+                "tarball": {
+                    "type": "string"
+                }
+            }
         }
     }
 }
