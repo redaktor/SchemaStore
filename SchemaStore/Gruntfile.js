@@ -42,7 +42,6 @@ module.exports = function (grunt) {
             },
             src: [ dir + "/" + file + "/*.json"]
         });
-
     });
 
     grunt.loadNpmTasks("grunt-tv4");
