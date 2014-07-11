@@ -39,12 +39,12 @@
                 }
             }
         },
-        "mimetype": {
+        "mimeType": {
             "type": "string",
             "pattern": "^[a-z0-9-]+/[a-z0-9-+]+$",
             "description": "The MIME type of the HTTP message."
         },
-        "httpmethod": {
+        "operation": {
             "type": "object",
             "required": [ "responses", "summary" ],
             "properties": {
@@ -60,7 +60,7 @@
                 "produces": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/mimetype"
+                        "$ref": "#/definitions/mimeType"
                     }
                 },
                 "parameters": {
@@ -144,14 +144,14 @@
             "type": "array",
             "description": "A list of MIME types accepted by the API.",
             "items": {
-                "$ref": "#/definitions/mimetype"
+                "$ref": "#/definitions/mimeType"
             }
         },
         "produces": {
             "type": "array",
             "description": "A list of MIME types the API can produce.",
             "items": {
-                "$ref": "#/definitions/mimetype"
+                "$ref": "#/definitions/mimeType"
             }
         },
         "paths": {
@@ -161,25 +161,25 @@
                 "type": "object",
                 "properties": {
                     "get": {
-                        "$ref": "#/definitions/httpmethod"
+                        "$ref": "#/definitions/operation"
                     },
                     "put": {
-                        "$ref": "#/definitions/httpmethod"
+                        "$ref": "#/definitions/operation"
                     },
                     "post": {
-                        "$ref": "#/definitions/httpmethod"
+                        "$ref": "#/definitions/operation"
                     },
                     "delete": {
-                        "$ref": "#/definitions/httpmethod"
+                        "$ref": "#/definitions/operation"
                     },
                     "options": {
-                        "$ref": "#/definitions/httpmethod"
+                        "$ref": "#/definitions/operation"
                     },
                     "head": {
-                        "$ref": "#/definitions/httpmethod"
+                        "$ref": "#/definitions/operation"
                     },
                     "patch": {
-                        "$ref": "#/definitions/httpmethod"
+                        "$ref": "#/definitions/operation"
                     }
                 }
             }
