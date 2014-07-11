@@ -39,7 +39,7 @@ module.exports = function (grunt) {
             options: {
                 root: schema
             },
-            src: [ dir + "/" + file + "/*.json"]
+            src: [dir + "/" + file + "/*.json"]
         });
     });
 

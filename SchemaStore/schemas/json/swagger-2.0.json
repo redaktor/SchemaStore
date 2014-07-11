@@ -193,7 +193,9 @@
         "models": {
             "type": "object",
             "description": "One or more JSON objects describing the models being consumed and produced by the API.",
-            "additionalProperties": true
+            "additionalProperties": {
+                "$ref": "http://schemastore.org/test/hyper-schema.json#"
+            }
         }
     }
 }
