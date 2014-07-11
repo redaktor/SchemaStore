@@ -122,9 +122,14 @@
             "url": "http://schemastore.org/schemas/json/settings.job.json"
         },
         {
-            "name": "Swagger API",
+            "name": "Swagger API 1.2",
             "description": "Swagger API description schema",
             "url": "https://raw.githubusercontent.com/wordnik/swagger-spec/master/schemas/v1.2/apiDeclaration.json"
+        },
+        {
+            "name": "Swagger API 2.0 (alpha)",
+            "description": "Swagger API 2.0  schema",
+            "url": "http://schemastore.org/schemas/json/swagger-2.0.json"
         },
         {
             "name": "tslint.json",
