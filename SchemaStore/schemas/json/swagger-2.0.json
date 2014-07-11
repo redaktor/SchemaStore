@@ -8,6 +8,7 @@
         "info": {
             "type": "object",
             "description": "General information about the API.",
+            "required": [ "version", "title" ],
             "properties": {
                 "version": {
                     "type": "string",
@@ -45,6 +46,7 @@
         },
         "httpmethod": {
             "type": "object",
+            "required": [ "responses", "summary" ],
             "properties": {
                 "summary": {
                     "type": "string"
@@ -69,13 +71,9 @@
                 },
                 "responses": {
                     "type": "object",
+                    "description": "Response objects names can either be any valid HTTP status code or 'default'.",
                     "patternProperties": {
-                        "^[0-9]+$": {
-                            "$ref": "http://json-schema.org/draft-04/schema#"
-                        }
-                    },
-                    "properties": {
-                        "default": {
+                        "^([0-9]+)$|^(default)$": {
                             "$ref": "http://json-schema.org/draft-04/schema#"
                         }
                     }
@@ -84,12 +82,14 @@
         },
         "parameters": {
             "type": "object",
+            "required": [ "name" ],
             "properties": {
                 "name": {
                     "type": "string"
                 },
                 "kind": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [ "query", "header", "path", "formData", "body" ]
                 },
                 "summary": {
                     "type": "string"
@@ -98,7 +98,8 @@
                     "type": "boolean"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "$ref": "http://json-schema.org/draft-04/schema#/definitions/simpleTypes"
                 },
                 "items": {
                     "type": "string"
@@ -110,7 +111,7 @@
         }
     },
 
-    "required": [ "swagger", "info", "host" ],
+    "required": [ "swagger", "info", "host", "basePath", "paths" ],
 
     "properties": {
         "swagger": {
@@ -136,7 +137,7 @@
             "description": "The transfer protocol of the API.",
             "items": {
                 "type": "string",
-                "enum": [ "http", "https" ]
+                "enum": [ "http", "https", "ws", "wss" ]
             }
         },
         "consumes": {
@@ -169,6 +170,15 @@
                         "$ref": "#/definitions/httpmethod"
                     },
                     "delete": {
+                        "$ref": "#/definitions/httpmethod"
+                    },
+                    "options": {
+                        "$ref": "#/definitions/httpmethod"
+                    },
+                    "head": {
+                        "$ref": "#/definitions/httpmethod"
+                    },
+                    "patch": {
                         "$ref": "#/definitions/httpmethod"
                     }
                 }
