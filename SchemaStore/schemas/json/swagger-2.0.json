@@ -71,12 +71,12 @@
                     "type": "object",
                     "patternProperties": {
                         "^[0-9]+$": {
-                            "$ref": "#/definitions/response"
+                            "$ref": "http://json-schema.org/draft-04/schema#"
                         }
                     },
                     "properties": {
                         "default": {
-                            "$ref": "#/definitions/response"
+                            "$ref": "http://json-schema.org/draft-04/schema#"
                         }
                     }
                 }
@@ -105,22 +105,6 @@
                 },
                 "format": {
                     "type": "string"
-                }
-            }
-        },
-        "response": {
-            "type": "object",
-            "additionalProperties": true,
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "items": {
-                    "type": "object",
-                    "additionalProperties": true
                 }
             }
         }
