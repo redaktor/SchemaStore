@@ -24,10 +24,8 @@
             "$ref": "#/definitions/options"
         }
     },
-    "additionalProperties": {
-        "oneOf": [
-            { "$ref": "http://schemastore.org/schemas/json/grunt-task.json#/definitions/task" },
-            { "$ref": "http://schemastore.org/schemas/json/grunt-task.json#/definitions/dynamic" }
-        ]
-    }
+
+    "allOf": [
+        { "$ref": "http://schemastore.org/schemas/json/grunt-task.json" }
+    ]
 }

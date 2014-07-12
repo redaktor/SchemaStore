@@ -1,45 +1,32 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" itemscope itemtype="http://schema.org/WebApplication">
 <head>
-	<title>Schema test</title>
+	<title itemprop="name">Schema test</title>
+	<meta charset="utf-8" />
+	<meta name="description" content="Tests for the schemas store in schemastore.org" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 	<link href="../css/site.css" rel="stylesheet" />
-	<style>
-		ul {
-			list-style: none;
-		}
-
-		ul > li:first-child{
-			font-weight: bold;
-			margin-top: 1em;
-			margin-left: -1em;
-		}
-
-		span {
-			display: block;
-			margin: 0 0 0 1em;
-			font-size: .8em;
-			color: black;
-		}
-
-		.true {
-			color: green;
-		}
-
-		.false {
-			color: red;
-		}
-	</style>
+	<link href="test.css" rel="stylesheet" />
 </head>
 <body>
 
 	<header>
 		<h1>Schema Tests</h1>
-		<p>Each test validates a JSON file against a JSON Schema</p>
+		<p itemprop="headline">Each test validates a JSON file against a JSON Schema</p>
+
+		<aside role="complementary">
+			<a href="https://github.com/madskristensen/schemastore">
+				<img src="/img/forkme.png" width="149" height="149" alt="Fork me on GitHub" />
+			</a>
+		</aside>
 	</header>
 
 	<div id="main">
 		<ul id="result"></ul>
 	</div>
+
+	<progress value="0"></progress>
 
 	<script src="http://geraintluff.github.io/tv4/tv4.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -1,0 +1,46 @@
+﻿body {
+    margin-bottom: 3em;
+}
+
+ul {
+    list-style: none;
+}
+
+    ul > li:first-child {
+        font-weight: bold;
+        margin-top: 1em;
+        margin-left: -1em;
+    }
+
+span {
+    display: block;
+    margin: 0 0 0 1em;
+    font-size: .8em;
+    color: black;
+}
+
+.true {
+    color: green;
+}
+
+.false {
+    color: red;
+}
+
+progress {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #f1f1f1;
+    color: green;
+    border: none;
+    height: 15px;
+}
+
+    progress::-moz-progress-bar {
+        background: green;
+    }
+
+    progress::-webkit-progress-bar {
+        background: #f1f1f1;
+    }

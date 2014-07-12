@@ -1,7 +1,11 @@
-﻿(function () {
+﻿/// <reference path="http://geraintluff.github.io/tv4/tv4.min.js" />
+/// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />
+
+(function () {
     $.ajaxSetup({ cache: false });
 
     var list = document.getElementById("result");
+    var progress = document.querySelector("progress");
     var results = [];
 
     function runTest(name, files) {
@@ -9,16 +13,21 @@
         var schemaUrl = "../schemas/json/" + name + ".json";
 
         $.getJSON(schemaUrl, null, function (schema) {
+            var gets = [];
 
             for (var i = 0; i < files.length; i++) {
 
-                $.getJSON("/" + files[i], null, function (file) {
-                    var result = tv4.validateMultiple(file, schema, true);
+                gets.push($.getJSON("/" + files[i], null, function (file) {
+                    var result = tv4.validateMultiple(file, schema);
                     result.url = cleanUrl(this.url);
                     result.name = name;
                     results.push(result);
-                });
+                }));
             }
+
+            $.when.apply($, gets).then(function () {
+                progress.value = 1 + progress.value;
+            });
         });
     }
 
@@ -36,14 +45,20 @@
         return url;
     }
 
+    function sortResults(a, b) {
+        if (a.name > b.name) {
+            return (a.url > b.url) ? 1 : -1;
+        }
+        else if (a.name < b.name) {
+            return (a.url > b.url) ? 1 : -1;
+        }
+
+        return (a.url > b.url) ? 1 : -1;
+    }
+
     $(document).ajaxStop(function () {
 
-        results = results.sort(function (a, b) {
-            if (a.name === b.name)
-                return a.url > b.url;
-
-            return a.name > b.name
-        });
+        results.sort(sortResults);
 
         list.innerHTML = "";
 
@@ -72,7 +87,7 @@
             li.appendChild(a);
 
             if (!result.valid) {
-                var error = result.errors.join("<br />");
+                var error = result.errors.map(function (e) { return "<strong>" + e.schemaPath + "</strong>: " + e.message }).join("<br />");
                 var msg = document.createElement("span");
                 msg.innerHTML = error;
                 li.appendChild(msg);
@@ -84,7 +99,9 @@
 
     $.getJSON("tests.json", null, function (data) {
 
-        list.innerHTML = "Testing " + (Object.keys(data).length - 2) + " JSON Schemas..."
+        var count = (Object.keys(data).length - 2);
+        list.innerHTML = "Testing " + count + " JSON Schemas...";
+        progress.max = count;
 
         for (var test in data) {
             if (test === "catalog" || test == "schemas")
