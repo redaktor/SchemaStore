@@ -82,47 +82,9 @@ header, #main {
 
     #schemalist li a {
         color: dodgerblue;
-        background: url(/img/icons/json.png) no-repeat left 6px;
+        background: url(/img/json-icon.png) no-repeat left 6px;
         padding-left: 25px;
     }
-
-/*#schemas li a[href*=bower] {
-            background-image: url(/img/icons/bower.png);
-        }
-
-        #schemas li a[href*=package] {
-            background-image: url(/img/icons/npm.png);
-        }
-
-        #schemas li a[href*=coffee] {
-            background-image: url(/img/icons/coffee.png);
-        }
-
-        #schemas li a[href*=tslint] {
-            background-image: url(/img/icons/typescript.png);
-        }
-
-        #schemas li a[href*=json-ld] {
-            background-image: url(/img/icons/json-ld.png);
-        }
-
-        #schemas li a[href*=composer] {
-            background-image: url(/img/icons/composer.png);
-        }
-
-        #schemas li a[href*="project.json"] {
-            background-image: url(/img/icons/aspnet.png);
-        }
-
-        #schemas li a[href*="webjob"],
-        #schemas li a[href*=".job"] {
-            background-image: url(/img/icons/windows.png);
-        }
-
-        #schemas li a[href*=jshint],
-        #schemas li a[href*=jscs] {
-            background-image: url(/img/icons/javascript.png);
-        }*/
 
 footer {
     background-color: darkslategray;
