@@ -25,17 +25,18 @@ module.exports = function (grunt) {
     // Dynamically load schema validation based on the files and folders in /test/
     var fs = require("fs");
     var dir = "test";
-    var files = fs.readdirSync(dir);
+    var folders = fs.readdirSync(dir);
 
-    files.forEach(function (file) {
+    folders.forEach(function (folder) {
 
         // If it's a file, ignore and continue. We only care about folders.
-        if (file.indexOf('.') > -1)
+        if (folder.indexOf('.') > -1)
             return;
 
-        var schema = grunt.file.readJSON("schemas/json/" + file.replace("_", ".") + ".json");
+        var schema = grunt.file.readJSON("schemas/json/" + folder.replace("_", ".") + ".json");
+        var files = fs.readdirSync(dir + "/" + folder).map(function (file) { return dir + "/" + folder + "/" + file });
 
-        grunt.config.set("tv4." + file, {
+        grunt.config.set("tv4." + folder, {
             options: {
                 root: schema,
                 schemas: {
@@ -44,8 +45,12 @@ module.exports = function (grunt) {
                     "http://schemastore.org/schemas/json/grunt-task.json": grunt.file.readJSON("schemas/json/grunt-task.json")
                 },
             },
-            src: [dir + "/" + file + "/*.json"]
+
+            src: files
         });
+
+        // Write the config to disk so it can be consumed by the browser based test infrastru
+        fs.writeFile("test/tests.json", JSON.stringify(grunt.config.get("tv4")));
     });
 
     grunt.loadNpmTasks("grunt-tv4");
