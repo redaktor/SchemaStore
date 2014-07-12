@@ -1,47 +1,48 @@
-<!doctype html>
-<html itemscope itemtype="http://schema.org/WebApplication">
-<head lang="en" prefix="og: http://ogp.me/ns#">
-	<title itemprop="name">TEST: JSON Schema Store</title>
-
-	<meta charset="utf-8" />
-	<meta name="description" content="A collection of schemas for well known JSON files"  />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="author" content="Mads Kristensen" />
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Schema test</title>
 	<link href="../css/site.css" rel="stylesheet" />
 	<style>
-		progress {
-			width: 100%;
-			background: #f1f1f1;
-			color: green;
-			border: none;
-			height: 15px;
+		ul {
+			list-style: none;
 		}
 
-			progress::-moz-progress-bar {
-				background: green;
-			}
+		ul > li:first-child{
+			font-weight: bold;
+			margin-top: 1em;
+			margin-left: -1em;
+		}
 
-			progress::-webkit-progress-bar {
-				background: #f1f1f1;
-			}
+		span {
+			display: block;
+			margin: 0 0 0 1em;
+			font-size: .8em;
+			color: black;
+		}
+
+		.true {
+			color: green;
+		}
+
+		.false {
+			color: red;
+		}
 	</style>
 </head>
 <body>
 
 	<header>
-		<h1 itemprop="headline">Schema Store TEST</h1>
-		<p>Testing the links from the schema catalog</p>
+		<h1>Schema Tests</h1>
+		<p>Each test validates a JSON file against a JSON Schema</p>
 	</header>
 
-	<div role="main" id="main">
-		<article id="schemalist">
-			<progress value="0"></progress>
-			<ul id="schemas"></ul>
-		</article>
+	<div id="main">
+		<ul id="result"></ul>
 	</div>
 
-	<script src="../js/main.js"></script>
-	<script src="../js/test.js"></script>
+	<script src="http://geraintluff.github.io/tv4/tv4.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="test.js" async></script>
 </body>
 </html>
