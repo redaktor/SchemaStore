@@ -63,12 +63,12 @@
                         "description": "pet response",
                         "type": "array",
                         "items": {
-                            "$ref": "Pet"
+                            "$ref": "#/models/Pet"
                         }
                     },
                     "default": {
                         "description": "unexpected error",
-                        "$ref": "ErrorModel"
+                        "$ref": "#/models/ErrorModel"
                     }
                 }
             },
@@ -85,7 +85,7 @@
                         "kind": "body",
                         "summary": "Pet to add to the store",
                         "required": true,
-                        "$ref": "PetInput"
+                        "$ref": "#/models/PetInput"
                     }
                 ],
                 "responses": {
@@ -95,7 +95,7 @@
                     },
                     "default": {
                         "description": "unexpected error",
-                        "$ref": "ErrorModel"
+                        "$ref": "#/models/ErrorModel"
                     }
                 }
             }
@@ -124,11 +124,11 @@
                 "responses": {
                     "200": {
                         "description": "pet response",
-                        "$ref": "Pet"
+                        "$ref": "#/models/Pet"
                     },
                     "default": {
                         "description": "unexpected error",
-                        "$ref": "ErrorModel"
+                        "$ref": "#/models/ErrorModel"
                     }
                 }
             },
@@ -152,7 +152,7 @@
                     },
                     "default": {
                         "description": "unexpected error",
-                        "$ref": "ErrorModel"
+                        "$ref": "#/models/ErrorModel"
                     }
                 }
             }
