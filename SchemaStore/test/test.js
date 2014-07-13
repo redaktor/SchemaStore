@@ -32,9 +32,9 @@
     }
 
     function cleanUrl(url) {
-
-        if (url.indexOf("/test/") === 0)
-            url = url.substring(6);
+        var index = url.lastIndexOf("/");
+        if (index > -1)
+            url = url.substring(index + 1);
 
         var index = url.indexOf("?");
 
@@ -91,6 +91,7 @@
                 var msg = document.createElement("span");
                 msg.innerHTML = error;
                 li.appendChild(msg);
+                progress.style.color = red;
             }
 
             ul.appendChild(li);
