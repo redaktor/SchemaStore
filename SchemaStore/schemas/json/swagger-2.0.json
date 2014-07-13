@@ -73,26 +73,33 @@
         "operation": {
             "type": "object",
             "required": [ "responses", "summary" ],
+            "additionalProperties": false,
             "properties": {
                 "summary": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A brief summary of the operation."
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A longer description of the operation."
                 },
                 "nickname": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A friendly name of the operation. Whitespaces are not allowed",
+                    "pattern": "^[a-zA-Z0-9-]+$"
                 },
                 "produces": {
                     "type": "array",
+                    "description": "A list of MIME types the API can produce.",
                     "items": {
                         "$ref": "#/definitions/mimeType"
                     }
                 },
                 "parameters": {
                     "type": "array",
+                    "description": "The parameters needed to send a valid API call.",
                     "minItems": 1,
-                    "additionalItems": {
+                    "items": {
                         "$ref": "#/definitions/parameter"
                     }
                 },
@@ -100,6 +107,7 @@
                     "type": "object",
                     "description": "Response objects names can either be any valid HTTP status code or 'default'.",
                     "minProperties": 1,
+                    "additionalProperties": false,
                     "patternProperties": {
                         "^([0-9]+)$|^(default)$": {
                             "$ref": "#/definitions/model"
@@ -114,18 +122,22 @@
             "additionalProperties": false,
             "properties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the parameter."
                 },
                 "kind": {
                     "type": "string",
+                    "description": "Determines the location of the parameter.",
                     "enum": [ "query", "header", "path", "formData", "body" ],
                     "default": "query"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A brief description of the parameter. This could contain examples of use."
                 },
                 "required": {
                     "type": "boolean",
+                    "description": "Determines whether or not this parameter is required or optional.",
                     "default": true
                 },
                 "model": {
@@ -237,6 +249,7 @@
             "additionalProperties": {
                 "type": "object",
                 "minProperties": 1,
+                "additionalProperties": false,
                 "properties": {
                     "get": {
                         "$ref": "#/definitions/operation"
