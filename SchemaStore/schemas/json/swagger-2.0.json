@@ -125,7 +125,8 @@
                     "type": "string"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": true
                 },
                 "model": {
                     "$ref": "#/definitions/model"
