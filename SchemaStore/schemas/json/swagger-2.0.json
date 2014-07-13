@@ -92,7 +92,7 @@
                 "parameters": {
                     "type": "array",
                     "additionalItems": {
-                        "$ref": "#/definitions/parameters"
+                        "$ref": "#/definitions/parameter"
                     }
                 },
                 "responses": {
@@ -106,7 +106,7 @@
                 }
             }
         },
-        "parameters": {
+        "parameter": {
             "type": "object",
             "required": [ "name" ],
             "properties": {
