@@ -110,30 +110,25 @@
         },
         "parameter": {
             "type": "object",
-            "required": [ "name" ],
+            "required": [ "name", "kind", "model" ],
+            "additionalProperties": false,
             "properties": {
                 "name": {
                     "type": "string"
                 },
                 "kind": {
                     "type": "string",
-                    "enum": [ "query", "header", "path", "formData", "body" ]
+                    "enum": [ "query", "header", "path", "formData", "body" ],
+                    "default": "query"
                 },
-                "summary": {
+                "description": {
                     "type": "string"
                 },
                 "required": {
                     "type": "boolean"
                 },
-                "type": {
-                    "type": "string",
-                    "$ref": "http://json-schema.org/draft-04/schema#/definitions/simpleTypes"
-                },
-                "items": {
-                    "type": "string"
-                },
-                "format": {
-                    "type": "string"
+                "model": {
+                    "$ref": "#/definitions/model"
                 }
             }
         },
