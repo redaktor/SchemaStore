@@ -30,6 +30,7 @@
                     "type": "object",
                     "description": "Contact information for the owners of the API.",
                     "required": [ "name" ],
+                    "additionalProperties": false,
                     "properties": {
                         "name": {
                             "type": "string",
@@ -51,6 +52,7 @@
                 "license": {
                     "type": "object",
                     "required": [ "type" ],
+                    "additionalProperties": false,
                     "properties": {
                         "type": {
                             "type": "string",
@@ -72,7 +74,7 @@
         },
         "operation": {
             "type": "object",
-            "required": [ "responses", "summary" ],
+            "required": [ "responses" ],
             "additionalProperties": false,
             "properties": {
                 "summary": {
@@ -91,6 +93,7 @@
                 "produces": {
                     "type": "array",
                     "description": "A list of MIME types the API can produce.",
+                    "additionalItems": false,
                     "items": {
                         "$ref": "#/definitions/mimeType"
                     }
@@ -99,6 +102,7 @@
                     "type": "array",
                     "description": "The parameters needed to send a valid API call.",
                     "minItems": 1,
+                    "additionalItems": false,
                     "items": {
                         "$ref": "#/definitions/parameter"
                     }
