@@ -5,6 +5,7 @@
     $.ajaxSetup({ cache: false });
 
     var list = document.getElementById("result");
+    var recap = document.getElementById("recap");
     var progress = document.querySelector("progress");
     var results = [];
 
@@ -91,11 +92,15 @@
                 var msg = document.createElement("span");
                 msg.innerHTML = error;
                 li.appendChild(msg);
-                progress.style.color = red;
+                progress.style.color = "red";
+                recap.innerHTML = "One or more tests failed";
+                recap.className = "false";
             }
 
             ul.appendChild(li);
         }
+
+        recap.style.visibility = "visible";
     });
 
     $.getJSON("tests.json", null, function (data) {
