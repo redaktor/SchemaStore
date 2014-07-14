@@ -92,7 +92,7 @@
                 var msg = document.createElement("span");
                 msg.innerHTML = error;
                 li.appendChild(msg);
-                progress.style.color = "red";
+                progress.style.color = "red"; //This only works in IE. How to fix?
                 recap.innerHTML = "One or more tests failed";
                 recap.className = "false";
             }
