@@ -106,14 +106,12 @@
             recap.innerHTML = "All tests ran successfully. No errors found";
             recap.className = "true";
         }
-
-        recap.style.visibility = "visible";
     });
 
     $.getJSON("tests.json", null, function (data) {
 
         var count = (Object.keys(data).length - 2);
-        list.innerHTML = "Testing " + count + " JSON Schemas...";
+        recap.innerHTML = "Testing " + count + " JSON Schemas...";
         progress.max = count + 1;
         progress.value = 1;
 

@@ -2,23 +2,43 @@
     overflow-y: scroll;
 }
 
-.test ul {
-    list-style: none;
-    padding-left: .6em;
+.test {
+    min-height: 600px;
 }
+
+    .test ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .test > ul {
+        -moz-column-width: 300px;
+        -webkit-column-width: 300px;
+        column-width: 300px;
+    }
+
+    .test ul ul {
+        -webkit-column-break-inside: avoid;
+        break-inside: avoid-column;
+        page-break-inside: avoid;
+        margin-bottom: 1em;
+    }
+
+    .test ul li:not(:first-child) {
+        padding-left: 1em;
+        font-size: .9em;
+    }
 
     .test ul > li:first-child {
         font-weight: bold;
-        margin-top: 1em;
-        margin-left: -1em;
     }
 
-.test span {
-    display: block;
-    margin: 0 0 0 1em;
-    font-size: .8em;
-    color: black;
-}
+    .test span {
+        display: block;
+        margin: 0 0 0 1em;
+        font-size: .8em;
+        color: black;
+    }
 
 .true {
     color: green;
@@ -29,7 +49,6 @@
 }
 
 #recap {
-    visibility: hidden;
     display: inline;
 }
 
