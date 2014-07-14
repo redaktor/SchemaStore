@@ -33,7 +33,7 @@
     }
 
     function cleanUrl(url) {
-        var index = url.lastIndexOf("/");
+        var index = url.indexOf("/", 1);
         if (index > -1)
             url = url.substring(index + 1);
 
@@ -80,7 +80,7 @@
             last = result.name;
 
             var a = document.createElement("a");
-            a.innerHTML = result.url;
+            a.innerHTML = result.url.replace(result.name + "/", "");
             a.href = result.url;
             a.className = result.valid;
 
