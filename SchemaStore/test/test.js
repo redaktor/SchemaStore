@@ -81,7 +81,7 @@
             last = result.name;
 
             var a = document.createElement("a");
-            a.innerHTML = result.url.replace(result.name + "/", "");
+            a.innerHTML = result.url.replace(result.name.replace(".", "_") + "/", "");
             a.href = result.url;
             a.className = result.valid;
 
