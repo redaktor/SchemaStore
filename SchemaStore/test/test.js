@@ -46,19 +46,19 @@
     }
 
     function sortResults(a, b) {
-        if (a.name > b.name) {
-            return (a.url > b.url) ? 1 : -1;
-        }
-        else if (a.name < b.name) {
-            return (a.url > b.url) ? 1 : -1;
-        }
+        if (a.name > b.name)
+            return 1;
+        else if (a.name < b.name)
+            return -1;
+        else if (a.url > b.url)
+            return 1;
 
-        return (a.url > b.url) ? 1 : -1;
+        return -1;
     }
 
     $(document).ajaxStop(function () {
 
-        results.sort(sortResults);
+        results = results.sort(sortResults);
 
         list.innerHTML = "";
 
