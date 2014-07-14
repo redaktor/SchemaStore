@@ -65,6 +65,7 @@
 
         var last = "";
         var ul = null;
+        var hasErrors = false;
 
         for (var i = 0; i < results.length; i++) {
             var result = results[i];
@@ -92,12 +93,18 @@
                 var msg = document.createElement("span");
                 msg.innerHTML = error;
                 li.appendChild(msg);
+                hasErrors = true;
                 progress.style.color = "red"; //This only works in IE. How to fix?
                 recap.innerHTML = "One or more tests failed";
                 recap.className = "false";
             }
 
             ul.appendChild(li);
+        }
+
+        if (!hasErrors) {
+            recap.innerHTML = "All tests ran successfully. No errors found";
+            recap.className = "true";
         }
 
         recap.style.visibility = "visible";
@@ -107,7 +114,8 @@
 
         var count = (Object.keys(data).length - 2);
         list.innerHTML = "Testing " + count + " JSON Schemas...";
-        progress.max = count;
+        progress.max = count + 1;
+        progress.value = 1;
 
         for (var test in data) {
             if (test === "catalog" || test == "schemas")
