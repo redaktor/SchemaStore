@@ -5,6 +5,7 @@
         "dynamic": {
             "type": "object",
             "required": [ "src" ],
+            "additionalProperties": false,
             "properties": {
                 "expand": {
                     "description": "Must be set to true to use properties other than 'src' and 'dest'",
@@ -60,24 +61,15 @@
                 }
             }
         },
-        "fileArrayFormat": {
-            "properties": {
-                "files": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/dynamic"
-                    }
-                }
-            }
-        },
-        "fileObjectFormat": {
+        "fileFormat": {
+            "additionalProperties": false,
             "properties": {
                 "files": {
                     "oneOf": [
                         {
                             "type": "object",
                             "additionalProperties": {
-                                "type": "array",
+                                "type": [ "array", "string" ],
                                 "items": {
                                     "type": "string",
                                     "uniqueItems": true,
@@ -86,9 +78,9 @@
                             }
                         },
                         {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dynamic"
                             }
                         }
                     ]
@@ -96,10 +88,7 @@
             }
         },
         "task": {
-            "oneOf": [
-                { "$ref": "#/definitions/fileArrayFormat" },
-                { "$ref": "#/definitions/fileObjectFormat" }
-            ]
+            "$ref": "#/definitions/fileFormat"
         }
     },
     "properties": {
