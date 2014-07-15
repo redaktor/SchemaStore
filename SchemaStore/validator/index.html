@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" itemscope itemtype="http://schema.org/WebApplication">
 <head>
 	<title itemprop="name">Schema Store validator</title>
@@ -25,7 +25,7 @@
 
 	<div id="main">
 		<section>
-			<h2>Schema:</h2>
+			<h2>Select schema:</h2>
 			<select>
 				<option>Custom schema</option>
 				<optgroup label="SchemaStore.org"></optgroup>
@@ -36,7 +36,7 @@
 		</section>
 
 		<section>
-			<h2 id="jsonheader">JSON:</h2>
+			<h2>Input JSON: <span id="jsonheader"></span></h2>
 			<textarea id="json" placeholder="Enter or paste the JSON you want to validate against the schema" cols="100" rows="10" wrap="off"></textarea>
 			<span id="valid">Invalid syntax</span>
 		</section>

@@ -103,10 +103,7 @@ footer {
 
     footer ul li{
         display: inline-block;
-    }
-
-    footer ul li:not(:last-child):after{
-        content: ' | '
+        padding: 0 .4em;
     }
 
 @media screen and (max-width:800px) {

@@ -108,7 +108,7 @@
             output.innerHTML = "Congrats! All " + json.getDoc().lineCount() + " lines of JSON validates against the schema";
             output.className = "true";
             jsonheader.className = "true";
-            jsonheader.innerHTML = "JSON: No errors found."
+            jsonheader.innerHTML = "No errors found"
         }
         else {
             var errors = "";
@@ -127,8 +127,7 @@
 
             output.innerHTML = errors;
             output.className = "false";
-            jsonheader.className = "false";
-            jsonheader.innerHTML = "JSON: Found " + result.errors.length + " error(s)."
+            jsonheader.innerHTML = "Found " + result.errors.length + " error(s)"
             jsonheader.className = "false";
         }
 

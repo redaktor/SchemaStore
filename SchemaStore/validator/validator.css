@@ -28,16 +28,16 @@ textarea {
     transition: height 1s;
 }
 
-.CodeMirror[data-valid=false]:after{
-    content: 'Invalid';
-}
+    .CodeMirror[data-valid=false]:after {
+        content: 'Invalid';
+    }
 
 .CodeMirror-gutters {
     min-width: 40px;
     text-align: right;
 }
 
-#valid{
+#valid {
     visibility: hidden;
     margin-top: -1.6em;
     display: block;
@@ -50,18 +50,10 @@ textarea {
 }
 
 section h2 {
-    font-size: 1em;
+    font-size: .8em;
     font-weight: bold;
     display: inline-block;
     margin: 0;
-}
-
-h2.false {
-    color: red;
-}
-
-h2.true {
-    color: green;
 }
 
 output {
@@ -104,3 +96,24 @@ output {
 #json.false {
     border-color: red;
 }
+
+#jsonheader {
+    font-weight: normal;
+    padding-left: 1em;
+}
+
+    #jsonheader.false {
+        color: red;
+    }
+
+        #jsonheader.false:before {
+            content: '✘ ';
+        }
+
+    #jsonheader.true {
+        color: green;
+    }
+
+        #jsonheader.true:before {
+            content: '✔ ';
+        }
