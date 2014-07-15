@@ -3,12 +3,14 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "additionalProperties": true,
+
     "properties": {
         "WebJobs": {
             "type": "array",
             "description": "A list of Azure Webjobs.",
             "items": {
                 "type": "object",
+                "additionalProperties": false,
                 "properties": {
                     "filePath": {
                         "type": "string"
