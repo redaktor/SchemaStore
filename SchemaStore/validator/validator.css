@@ -80,14 +80,15 @@ output {
             content: ':';
         }
 
-    output dt:first-of-type {
-        font-weight: bold;
-    }
-
     output dt {
         float: left;
         color: red;
     }
+
+        output dt:first-of-type {
+            font-weight: bold;
+        }
+
 
 #json.true {
     border-color: green;

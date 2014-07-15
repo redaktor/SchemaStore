@@ -102,8 +102,16 @@
                         "type": "string",
                         "description": "The type of editor to use for this prevalue field"
                     },
-                    "validation": { 
-                        "type": "array"
+                    "validation": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
