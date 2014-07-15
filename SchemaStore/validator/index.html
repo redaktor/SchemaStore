@@ -7,13 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<link href="../site.css" rel="stylesheet" />
-	<link href="test.css" rel="stylesheet" />
+	<link href="validator.css" rel="stylesheet" />
 </head>
 <body>
 
 	<header role="banner">
 		<h1>Schema Store</h1>
-		<p itemprop="headline">Test runner</p>
+		<p itemprop="headline">Validator</p>
 
 		<aside role="complementary">
 			<a href="https://github.com/madskristensen/schemastore">
@@ -22,14 +22,29 @@
 		</aside>
 	</header>
 
-	<div id="main" class="test">
-		<p id="recap">Loading tests...</p>
-		<progress value="0"></progress>
-		<ul id="result"></ul>
+	<div id="main">
+		<section>
+			<h2>Schema:</h2>
+			<select>
+				<option>Custom schema</option>
+				<optgroup label="SchemaStore.org"></optgroup>
+			</select>
+
+			<a href="#" id="toggle">Hide schema</a>
+			<textarea id="schema" placeholder="Enter or paste your JSON Schema" cols="100" rows="10" wrap="off"></textarea>
+		</section>
+
+		<section>
+			<h2>JSON:</h2>
+			<textarea id="json" placeholder="Enter or paste the JSON you want to validate against the schema" cols="100" rows="10" wrap="off"></textarea>
+		</section>
+
+		<output></output>
 	</div>
 
 	<footer>
 		<div>
+			
 			<a href="/">Home</a> |
 			<a href="/validator/">Validator</a> |
 			<a href="/api/json/catalog.json">API</a> |
@@ -40,6 +55,6 @@
 
 	<script src="http://geraintluff.github.io/tv4/tv4.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="test.js" async></script>
+	<script src="validator.js" async></script>
 </body>
 </html>

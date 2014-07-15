@@ -1,0 +1,69 @@
+﻿body {
+    overflow-y: scroll;
+}
+
+textarea {
+    font: 16px/1 monospace;
+    width: 100%;
+    word-break: keep-all;
+    height: 300px;
+    border: 2px solid silver;
+    padding: 5px;
+    margin-bottom: 1.5em;
+}
+
+#toggle {
+    font-size: .8em;
+}
+
+section h2{
+    font-size: 1em;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0;
+}
+
+h2.false {
+        color: red;
+    }
+
+output {
+    font-size: .8em;
+}
+
+    output.true {
+        color: green;
+    }
+
+        output dl {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    output dd {
+        float: left;
+        width: 150px;
+        margin: 0;
+        clear: both;
+    }
+
+        output dd:after {
+            content: ':';
+        }
+
+    output dt:first-of-type {
+        font-weight: bold;
+    }
+
+    output dt {
+        float: left;
+        color: red;
+    }
+
+#json.true {
+    border-color: green;
+}
+
+#json.false {
+    border-color: red;
+}
