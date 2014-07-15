@@ -89,7 +89,7 @@
             li.appendChild(a);
 
             if (!result.valid) {
-                var error = result.errors.map(function (e) { return "<strong>" + e.schemaPath + "</strong>: " + e.message }).join("<br />");
+                var error = result.errors.map(function (e) { return "<strong>" + e.dataPath + "</strong>: " + e.message }).join("<br />");
                 var msg = document.createElement("span");
                 msg.innerHTML = error;
                 li.appendChild(msg);
@@ -103,8 +103,11 @@
         }
 
         if (!hasErrors) {
-            recap.innerHTML = "All tests ran successfully. No errors found";
-            recap.className = "true";
+            // Set timeout to delay the reponse. Give people a change to see the loader
+            setTimeout(function () {
+                recap.innerHTML = "All tests ran successfully. No errors found";
+                recap.className = "true";
+            }, 1000);
         }
     });
 

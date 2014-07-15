@@ -1,7 +1,8 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "A schema for Umbraco's package.manifest files.",
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "description": "An array of Umbraco Property Editors",
+
     "type": "object",
     "additionalProperties": false,
 
@@ -9,6 +10,7 @@
         "editor": {
             "description": "This describes details about the editor",
             "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "view": {
                     "type": "string",
@@ -81,11 +83,12 @@
             "minItems": 1,
             "items": {
                 "type": "object",
+                "minProperties": 1,
                 "properties": {
                     "key": {
                         "type": "string",
                         "description": "A unique key for the prevalue field",
-                        "maxLength": 1
+                        "minLength": 1
                     },
                     "label": {
                         "type": "string",
@@ -128,7 +131,7 @@
             "description": "Returns an array of editor objects, each object specifies an editor to make available to data types as an editor component. These editors are primarily property editors for content, media and members, but can also be made available as a macro parameter editor.",
             "minItems": 1,
             "items": {
-                "anyOf": [
+                "allOf": [
                     { "$ref": "#/definitions/editors" },
                     { "$ref": "#/definitions/preValues" }
                 ]
