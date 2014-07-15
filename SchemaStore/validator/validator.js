@@ -18,6 +18,7 @@
     var toggle = document.getElementById("toggle");
     var output = document.querySelector("output");
     var header = document.getElementById("jsonheader");
+    var valid = document.getElementById("valid");
 
     function onSelectChange() {
 
@@ -31,7 +32,7 @@
 
         if (select.selectedIndex === 0) {
             schema.setValue("");
-            toggleEditor(false);
+            toggleEditor(true);
             clear();
         }
         else {
@@ -91,12 +92,14 @@
         if (jsonValue.trim().length == 0 || jsonValue.trim().length == 0)
             clear();
 
-        if (!IsJsonString(jsonValue) || !IsJsonString(schemaValue))
+        if (!IsJsonString(jsonValue) || !IsJsonString(schemaValue)) {
+            valid.style.visibility = "visible";
             return;
+        }
 
-        localStorage.json = json.getValue();
+        localStorage.json = jsonValue;
 
-        var result = tv4.validateMultiple(JSON.parse(json.getValue()), JSON.parse(schema.getValue()), true);
+        var result = tv4.validateMultiple(JSON.parse(jsonValue), JSON.parse(schemaValue), true);
 
         if (result.valid) {
             clear();
@@ -106,7 +109,6 @@
             jsonheader.innerHTML = "JSON: No errors found."
         }
         else {
-            console.log(result.errors)
             var errors = "";
             for (var i = 0; i < result.errors.length; i++) {
 
@@ -127,6 +129,8 @@
             jsonheader.innerHTML = "JSON: Found " + result.errors.length + " error(s)."
             jsonheader.className = "false";
         }
+
+        valid.style.visibility = "hidden";
     }
 
     function clear() {
@@ -148,7 +152,7 @@
 
     $(function () {
 
-        json.setValue(localStorage.json || "");
+        json.setValue(localStorage.json || "{\n\t\n}");
 
         if (localStorage.toggle === "false")
             toggleEditor(false);
@@ -159,7 +163,6 @@
         select.onchange = onSelectChange;
         schema.on("change", validate);
         json.on("change", validate);
-        json.keyup = validate;
         toggle.onclick = toggleSchema;
         window.onhashchange = loadSchema;
     });
