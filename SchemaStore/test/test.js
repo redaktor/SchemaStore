@@ -1,5 +1,5 @@
-﻿/// <reference path="http://geraintluff.github.io/tv4/tv4.min.js" />
-/// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />
+﻿/// <reference path="http://geraintluff.github.io/tv4/tv4.js" />
+/// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 
 (function () {
     $.ajaxSetup({ cache: false });
@@ -8,6 +8,7 @@
     var recap = document.getElementById("recap");
     var progress = document.querySelector("progress");
     var results = [];
+    var hyperSchema;
 
     function runTest(name, files) {
 
@@ -15,6 +16,11 @@
 
         $.getJSON(schemaUrl, null, function (schema) {
             var gets = [];
+
+            var hyper = tv4.validateMultiple(schema, hyperSchema, true);
+            hyper.url = "[hyper-schema]";
+            hyper.name = name;
+            results.push(hyper);
 
             for (var i = 0; i < files.length; i++) {
 
@@ -33,6 +39,9 @@
     }
 
     function cleanUrl(url) {
+        if (url.indexOf("schemas/json/") === 0)
+            return "[hyper-schema]"
+
         var index = url.indexOf("/", 1);
         if (index > -1)
             url = url.substring(index + 1);
@@ -82,10 +91,10 @@
 
             var a = document.createElement("a");
             a.innerHTML = result.url.replace(result.name.replace(".", "_") + "/", "").replace(".json", "");
-            a.href = result.url;
-            a.className = result.valid;
-
+            a.href = result.url.replace("[hyper-schema]", "http://json-schema.org/draft-04/schema");
+            
             var li = document.createElement("li");
+            li.className = result.valid;
             li.appendChild(a);
 
             if (!result.valid) {
@@ -111,20 +120,25 @@
         }
     });
 
-    $.getJSON("tests.json", null, function (data) {
+    $.getJSON("hyper-schema.json", null, function (data) {
+        hyperSchema = data;
+        tv4.addSchema("http://json-schema.org/draft-04/schema", hyperSchema);
 
-        var count = (Object.keys(data).length - 2);
-        recap.innerHTML = "Testing " + count + " JSON Schemas...";
-        progress.max = count + 1;
-        progress.value = 1;
+        $.getJSON("tests.json", null, function (data) {
 
-        for (var test in data) {
-            if (test === "catalog" || test == "schemas")
-                continue;
+            var count = (Object.keys(data).length - 2);
+            recap.innerHTML = "Testing " + count + " JSON Schemas...";
+            progress.max = count + 1;
+            progress.value = 1;
 
-            var name = test.replace("_", ".");
-            var files = data[test].src;
-            runTest(name, files);
-        }
+            for (var test in data) {
+                if (test === "catalog" || test == "schemas")
+                    continue;
+
+                var name = test.replace("_", ".");
+                var files = data[test].src;
+                runTest(name, files);
+            }
+        });
     });
 })();

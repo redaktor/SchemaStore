@@ -17,6 +17,9 @@
         column-width: 300px;
     }
 
+    .test ul ul li:nth-child(2) a {
+    }
+
     .test ul ul {
         -webkit-column-break-inside: avoid;
         break-inside: avoid-column;
@@ -25,7 +28,7 @@
     }
 
     .test ul li:not(:first-child) {
-        padding-left: 1em;
+        padding-left: .5em;
         font-size: .9em;
     }
 
@@ -40,13 +43,21 @@
         color: black;
     }
 
-.true {
+.true, .true a {
     color: green;
 }
 
-.false {
+    .true:before {
+        content: '✔ ';
+    }
+
+.false, .false a {
     color: red;
 }
+
+    .false:before {
+        content: '✘ ';
+    }
 
 #recap {
     display: inline;

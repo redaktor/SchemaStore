@@ -101,6 +101,9 @@
                     "view": {
                         "type": "string",
                         "description": "The type of editor to use for this prevalue field"
+                    },
+                    "validation": { 
+                        "type": "array"
                     }
                 }
             }
@@ -111,7 +114,6 @@
         "javascript": {
             "type": "array",
             "description": "A list of Javascript files with full path to load for your property editor",
-            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "type": "string"
@@ -120,7 +122,6 @@
         "css": {
             "type": "array",
             "description": "A list of CSS files with full path to load for your property editor",
-            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "type": "string"

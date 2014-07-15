@@ -22,9 +22,10 @@ textarea {
     border-radius: 5px;
     margin-bottom: 1.5em;
     background-color: #f6f6f6;
-    -moz-transition: 1s;
-    -webkit-transition: 1s;
-    transition: 1s;
+    -moz-transition: height 1s;
+    -o-transition: height 1s;
+    -webkit-transition: height 1s;
+    transition: height 1s;
 }
 
 .CodeMirror[data-valid=false]:after{
