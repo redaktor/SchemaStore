@@ -23,7 +23,7 @@
     function onSelectChange() {
 
         if (select.selectedIndex > 0)
-            location.hash = select.options[select.selectedIndex].text;
+            location.hash = select.options[select.selectedIndex].value;
         else
             location.hash = "";
     }
@@ -73,7 +73,7 @@
                 option.text = schema.name;
                 option.value = schema.url.replace("http://schemastore.org", "");
 
-                if (location.hash === "#" + option.text) {
+                if (location.hash === "#" + option.value) {
                     option.selected = "selected";
                 }
 
