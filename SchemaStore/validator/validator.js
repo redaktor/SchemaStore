@@ -22,12 +22,12 @@
 
     function onSelectChange() {
 
-        if (select.selectedIndex > 0) {
+        if (select.selectedIndex > 0)
             history.pushState(null, "Schema selected", "#" + select.options[select.selectedIndex].value); //location.hash = select.options[select.selectedIndex].value;
-            loadSchema();
-        }
         else
-            location.hash = "";
+            history.pushState(null, "Custom schema", "/validator");
+
+        loadSchema();
     }
 
     function loadSchema() {
@@ -105,7 +105,7 @@
 
         if (result.valid) {
             clear();
-            output.innerHTML = "Congrats! The JSON validates against the schema";
+            output.innerHTML = "Congrats! All " + json.getDoc().lineCount() + " lines of JSON validates against the schema";
             output.className = "true";
             jsonheader.className = "true";
             jsonheader.innerHTML = "JSON: No errors found."
