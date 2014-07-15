@@ -8,6 +8,7 @@
 
 	<link href="../site.css" rel="stylesheet" />
 	<link href="validator.css" rel="stylesheet" />
+	<link href="codemirror.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -35,7 +36,7 @@
 		</section>
 
 		<section>
-			<h2>JSON:</h2>
+			<h2 id="jsonheader">JSON:</h2>
 			<textarea id="json" placeholder="Enter or paste the JSON you want to validate against the schema" cols="100" rows="10" wrap="off"></textarea>
 		</section>
 
@@ -43,18 +44,20 @@
 	</div>
 
 	<footer>
-		<div>
-			
-			<a href="/">Home</a> |
-			<a href="/validator/">Validator</a> |
-			<a href="/api/json/catalog.json">API</a> |
-			<a href="/test/">Test</a>
-			<p>Learn more about JSON schemas at <a href="http://json-schema.org">json-schema.org</a></p>
-		</div>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/validator/">Validator</a></li>
+				<li><a href="/api/json/catalog.json">API</a></li>
+				<li><a href="/test/">Test</a></li>
+			</ul>
+		</nav>
+		<p>Learn more about JSON schemas at <a href="http://json-schema.org">json-schema.org</a></p>
 	</footer>
 
 	<script src="http://geraintluff.github.io/tv4/tv4.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="codemirror-compressed.js"></script>
 	<script src="validator.js" async></script>
 </body>
 </html>

@@ -2,15 +2,25 @@
 /// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 
 (function () {
-    $.ajaxSetup({ cache: false });
+    //$.ajaxSetup({ cache: false });
+
+    function createTextEditor(textarea) {
+        return CodeMirror.fromTextArea(textarea, {
+            mode: { name: "javascript", json: true },
+            lineNumbers: true,
+            indentUnit: 4,
+        });
+    }
+
     var select = document.querySelector("select");
-    var schema = document.getElementById("schema");
-    var json = document.getElementById("json");
+    var schema = createTextEditor(document.getElementById("schema"));
+    var json = createTextEditor(document.getElementById("json"));
     var toggle = document.getElementById("toggle");
     var output = document.querySelector("output");
+    var header = document.getElementById("jsonheader");
 
     function onSelectChange() {
-        
+
         if (select.selectedIndex > 0)
             location.hash = select.options[select.selectedIndex].text;
         else
@@ -20,38 +30,32 @@
     function loadSchema() {
 
         if (select.selectedIndex === 0) {
-            schema.value = "";
-            schema.style.display = "block";
-            toggle.innerHTML = "Hide schema";
+            schema.setValue("");
+            toggleEditor(false);
             clear();
         }
         else {
             var url = select.options[select.selectedIndex].value;
 
             $.get(url, null, function (data) {
-
-                schema.value = data;
-                toggle.style.display = "inline";
+                schema.setValue(data);
                 validate();
             });
-
-            toggle.style.display = "inline";
         }
     }
 
     function toggleSchema() {
-        if (schema.style.display !== "none") {
-            schema.style.display = "none";
-            this.innerHTML = "Show schema";
-            localStorage.toggle = false;
-        }
-        else {
-            schema.style.display = ""
-            this.innerHTML = "Hide schema";
-            localStorage.toggle = true;
-        }
-
+        var visible = schema.getWrapperElement().style.visibility === "hidden";
+        toggleEditor(visible);
         return false;
+    }
+
+    function toggleEditor(visible) {
+        var element = schema.getWrapperElement();
+        element.style.height = visible ? "" : "0px";
+        element.style.visibility = visible ? "visible" : "hidden";
+        toggle.innerHTML = visible ? "Hide schema" : "Show schema";
+        localStorage.toggle = visible;
     }
 
     function loadSelect() {
@@ -66,7 +70,7 @@
 
                 var option = document.createElement("option");
                 option.text = schema.name;
-                option.value = schema.url;
+                option.value = schema.url.replace("http://schemastore.org", "");
 
                 if (location.hash === "#" + option.text) {
                     option.selected = "selected";
@@ -79,29 +83,30 @@
         });
     }
 
-    //function loadHyperSchema() {
-    //    $.getJSON("/test/hyper-schema.json", null, function (data) {
-
-    //        tv4.addSchema("http://json-schema.org/draft-04/schema", data);
-    //    });
-    //}
-
     function validate() {
 
-        if (!IsJsonString(json.value) || !IsJsonString(schema.value))
+        var jsonValue = json.getValue();
+        var schemaValue = schema.getValue();
+
+        if (jsonValue.trim().length == 0 || jsonValue.trim().length == 0)
+            clear();
+
+        if (!IsJsonString(jsonValue) || !IsJsonString(schemaValue))
             return;
 
-        localStorage.json = json.value;
+        localStorage.json = json.getValue();
 
-        var result = tv4.validateMultiple(JSON.parse(json.value), JSON.parse(schema.value), true);
+        var result = tv4.validateMultiple(JSON.parse(json.getValue()), JSON.parse(schema.getValue()), true);
 
         if (result.valid) {
             clear();
             output.innerHTML = "Congrats! The JSON validates against the schema";
             output.className = "true";
-            json.className = "true";
+            jsonheader.className = "true";
+            jsonheader.innerHTML = "JSON: No errors found."
         }
         else {
+            console.log(result.errors)
             var errors = "";
             for (var i = 0; i < result.errors.length; i++) {
 
@@ -109,25 +114,25 @@
                 errors += "<dl>";
 
                 if (error.dataPath)
-                    errors += "<dd>Data path</dd><dt>" + error.dataPath + "</dt>";
+                    errors += "<dd>Data path</dd><dt>#" + error.dataPath + "</dt>";
 
                 errors += "<dd>Message</dd><dt>" + error.message + "</dt>";
-                errors += "<dd>Schema path</dd><dt>" + error.schemaPath + "</dt>";
+                errors += "<dd>Schema path</dd><dt>#" + error.schemaPath + "</dt>";
                 errors += "</dl>";
             }
 
             output.innerHTML = errors;
             output.className = "false";
-            json.className = "false";
-            json.parentNode.firstElementChild.innerHTML = "JSON: Found " + result.errors.length + " error(s)."
-            json.parentNode.firstElementChild.className = "false";
+            jsonheader.className = "false";
+            jsonheader.innerHTML = "JSON: Found " + result.errors.length + " error(s)."
+            jsonheader.className = "false";
         }
     }
 
     function clear() {
-        json.className = "";
-        json.parentNode.firstElementChild.innerHTML = "JSON:"
-        json.parentNode.firstElementChild.className = "";
+        jsonheader.className = "";
+        jsonheader.innerHTML = "JSON:"
+        jsonheader.className = "";
         output.className = "";
         output.innerHTML = "";
     }
@@ -142,22 +147,23 @@
     }
 
     $(function () {
-        json.value = localStorage.json || "";
 
-        if (localStorage.toggle === "false") {
-            schema.style.display = "none";
-            toggle.innerHTML = "Show schema";
-        }
+        json.setValue(localStorage.json || "");
+
+        if (localStorage.toggle === "false")
+            toggleEditor(false);
 
         if (location.hash === "")
-            schema.style.display = "block";
+            toggleEditor(true);
 
         select.onchange = onSelectChange;
-        schema.onkeyup = validate;
-        json.onkeyup = validate;
+        schema.on("change", validate);
+        json.on("change", validate);
+        json.keyup = validate;
         toggle.onclick = toggleSchema;
         window.onhashchange = loadSchema;
     });
 
     loadSelect();
+
 })();

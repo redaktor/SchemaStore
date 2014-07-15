@@ -100,6 +100,14 @@ footer {
         color: white;
     }
 
+    footer ul li{
+        display: inline-block;
+    }
+
+    footer ul li:not(:last-child):after{
+        content: ' | '
+    }
+
 @media screen and (max-width:800px) {
     @-ms-viewport {
         width: 690px;
