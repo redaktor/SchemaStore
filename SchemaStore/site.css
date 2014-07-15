@@ -63,10 +63,10 @@ header, #main {
 
 #schemalist {
     max-height: 0;
-    -moz-transition: max-height 2s;
-    -o-transition: max-height 2s;
-    -webkit-transition: max-height 2s;
-    transition: max-height 2s;
+    -moz-transition: max-height 1.5s ease-in;
+    -o-transition: max-height 1.5s ease-in;
+    -webkit-transition: max-height 1.5s ease-in;
+    transition: max-height 1.5s ease-in;
     width: 100%;
 }
 
