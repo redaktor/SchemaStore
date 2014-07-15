@@ -24,8 +24,10 @@
             li.appendChild(a);
             ul.appendChild(li);
         }
+        setTimeout(function () {
+            ul.parentNode.style.maxHeight = "999px";
+        }, 100);
 
-        ul.parentNode.style.maxHeight = "999px";
     };
     req.send(null);
 
