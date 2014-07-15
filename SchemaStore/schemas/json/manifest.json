@@ -9,7 +9,7 @@
         "manifest_version": {
             "type": "number",
             "description": "One integer specifying the version of the manifest file format your package requires.",
-            "enum": [2],
+            "enum": [ 2 ],
             "minimum": 2,
             "maximum": 2
         },
@@ -46,6 +46,10 @@
                     "description": "Used on the extension management page (chrome://extensions)."
                 },
                 "128": {
+                    "$ref": "#/definitions/icon",
+                    "description": "Used during installation and in the Chrome Web Store."
+                },
+                "256": {
                     "$ref": "#/definitions/icon",
                     "description": "Used during installation and in the Chrome Web Store."
                 }
@@ -225,7 +229,7 @@
             "enum": [ "spanning", "split" ],
             "default": "spanning"
         },
-        
+
         "input_components": {
             "type": "array",
             "description": "Allows your extension to handle keystrokes, set the composition, and manage the candidate window.",
@@ -534,7 +538,7 @@
                 }
             }
         },
-        
+
         "content_security_policy": {
             "type": "string",
             "description": "This introduces some fairly strict policies that will make extensions more secure by default, and provides you with the ability to create and enforce rules governing the types of content that can be loaded and executed by your extensions and applications.",
