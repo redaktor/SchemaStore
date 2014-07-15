@@ -22,8 +22,10 @@
 
     function onSelectChange() {
 
-        if (select.selectedIndex > 0)
-            location.hash = select.options[select.selectedIndex].value;
+        if (select.selectedIndex > 0) {
+            history.pushState(null, "Schema selected", "#" + select.options[select.selectedIndex].value); //location.hash = select.options[select.selectedIndex].value;
+            loadSchema();
+        }
         else
             location.hash = "";
     }
@@ -45,7 +47,7 @@
         }
     }
 
-    function toggleSchema() {
+    function toggleSchemaEditor() {
         var visible = schema.getWrapperElement().style.visibility === "hidden";
         toggleEditor(visible);
         return false;
@@ -163,8 +165,11 @@
         select.onchange = onSelectChange;
         schema.on("change", validate);
         json.on("change", validate);
-        toggle.onclick = toggleSchema;
-        window.onhashchange = loadSchema;
+        toggle.onclick = toggleSchemaEditor;
+        window.onpopstate = function () {
+            $(select).val(location.hash.substr(1));
+            loadSchema();
+        };
     });
 
     loadSelect();
