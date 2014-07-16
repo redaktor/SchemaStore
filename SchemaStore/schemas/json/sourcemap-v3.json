@@ -4,7 +4,6 @@
 
     "type": "object",
     "required": [ "version" ],
-    "additionalProperties": false,
 
     "patternProperties": {
         "^x_": {

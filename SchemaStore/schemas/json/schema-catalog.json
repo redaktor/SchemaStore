@@ -4,7 +4,6 @@
 
     "type": "object",
     "required": [ "schemas", "version" ],
-    "additionalProperties": false,
 
     "properties": {
         "schemas": {
@@ -20,7 +19,10 @@
                 "properties": {
                     "fileMatch": {
                         "description": "A Mimimatch expression for matching up file names with a schema.",
-                        "type": [ "string", "array" ]
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
 
                     "url": {

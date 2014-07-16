@@ -4,7 +4,6 @@
 
     "type": "object",
     "required": [ "sources" ],
-    "additionalProperties": false,
 
     "properties": {
         "sources": {

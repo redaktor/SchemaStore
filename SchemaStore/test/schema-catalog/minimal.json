@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "schemas": [
+        {
+            "name": "minimal",
+            "description": "minimal",
+            "url": "http://example.com"
+        }
+    ]
+}

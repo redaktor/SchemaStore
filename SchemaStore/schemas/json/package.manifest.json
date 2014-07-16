@@ -4,7 +4,6 @@
     "description": "An array of Umbraco Property Editors",
 
     "type": "object",
-    "additionalProperties": false,
 
     "definitions": {
         "editor": {

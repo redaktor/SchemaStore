@@ -63,10 +63,10 @@ header, #main {
 
 #schemalist {
     max-height: 0;
-    -moz-transition: max-height 1.5s ease-in;
-    -o-transition: max-height 1.5s ease-in;
-    -webkit-transition: max-height 1.5s ease-in;
-    transition: max-height 1.5s ease-in;
+    -moz-transition: max-height 3.5s ease-in;
+    -o-transition: max-height 3.5s ease-in;
+    -webkit-transition: max-height 3.5s ease-in;
+    transition: max-height 3.5s ease-in;
     width: 100%;
 }
 
@@ -93,7 +93,7 @@ footer {
     text-align: center;
     font-size: .7em;
     margin-top: 5em;
-    padding: 2em 0;
+    padding: 1.5em 0;
     width: 100%;
 }
 
@@ -101,23 +101,24 @@ footer {
         color: white;
     }
 
-    footer ul li{
-        display: inline-block;
-        padding: 0 .4em;
+    footer ul {
+        margin: 0;
+        padding: 0;
     }
+
+        footer ul li {
+            display: inline-block;
+            padding: 0 .4em;
+        }
 
 @media screen and (max-width:800px) {
     @-ms-viewport {
-        width: 690px;
+        width: 790px;
     }
 }
 
-@media screen and (max-width:400px) {
-    aside {
-        display: none;
-    }
-
+@media screen and (max-width:500px) {
     @-ms-viewport {
-        width: 400px;
+        width: 460px;
     }
 }

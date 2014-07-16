@@ -25,7 +25,7 @@
             ul.appendChild(li);
         }
         setTimeout(function () {
-            ul.parentNode.style.maxHeight = "999px";
+            ul.parentNode.style.maxHeight = "9999px";
         }, 100);
 
     };

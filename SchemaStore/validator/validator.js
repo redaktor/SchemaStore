@@ -136,7 +136,7 @@
 
     function clear() {
         jsonheader.className = "";
-        jsonheader.innerHTML = "JSON:"
+        jsonheader.innerHTML = ""
         jsonheader.className = "";
         output.className = "";
         output.innerHTML = "";

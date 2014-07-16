@@ -5,7 +5,6 @@
     "type": "object",
     "required": [ "name", "version" ],
 
-    "additionalProperties": false,
     "patternProperties": {
         "^_": {
             "description": "Any property starting with _ is valid.",

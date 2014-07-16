@@ -2,7 +2,6 @@
     "title": "A JSON Schema for Swagger 2.0 API.",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-    "additionalProperties": false,
 
     "definitions": {
         "info": {

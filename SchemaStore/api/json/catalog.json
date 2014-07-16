@@ -10,49 +10,49 @@
         {
             "name": ".bowerrc",
             "description": "Bower configuration file",
-            "fileMatch": ".bowerrc",
+            "fileMatch": [ ".bowerrc" ],
             "url": "http://schemastore.org/schemas/json/bowerrc"
         },
         {
             "name": "coffeelint.json",
             "description": "CoffeeLint configuration file",
-            "fileMatch": "coffeelint.json",
+            "fileMatch": [ "coffeelint.json" ],
             "url": "http://schemastore.org/schemas/json/coffeelint"
         },
         {
             "name": "composer.json",
             "description": "PHP Composer configuration file",
-            "fileMatch": "composer.json",
+            "fileMatch": [ "composer.json" ],
             "url": "https://raw.githubusercontent.com/composer/composer/master/res/composer-schema.json"
         },
         {
             "name": "component.json",
             "description": "Web component file",
-            "fileMatch": "component.json",
+            "fileMatch": [ "component.json" ],
             "url": "http://schemastore.org/schemas/json/component"
         },
         {
             "name": "config.json",
             "description": "ASP.NET project config file",
-            "fileMatch": "config.json",
+            "fileMatch": [ "config.json" ],
             "url": "http://schemastore.org/schemas/json/config"
         },
         {
             "name": "global.json",
             "description": "ASP.NET global configuration file",
-            "fileMatch": "global.json",
+            "fileMatch": [ "global.json" ],
             "url": "http://schemastore.org/schemas/json/global"
         },
         {
             "name": "Grunt JSHint task",
             "description": "Grunt JSHint task configuration file",
-            "fileMatch": "jshint.json",
+            "fileMatch": [ "jshint.json" ],
             "url": "http://schemastore.org/schemas/json/grunt-jshint-task"
         },
         {
             "name": "Grunt Watch task",
             "description": "Grunt Watch task configuration file",
-            "fileMatch": "watch.json",
+            "fileMatch": [ "watch.json" ],
             "url": "http://schemastore.org/schemas/json/grunt-watch-task"
         },
         {
@@ -70,43 +70,43 @@
         {
             "name": ".jshintrc",
             "description": "JSHint configuration file",
-            "fileMatch": ".jshintrc",
+            "fileMatch": [ ".jshintrc" ],
             "url": "http://schemastore.org/schemas/json/jshintrc"
         },
         {
             "name": "*.jsonld",
             "description": "JSON Linked Data files",
-            "fileMatch": "*.jsonld",
+            "fileMatch": [ "*.jsonld" ],
             "url": "http://json-ld.org/schemas/jsonld-schema"
         },
         {
             "name": "manifest.json",
             "description": "Google Chrome extension manifest file",
-            "fileMatch": "manifest.json",
+            "fileMatch": [ "manifest.json" ],
             "url": "http://schemastore.org/schemas/json/manifest"
         },
         {
             "name": "package.json",
             "description": "NPM configuration file",
-            "fileMatch": "package.json",
+            "fileMatch": [ "package.json" ],
             "url": "http://schemastore.org/schemas/json/package"
         },
         {
             "name": "package.manifest",
             "description": "Umbraco package configuration file",
-            "fileMatch": "package.manifest",
+            "fileMatch": [ "package.manifest" ],
             "url": "http://schemastore.org/schemas/json/package.manifest"
         },
         {
             "name": "project.json",
             "description": "ASP.NET vNext project configuration file",
-            "fileMatch": "project.json",
+            "fileMatch": [ "project.json" ],
             "url": "http://schemastore.org/schemas/json/project"
         },
         {
             "name": "*.resjson",
             "description": "Windows App localization file",
-            "fileMatch": "*.resjson",
+            "fileMatch": [ "*.resjson" ],
             "url": "http://schemastore.org/schemas/json/resjson"
         },
         {
@@ -123,7 +123,7 @@
         {
             "name": "settings.job",
             "description": "Azure Webjob settings file",
-            "fileMatch": "settings.job",
+            "fileMatch": [ "settings.job" ],
             "url": "http://schemastore.org/schemas/json/settings.job"
         },
         {
@@ -145,19 +145,19 @@
         {
             "name": "tslint.json",
             "description": "TypeScript Lint configuration file",
-            "fileMatch": "tslint.json",
+            "fileMatch": [ "tslint.json" ],
             "url": "http://schemastore.org/schemas/json/tslint"
         },
         {
             "name": "webjobs-list.json",
             "description": "Azure Webjob list file",
-            "fileMatch": "webjobs-list.json",
+            "fileMatch": [ "webjobs-list.json" ],
             "url": "http://schemastore.org/schemas/json/webjobs-list"
         },
         {
             "name": "webjobpublishsettings.json",
             "description": "Azure Webjobs publish settings file",
-            "fileMatch": "webjobpublishsettings.json",
+            "fileMatch": [ "webjobpublishsettings.json" ],
             "url": "http://schemastore.org/schemas/json/webjob-publish-settings"
         }
     ]
