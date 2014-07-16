@@ -127,6 +127,12 @@
             "url": "http://schemastore.org/schemas/json/settings.job"
         },
         {
+            "name": "Source Maps v3",
+            "description": "Source Map files version 3",
+            "fileMatch": [ "*.map" ],
+            "url": "http://schemastore.org/schemas/json/settings.job"
+        },
+        {
             "name": "Swagger API 1.2",
             "description": "Swagger API description schema",
             "url": "https://raw.githubusercontent.com/wordnik/swagger-spec/master/schemas/v1.2/apiDeclaration.json"
