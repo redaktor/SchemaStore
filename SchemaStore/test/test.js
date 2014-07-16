@@ -18,7 +18,7 @@
             var gets = [];
 
             var hyper = tv4.validateMultiple(schema, hyperSchema, true);
-            hyper.url = "[hyper-schema]";
+            hyper.url = "[schema draft v4]";
             hyper.name = name;
             results.push(hyper);
 
@@ -39,9 +39,6 @@
     }
 
     function cleanUrl(url) {
-        if (url.indexOf("schemas/json/") === 0)
-            return "[hyper-schema]"
-
         var index = url.indexOf("/", 1);
         if (index > -1)
             url = url.substring(index + 1);
@@ -91,8 +88,8 @@
 
             var a = document.createElement("a");
             a.innerHTML = result.url.replace(result.name.replace(".", "_") + "/", "").replace(".json", "");
-            a.href = result.url.replace("[hyper-schema]", "http://json-schema.org/draft-04/schema");
-            
+            a.href = result.url.replace("[schema draft v4]", "http://json-schema.org/draft-04/schema");
+
             var li = document.createElement("li");
             li.className = result.valid;
             li.appendChild(a);
