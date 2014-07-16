@@ -50,44 +50,40 @@ textarea {
 }
 
 section h2 {
-    font-size: .8em;
+    font-size: 1em;
     font-weight: bold;
     display: inline-block;
     margin: 0;
 }
 
-output {
-    font-size: .8em;
+output.true {
+    color: green;
 }
 
-    output.true {
-        color: green;
+output dl {
+    width: 100%;
+    overflow: hidden;
+}
+
+output dd {
+    float: left;
+    width: 150px;
+    margin: 0;
+    clear: both;
+}
+
+    output dd:after {
+        content: ':';
     }
 
-    output dl {
-        width: 100%;
-        overflow: hidden;
+output dt {
+    float: left;
+    color: red;
+}
+
+    output dt:first-of-type {
+        font-weight: bold;
     }
-
-    output dd {
-        float: left;
-        width: 150px;
-        margin: 0;
-        clear: both;
-    }
-
-        output dd:after {
-            content: ':';
-        }
-
-    output dt {
-        float: left;
-        color: red;
-    }
-
-        output dt:first-of-type {
-            font-weight: bold;
-        }
 
 
 #json.true {
