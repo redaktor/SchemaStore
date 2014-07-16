@@ -2,9 +2,7 @@
     "bio": {
         "name": "Thomas Davis",
         "summary": "Hey guys, I’m a full stack web developer who loves working with open source technology. These days I do politics with EFF and Taskforce.is, I promote independent artist at Earbits, speed up the web with cdnjs.com and building Skynet with DroneHire.org.",
-        "email": {
-            "personal": "thomasalwyndavis@gmail.com"
-        },
+        "email": "thomasalwyndavis@gmail.com",
         "location": {
             "city": "Brisbane",
             "countryCode": "AU"
@@ -59,7 +57,7 @@
             "company": "Taskforce.is",
             "website": "http://www.taskforce.is",
             "summary": "Worked on many politically charged campaigns against mass surveillance. Our latest project was \"TheDayWeFightBack\" and I worked on all areas of it. The campaign resulted in 37,000,000 banner views, 100,000 phone calls, ~500,000 emails and ~250,000 signatures. I work mostly in the frontend and also running the Heroku servers which are cached by Cloudfront.",
-            "highlights": []
+            "highlights": [ ]
         },
         {
             "startDate": "2013-01-01",
@@ -68,7 +66,7 @@
             "company": "Drone Hire",
             "website": "http://www.dronehire.org",
             "summary": "An international directory of civilian drone / UAV operators for hire. Services include aerial photography, aerial video, mapping, surveying, precision agriculture, real estate photography, remote inspections and infrared imaging. Our plan is to be the place to go when looking for UAV/Drone services. The website is built in Backbone.js and API is built with Node.js and Postgres. The site and blog combined have managed to receive over 200,000 visitors this year.",
-            "highlights": []
+            "highlights": [ ]
         },
         {
             "startDate": "2011-01-01",
@@ -138,7 +136,7 @@
             ]
         }
     ],
-    "hobbies": [],
+    "hobbies": [ ],
     "references": [
         {
             "name": "Greg Davis",
