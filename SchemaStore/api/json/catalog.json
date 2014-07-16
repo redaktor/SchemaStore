@@ -77,7 +77,7 @@
             "name": "*.jsonld",
             "description": "JSON Linked Data files",
             "fileMatch": [ "*.jsonld" ],
-            "url": "http://json-ld.org/schemas/jsonld-schema"
+            "url": "http://schemastore.org/schemas/json/jsonld"
         },
         {
             "name": "manifest.json",
