@@ -56,9 +56,13 @@
     function toggleEditor(visible) {
         var element = schema.getWrapperElement();
         element.style.height = visible ? "" : "0px";
-        element.style.visibility = visible ? "visible" : "hidden";
         toggle.innerHTML = visible ? "Hide schema" : "Show schema";
         localStorage.toggle = visible;
+
+        if (visible)
+            element.style.visibility = "visible";
+        else
+            setTimeout(function () { element.style.visibility = "hidden" }, 1000);
     }
 
     function loadSelect() {

@@ -1,5 +1,5 @@
 ﻿body {
-    font: 1.3em/1.5 'Century Gothic', Verdana, Geneva, 'DejaVu Sans', sans-serif;
+    font: 1.2em/1.5 'Century Gothic', Verdana, Geneva, 'DejaVu Sans', sans-serif;
     margin: 0;
     -ms-text-size-adjust: 120%;
 }
@@ -22,7 +22,7 @@ header, #main {
 
     header h1 {
         margin: 0;
-        font-size: 2.5em;
+        font-size: 2.8em;
     }
 
     header h1 a{
@@ -100,7 +100,7 @@ footer {
     background-color: darkslategray;
     color: white;
     text-align: center;
-    font-size: .7em;
+    font-size: .8em;
     margin-top: 5em;
     padding: 1.5em 0;
     width: 100%;
