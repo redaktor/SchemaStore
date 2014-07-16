@@ -141,8 +141,7 @@
                 },
                 "required": {
                     "type": "boolean",
-                    "description": "Determines whether or not this parameter is required or optional.",
-                    "default": true
+                    "description": "Determines whether or not this parameter is required or optional."
                 },
                 "model": {
                     "$ref": "#/definitions/model"
