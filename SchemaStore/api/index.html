@@ -1,0 +1,109 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebApplication" lang="en">
+<head prefix="og: http://ogp.me/ns#">
+	<title itemprop="name">JSON Schema Store</title>
+
+	<meta charset="utf-8" />
+	<meta name="description" content="Information about the Schema Store API" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link href="/site.css" rel="stylesheet" />
+</head>
+<body>
+
+	<header role="banner">
+		<h1>Schema Store</h1>
+		<p itemprop="headline">API for developers</p>
+
+		<aside role="complementary">
+			<a href="https://github.com/madskristensen/schemastore">
+				<img src="/img/forkme.png" width="149" height="149" alt="Fork me on GitHub" />
+			</a>
+		</aside>
+	</header>
+
+	<div role="main" id="main">
+		<article>
+			<p>
+				This website exposes an <a href="/api/json/catalog.json">API with a list of all available JSON schemas</a>.
+				You can use the API for auto-discoverability of new schema files and
+				add the support directly to JSON editors and validators.
+			</p>
+		</article>
+
+		<article>
+			<h2>Public API</h2>
+			<p>
+				<img src="/img/api.png" width="256" height="88" alt="Public API for JSON Schemas" class="left" />
+				The <a href="/api/json/catalog.json">API</a> contains a list of JSON Schema files for known JSON file formats.
+				Each schema file can be used in tooling such as command line validators, editor auto-completion etc.
+			</p>
+			<p>
+				The <a href="/api/json/catalog.json">API</a> exposes metadata about each schema in the following format:
+<pre>"name": "bower.json",
+"description": "Bower package description file",
+"fileMatch": [ "bower.json", ".bower.json" ],
+"url": "http://schemastore.org/schemas/json/bower"
+</pre>
+			</p>
+			<p>
+				<code>name</code>, <code>description</code> and <code>url</code> are all required properties.
+				<br />
+				The <code>url</code> property is an absolute URI pointng to the schema. 
+				It can be hosted anywhere on the web.
+				<br />
+				The <code>fileMatch</code> property is for specifying what known file names corresponds with
+				the schema. This property is optional since not all JSON formats enforce a specific file name.
+			</p>
+		</article>
+
+		<article>
+			<h2>Contribute</h2>
+			<p>
+				<img src="/img/octocat.png" width="250" height="208" alt="Hosted on GitHub" class="right" />
+				The goal of this <a href="/api/json/catalog.json">API</a> is to include schemas for all commonly
+				known JSON file formats. To do that we encourage contributions in terms of new schemas,
+				modifications and test files.
+			</p>
+
+			<p>
+				SchemaStore.org is own by the community and we have yet to turn down a pull request. Even if
+				you're new to JSON Schemas, please submit new schemas anyway. We have many contributors that
+				will help turn the schemas into perfection.
+			</p>
+		</article>
+
+		<article>
+			<h2>Hosting of schemas</h2>
+			<p>
+				<img src="/img/test.png" width="128" height="128" alt="Public API for JSON Schemas" class="left" />
+				There are 2 options for having your schema included in this API.
+				<ol>
+					<li>You can either host it on SchemaStore.org or</li>
+					<li>Host it on your own server</li>
+				</ol>
+			</p>
+			<p>
+				If you choose to host your schema at SchemaStore.org you'll benefit from the elaborate test suite
+				that runs as both a Grunt task and on the <a href="../test/">test page</a> live in the browser.
+			</p>
+			<p>
+				Another benefit is that each JSON Schema file is served with the correct HTTP headers,
+				including CORS support for direct consumption through JavaScript etc.
+			</p>
+		</article>
+	</div>
+
+	<footer>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/validator/">Validator</a></li>
+				<li><a href="/api/">API</a></li>
+				<li><a href="/test/">Test</a></li>
+			</ul>
+		</nav>
+		<p>Learn more at <a href="http://json-schema.org">json-schema.org</a> and <a href="http://spacetelescope.github.io/understanding-json-schema/">Understanding JSON Schema</a></p>
+	</footer>
+</body>
+</html>

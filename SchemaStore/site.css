@@ -10,6 +10,10 @@ img {
     border: none;
 }
 
+ol{
+    list-style-position: inside;
+}
+
 header, #main {
     margin: 1em auto;
     max-width: 950px;
