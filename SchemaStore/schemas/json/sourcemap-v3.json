@@ -1,5 +1,5 @@
 {
-    "title": "JSON schema for the ASP.NET global configuration files",
+    "title": "JSON schema for the Source Maps v3",
     "$schema": "http://json-schema.org/draft-04/schema#",
 
     "type": "object",
