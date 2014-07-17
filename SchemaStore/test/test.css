@@ -19,6 +19,7 @@
 
     .test ul ul {
         -webkit-column-break-inside: avoid;
+        -webkit-break-inside: avoid-column;
         break-inside: avoid-column;
         page-break-inside: avoid;
         margin-bottom: 1em;
