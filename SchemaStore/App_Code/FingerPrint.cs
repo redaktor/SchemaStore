@@ -5,7 +5,7 @@ using System.Web;
 
 public class FingerPrint : IHttpHandler
 {
-    private static Regex r = new Regex(@"(href|src)=(""|')(?<href>.*?)(""|').*?>");
+    private static Regex r = new Regex(@"<(link|script|img).*(href|src)=(""|')(?<href>.*?)(""|').*?>");
 
     public void ProcessRequest(HttpContext context)
     {
