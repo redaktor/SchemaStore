@@ -23,13 +23,11 @@
 	</header>
 
 	<div role="main" id="main">
-		<article>
-			<p>
-				This website exposes an <a href="/api/json/catalog.json">API with a list of all available JSON schemas</a>.
-				You can use the API for auto-discoverability of new schema files and
-				add the support directly to JSON editors and validators.
-			</p>
-		</article>
+		<p>
+			This website exposes an <a href="/api/json/catalog.json">API with a list of all available JSON schemas</a>.
+			You can use the API for auto-discoverability of new schema files and
+			add the support directly to JSON editors and validators.
+		</p>
 
 		<article>
 			<h2>Public API</h2>
@@ -40,16 +38,16 @@
 			</p>
 			<p>
 				The <a href="/api/json/catalog.json">API</a> exposes metadata about each schema in the following format:
+			</p>
 <pre>"name": "bower.json",
 "description": "Bower package description file",
 "fileMatch": [ "bower.json", ".bower.json" ],
 "url": "http://schemastore.org/schemas/json/bower"
 </pre>
-			</p>
 			<p>
 				<code>name</code>, <code>description</code> and <code>url</code> are all required properties.
 				<br />
-				The <code>url</code> property is an absolute URI pointng to the schema. 
+				The <code>url</code> property is an absolute URI pointng to the schema.
 				It can be hosted anywhere on the web.
 				<br />
 				The <code>fileMatch</code> property is for specifying what known file names corresponds with
@@ -78,11 +76,13 @@
 			<p>
 				<img src="/img/test.png" width="128" height="128" alt="Public API for JSON Schemas" class="left" />
 				There are 2 options for having your schema included in this API.
-				<ol>
-					<li>You can either host it on SchemaStore.org or</li>
-					<li>Host it on your own server</li>
-				</ol>
 			</p>
+
+			<ol>
+				<li>You can either host it on SchemaStore.org or</li>
+				<li>Host it on your own server</li>
+			</ol>
+
 			<p>
 				If you choose to host your schema at SchemaStore.org you'll benefit from the elaborate test suite
 				that runs as both a Grunt task and on the <a href="../test/">test page</a> live in the browser.
