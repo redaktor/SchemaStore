@@ -18,9 +18,13 @@ public class FingerPrint : IHttpHandler
             return InsertTag(context, match);
         });
 
+        html = Regex.Replace(html, @">\s+<", "><");
+        html = Regex.Replace(html, @"\s+", " ");
+
         context.Response.Write(html);
 
         SetConditionalGetHeaders(lastWrite, context);
+        context.Response.AddFileDependency(file);
         context.Response.Cache.SetValidUntilExpires(true);
         context.Response.Cache.SetCacheability(HttpCacheability.ServerAndPrivate);
         context.Response.Cache.SetExpires(DateTime.Now.AddDays(7));
