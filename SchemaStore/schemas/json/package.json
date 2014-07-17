@@ -1,247 +1,247 @@
 {
-    "title": "JSON schema for NPM package.json files",
-    "$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "JSON schema for NPM package.json files",
+	"$schema": "http://json-schema.org/draft-04/schema#",
 
-    "type": "object",
-    "required": [ "name", "version" ],
+	"type": "object",
+	"required": [ "name", "version" ],
 
-    "patternProperties": {
-        "^_": {
-            "description": "Any property starting with _ is valid.",
-            "additionalProperties": true,
-            "additionalItems": true
-        }
-    },
+	"definitions": {
+		"person": {
+			"type": [ "object", "string" ],
+			"required": [ "name" ],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				}
+			}
+		},
+		"dependency": {
+			"type": "object",
+			"additionalProperties": {
+				"type": "string"
+			}
+		}
+	},
 
-    "definitions": {
-        "person": {
-            "type": [ "object", "string" ],
-            "required": [ "name" ],
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                },
-                "email": {
-                    "type": "string"
-                }
-            }
-        },
-        "dependency": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "string"
-            }
-        }
-    },
+	"patternProperties": {
+		"^_": {
+			"description": "Any property starting with _ is valid.",
+			"additionalProperties": true,
+			"additionalItems": true
+		}
+	},
 
-    "properties": {
-        "name": {
-            "type": "string"
-        },
-        "version": {
-            "type": "string"
-        },
-        "description": {
-            "type": "string"
-        },
-        "keywords": {
-            "type": "array"
-        },
-        "homepage": {
-            "type": "string"
-        },
-        "bugs": {
-            "type": "object",
-            "properties": {
-                "url": {
-                    "type": "string",
-                    "description": "The url to your project's issue tracker."
-                },
-                "email": {
-                    "type": "string",
-                    "description": "The email address to which issues should be reported."
-                }
-            }
-        },
-        "license": {
-            "type": "string",
-            "description": "You should specify a license for your package so that people know how they are permitted to use it, and any restrictions you're placing on it."
-        },
-        "licenses": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "type": "string"
-                    },
-                    "url": {
-                        "type": "string",
-                        "format": "url"
-                    }
-                }
-            }
-        },
-        "author": {
-            "$ref": "#/definitions/person"
-        },
-        "contributors": {
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/person"
-            }
-        },
-        "maintainers": {
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/person"
-            }
-        },
-        "files": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "main": {
-            "type": "string",
-            "description": "The main field is a module ID that is the primary entry point to your program."
-        },
-        "bin": {
-            "type": [ "string", "object" ],
-            "additionalProperties": {
-                "type": "string"
-            }
-        },
-        "man": {
-            "type": [ "array", "string" ],
-            "description": "Specify either a single file or an array of filenames to put in place for the man program to find.",
-            "items": {
-                "type": "string"
-            }
-        },
-        "directories": {
-            "type": "object",
-            "properties": {
-                "doc": {
-                    "type": "string"
-                },
-                "bin": {
-                    "type": "string"
-                },
-                "doc": {
-                    "type": "string"
-                },
-                "example": {
-                    "type": "string"
-                },
-                "lib": {
-                    "type": "string"
-                },
-                "man": {
-                    "type": "string"
-                },
-                "test": {
-                    "type": "string"
-                }
-            }
-        },
-        "repository": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                }
-            }
-        },
-        "scripts": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "string"
-            }
-        },
-        "config": {
-            "type": "object",
-            "additionalProperties": true
-        },
-        "dependencies": {
-            "$ref": "#/definitions/dependency"
-        },
-        "devDependencies": {
-            "$ref": "#/definitions/dependency"
-        },
-        "bundleDependencies": {
-            "type": "array",
-            "description": "Array of package names that will be bundled when publishing the package.",
-            "items": {
-                "type": "string"
-            }
-        },
-        "bundledDependencies": {
-            "type": "array",
-            "description": "Array of package names that will be bundled when publishing the package.",
-            "items": {
-                "type": "string"
-            }
-        },
-        "optionalDependencies": {
-            "$ref": "#/definitions/dependency"
-        },
-        "peerDependencies": {
-            "$ref": "#/definitions/dependency"
-        },
-        "engines": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "string"
-            }
-        },
-        "engineStrict": {
-            "type": "boolean"
-        },
-        "os": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "cpu": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "preferGlobal": {
-            "type": "boolean",
-            "description": "If your package is primarily a command-line application that should be installed globally, then set this value to true to provide a warning if it is installed locally."
-        },
-        "private": {
-            "type": "boolean",
-            "description": "If set to true, then npm will refuse to publish it."
-        },
-        "publishConfig": {
-            "type": "object",
-            "additionalProperties": true
-        },
-        "dist": {
-            "type": "object",
-            "properties": {
-                "shasum": {
-                    "type": "string"
-                },
-                "tarball": {
-                    "type": "string"
-                }
-            }
-        },
-        "readme": {
-            "type": "string"
-        }
-    }
+	"properties": {
+		"name": {
+			"type": "string"
+		},
+		"version": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"keywords": {
+			"type": "array"
+		},
+		"homepage": {
+			"type": "string"
+		},
+		"bugs": {
+			"type": "object",
+			"properties": {
+				"url": {
+					"type": "string",
+					"description": "The url to your project's issue tracker."
+				},
+				"email": {
+					"type": "string",
+					"description": "The email address to which issues should be reported."
+				}
+			}
+		},
+		"license": {
+			"type": "string",
+			"description": "You should specify a license for your package so that people know how they are permitted to use it, and any restrictions you're placing on it."
+		},
+		"licenses": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string",
+						"format": "url"
+					}
+				}
+			}
+		},
+		"author": {
+			"$ref": "#/definitions/person"
+		},
+		"contributors": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/person"
+			}
+		},
+		"maintainers": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/person"
+			}
+		},
+		"files": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"main": {
+			"type": "string",
+			"description": "The main field is a module ID that is the primary entry point to your program."
+		},
+		"bin": {
+			"type": [ "string", "object" ],
+			"additionalProperties": {
+				"type": "string"
+			}
+		},
+		"man": {
+			"type": [ "array", "string" ],
+			"description": "Specify either a single file or an array of filenames to put in place for the man program to find.",
+			"items": {
+				"type": "string"
+			}
+		},
+		"directories": {
+			"type": "object",
+			"properties": {
+				"doc": {
+					"type": "string"
+				},
+				"bin": {
+					"type": "string"
+				},
+				"doc": {
+					"type": "string"
+				},
+				"example": {
+					"type": "string"
+				},
+				"lib": {
+					"type": "string"
+				},
+				"man": {
+					"type": "string"
+				},
+				"test": {
+					"type": "string"
+				}
+			}
+		},
+		"repository": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				}
+			}
+		},
+		"scripts": {
+			"type": "object",
+			"additionalProperties": {
+				"type": "string"
+			}
+		},
+		"config": {
+			"type": "object",
+			"additionalProperties": true
+		},
+		"dependencies": {
+			"$ref": "#/definitions/dependency"
+		},
+		"devDependencies": {
+			"$ref": "#/definitions/dependency"
+		},
+		"bundleDependencies": {
+			"type": "array",
+			"description": "Array of package names that will be bundled when publishing the package.",
+			"items": {
+				"type": "string"
+			}
+		},
+		"bundledDependencies": {
+			"type": "array",
+			"description": "Array of package names that will be bundled when publishing the package.",
+			"items": {
+				"type": "string"
+			}
+		},
+		"optionalDependencies": {
+			"$ref": "#/definitions/dependency"
+		},
+		"peerDependencies": {
+			"$ref": "#/definitions/dependency"
+		},
+		"engines": {
+			"type": "object",
+			"additionalProperties": {
+				"type": "string"
+			}
+		},
+		"engineStrict": {
+			"type": "boolean"
+		},
+		"os": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"cpu": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"preferGlobal": {
+			"type": "boolean",
+			"description": "If your package is primarily a command-line application that should be installed globally, then set this value to true to provide a warning if it is installed locally."
+		},
+		"private": {
+			"type": "boolean",
+			"description": "If set to true, then npm will refuse to publish it."
+		},
+		"publishConfig": {
+			"type": "object",
+			"additionalProperties": true
+		},
+		"dist": {
+			"type": "object",
+			"properties": {
+				"shasum": {
+					"type": "string"
+				},
+				"tarball": {
+					"type": "string"
+				}
+			}
+		},
+		"readme": {
+			"type": "string"
+		}
+	}
 }

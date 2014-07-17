@@ -1,17 +1,17 @@
 {
-    "title": "JSON schema for the ASP.NET global configuration files",
-    "$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "JSON schema for the ASP.NET global configuration files",
+	"$schema": "http://json-schema.org/draft-04/schema#",
 
-    "type": "object",
-    "required": [ "sources" ],
+	"type": "object",
+	"required": [ "sources" ],
 
-    "properties": {
-        "sources": {
-            "type": "array",
-            "description": "A list of source folders relative to this file.",
-            "items": {
-                "type": "string"
-            }
-        }
-    }
+	"properties": {
+		"sources": {
+			"type": "array",
+			"description": "A list of source folders relative to this file.",
+			"items": {
+				"type": "string"
+			}
+		}
+	}
 }

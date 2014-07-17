@@ -1,44 +1,45 @@
 {
-    "title": "JSON schema for the Grunt JSHint task",
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
+	"title": "JSON schema for the Grunt JSHint task",
+	"$schema": "http://json-schema.org/draft-04/schema#",
 
-    "definitions": {
-        "options": {
-            "description": "Set the options for JSHint",
-            "anyOf": [
-                { "$ref": "http://schemastore.org/schemas/json/jshintrc.json#" },
-                {
-                    "type": "object",
-                    "properties": {
-                        "jshintrc": {
-                            "description": "Either a boolean value or a string containing the file name of the jshintrc file.",
-                            "type": [ "boolean", "string" ],
-                            "enum": [ true ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
+	"type": "object",
 
-    "properties": {
-        "options": {
-            "$ref": "#/definitions/options"
-        }
-    },
+	"definitions": {
+		"options": {
+			"description": "Set the options for JSHint",
+			"anyOf": [
+				{ "$ref": "http://schemastore.org/schemas/json/jshintrc.json#" },
+				{
+					"type": "object",
+					"properties": {
+						"jshintrc": {
+							"description": "Either a boolean value or a string containing the file name of the jshintrc file.",
+							"type": [ "boolean", "string" ],
+							"enum": [ true ]
+						}
+					}
+				}
+			]
+		}
+	},
 
-    "additionalProperties": {
-        "allOf": [
-            { "$ref": "http://schemastore.org/schemas/json/grunt-task.json" },
-            {
-                "type": "object",
-                "properties": {
-                    "options": {
-                        "$ref": "#/definitions/options"
-                    }
-                }
-            }
-        ]
-    }
+	"properties": {
+		"options": {
+			"$ref": "#/definitions/options"
+		}
+	},
+
+	"additionalProperties": {
+		"allOf": [
+			{ "$ref": "http://schemastore.org/schemas/json/grunt-task.json" },
+			{
+				"type": "object",
+				"properties": {
+					"options": {
+						"$ref": "#/definitions/options"
+					}
+				}
+			}
+		]
+	}
 }
