@@ -6,11 +6,12 @@
 
 	"definitions": {
 		"compilationOptions": {
+			"type": "object",
 			"properties": {
 				"define": {
 					"type": "array",
 					"items": {
-						"enum": [ "TRACE", "DEBUG" ],
+						"type": "string",
 						"uniqueItems": true
 					}
 				},
@@ -21,17 +22,27 @@
 				"allowUnsafe": {
 					"type": "boolean",
 					"default": false
+				},
+				"optimize": {
+					"type": "boolean",
+					"default": false
+				},
+				"debugSymbols": {
+					"type": "string",
+					"enum": [ "full", "pdbOnly" ],
+					"default": "full"
 				}
-			},
-			"type": "object"
+			}
 		},
 		"dependencies": {
 			"type": "object",
 			"additionalProperties": {
 				"type": [ "string", "object" ],
+				"minLength": 1,
 				"properties": {
 					"version": {
-						"type": "string"
+						"type": "string",
+						"minLength": 1
 					},
 					"type": {
 						"type": "string",
@@ -78,9 +89,8 @@
 		"configurations": {
 			"$ref": "#/definitions/configurations"
 		},
-		"name": {
-			"description": "The name of the application",
-			"type": "string"
+		"frameworks": {
+			"$ref": "#/definitions/configurations"
 		},
 		"description": {
 			"description": "The description of the application",
