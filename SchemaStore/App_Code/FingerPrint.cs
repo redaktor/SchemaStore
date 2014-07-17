@@ -33,8 +33,8 @@ public class FingerPrint : IHttpHandler
         Uri url;
 
         if (Uri.TryCreate(path, UriKind.Relative, out url) &&
-            Path.GetExtension(url.OriginalString) != "" &&
-            !url.OriginalString.StartsWith("//"))
+            Path.GetExtension(url.OriginalString) != "" && // Only files with extensions
+            !url.OriginalString.StartsWith("//")) // Not protocol relative paths since they are absolute
         {
             int index = value.LastIndexOf('.');
 
