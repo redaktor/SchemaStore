@@ -117,7 +117,7 @@ footer {
 
         footer ul li {
             display: inline-block;
-            padding: 0 .4em;
+            margin: 0 10px;
         }
 
 @media screen and (max-width:800px) {
