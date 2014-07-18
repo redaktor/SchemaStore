@@ -56,13 +56,13 @@ public class FingerPrint : IHttpHandler
         if (string.IsNullOrEmpty(_cdnPath))
             return value;
 
-        string absolute = _cdnPath + Path.GetDirectoryName(context.Request.Path)
+        string absolute = _cdnPath.TrimEnd('/') + Path.GetDirectoryName(context.Request.Path)
             .Replace("\\", "/")
             .TrimEnd('/') + "/";
-        
+
         Uri baseUri = new Uri(absolute);
         Uri full = new Uri(baseUri, path.TrimStart('/'));
-        
+
         return value.Replace(path, full.OriginalString);
     }
 
