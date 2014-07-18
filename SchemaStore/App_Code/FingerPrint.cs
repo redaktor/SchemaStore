@@ -59,9 +59,10 @@ public class FingerPrint : IHttpHandler
         string absolute = _cdnPath + Path.GetDirectoryName(context.Request.Path)
             .Replace("\\", "/")
             .TrimEnd('/') + "/";
-
+        
         Uri baseUri = new Uri(absolute);
-        Uri full = new Uri(baseUri, path);
+        Uri full = new Uri(baseUri, path.TrimStart('/'));
+        
         return value.Replace(path, full.OriginalString);
     }
 
