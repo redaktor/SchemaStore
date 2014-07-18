@@ -9,23 +9,33 @@ public class FingerPrint : IHttpHandler
     private static Regex _regex = new Regex(@"<(link|script|img).*(href|src)=(""|')(?<href>[^""'].*?)(""|').*?>");
     private static string _cdnPath = ConfigurationManager.AppSettings.Get("cdnPath");
 
+    public FingerPrint()
+    {
+        Uri url;
+
+        if (!Uri.TryCreate(_cdnPath, UriKind.Absolute, out url))
+            throw new UriFormatException("The appSetting 'cdnPath' is not a valid absolute URL");
+    }
+
     public void ProcessRequest(HttpContext context)
     {
         string file = context.Request.PhysicalPath;
         string html = File.ReadAllText(file);
-        DateTime lastWrite = File.GetLastWriteTimeUtc(file);
 
         html = _regex.Replace(html, delegate(Match match)
         {
             return Print(context, match);
         });
 
+        // Trim whitespace
         html = Regex.Replace(html, @">\s+<", "><");
         html = Regex.Replace(html, @"\s+", " ");
 
         context.Response.Write(html);
 
+        DateTime lastWrite = File.GetLastWriteTimeUtc(file);
         SetConditionalGetHeaders(lastWrite, context);
+
         context.Response.AddFileDependency(file);
         context.Response.Cache.SetValidUntilExpires(true);
         context.Response.Cache.SetCacheability(HttpCacheability.ServerAndPrivate);
@@ -41,13 +51,15 @@ public class FingerPrint : IHttpHandler
         if (!IsValidUrl(path, out url))
             return value;
 
-        value = AddCdn(context, value, path);
+        if (!context.IsDebuggingEnabled) // Disable CDN when debugging is on
+            value = AddCdn(context, value, path);
 
         string physical = context.Server.MapPath(path);
-        DateTime lastWrite = File.GetLastWriteTimeUtc(physical);
         context.Response.AddFileDependency(physical);
 
+        DateTime lastWrite = File.GetLastWriteTimeUtc(physical);
         int index = value.LastIndexOf('.');
+
         return value.Insert(index, "." + lastWrite.Ticks);
     }
 
@@ -56,20 +68,18 @@ public class FingerPrint : IHttpHandler
         if (string.IsNullOrEmpty(_cdnPath))
             return value;
 
-        string absolute = _cdnPath.TrimEnd('/') + Path.GetDirectoryName(context.Request.Path)
-            .Replace("\\", "/")
-            .TrimEnd('/') + "/";
+        Uri baseUri = new Uri(_cdnPath.TrimEnd('/') +
+                              Path.GetDirectoryName(context.Request.Path)
+                              .Replace("\\", "/")
+                              .TrimEnd('/') + "/");
 
-        Uri baseUri = new Uri(absolute);
         Uri full = new Uri(baseUri, path);
+
         return value.Replace(path, full.OriginalString);
     }
 
     private static bool IsValidUrl(string path, out Uri url)
     {
-        //if (!path.StartsWith("/", StringComparison.Ordinal))
-        //    throw new NotSupportedException("The path '" + path + "' has to start with a /");
-
         return Uri.TryCreate(path, UriKind.Relative, out url) &&
                Path.GetExtension(url.OriginalString) != "" && // Only files with extensions
                !url.OriginalString.StartsWith("//"); // Not protocol relative paths since they are absolute
