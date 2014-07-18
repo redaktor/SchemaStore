@@ -39,16 +39,18 @@
 			<p>
 				The <a href="/api/json/catalog.json">API</a> exposes metadata about each schema in the following format:
 			</p>
-			<code>
-				"name": "bower.json",<br />
-				"description": "Bower package description file",<br />
-				"fileMatch": [ "bower.json", ".bower.json" ],<br />
-				"url": "http://schemastore.org/schemas/json/bower"
-			</code>
+			<pre>
+				{<br />
+				&nbsp;&nbsp;"name": "bower.json",<br />
+				&nbsp;&nbsp;"description": "Bower package description file",<br />
+				&nbsp;&nbsp;"fileMatch": [ "bower.json", ".bower.json" ],<br />
+				&nbsp;&nbsp;"url": "http://schemastore.org/schemas/json/bower"<br />
+				}
+			</pre>
 			<p>
 				<code>name</code>, <code>description</code> and <code>url</code> are all required properties.
 				<br />
-				The <code>url</code> property is an absolute URI pointng to the schema.
+				The <code>url</code> property is an absolute URI pointing to the schema.
 				It can be hosted anywhere on the web.
 				<br />
 				The <code>fileMatch</code> property is for specifying what known file names corresponds with

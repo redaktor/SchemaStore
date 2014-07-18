@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Web;
 
 public class FingerPrint : IHttpHandler
 {
-    private static Regex r = new Regex(@"<(link|script|img).*(href|src)=(""|')(?<href>.*?)(""|').*?>");
+    private static Regex _regex = new Regex(@"<(link|script|img).*(href|src)=(""|')(?<href>[^""'].*?)(""|').*?>");
+    private static string _cdnPath = ConfigurationManager.AppSettings.Get("cdnPath");
 
     public void ProcessRequest(HttpContext context)
     {
@@ -13,9 +15,9 @@ public class FingerPrint : IHttpHandler
         string html = File.ReadAllText(file);
         DateTime lastWrite = File.GetLastWriteTimeUtc(file);
 
-        html = r.Replace(html, delegate(Match match)
+        html = _regex.Replace(html, delegate(Match match)
         {
-            return InsertTag(context, match);
+            return Print(context, match);
         });
 
         html = Regex.Replace(html, @">\s+<", "><");
@@ -30,29 +32,47 @@ public class FingerPrint : IHttpHandler
         context.Response.Cache.SetExpires(DateTime.Now.AddDays(7));
     }
 
-    private static string InsertTag(HttpContext context, Match match)
+    private static string Print(HttpContext context, Match match)
     {
         string value = match.Value;
         string path = match.Groups["href"].Value;
         Uri url;
 
-        if (Uri.TryCreate(path, UriKind.Relative, out url) &&
-            Path.GetExtension(url.OriginalString) != "" && // Only files with extensions
-            !url.OriginalString.StartsWith("//")) // Not protocol relative paths since they are absolute
-        {
-            int index = value.LastIndexOf('.');
+        if (!IsValidUrl(path, out url))
+            return value;
 
-            if (index > -1)
-            {
-                string abosolute = context.Server.MapPath(path);
-                DateTime lastWrite = File.GetLastWriteTimeUtc(abosolute);
-                context.Response.AddFileDependency(abosolute);
+        value = AddCdn(context, value, path);
 
-                return value.Insert(index, "." + lastWrite.Ticks);
-            }
-        }
+        string physical = context.Server.MapPath(path);
+        DateTime lastWrite = File.GetLastWriteTimeUtc(physical);
+        context.Response.AddFileDependency(physical);
 
-        return value;
+        int index = value.LastIndexOf('.');
+        return value.Insert(index, "." + lastWrite.Ticks);
+    }
+
+    private static string AddCdn(HttpContext context, string value, string path)
+    {
+        if (string.IsNullOrEmpty(_cdnPath))
+            return value;
+
+        string absolute = _cdnPath + Path.GetDirectoryName(context.Request.Path)
+            .Replace("\\", "/")
+            .TrimEnd('/') + "/";
+
+        Uri baseUri = new Uri(absolute);
+        Uri full = new Uri(baseUri, path);
+        return value.Replace(path, full.OriginalString);
+    }
+
+    private static bool IsValidUrl(string path, out Uri url)
+    {
+        //if (!path.StartsWith("/", StringComparison.Ordinal))
+        //    throw new NotSupportedException("The path '" + path + "' has to start with a /");
+
+        return Uri.TryCreate(path, UriKind.Relative, out url) &&
+               Path.GetExtension(url.OriginalString) != "" && // Only files with extensions
+               !url.OriginalString.StartsWith("//"); // Not protocol relative paths since they are absolute
     }
 
     public static void SetConditionalGetHeaders(DateTime lastModified, HttpContext context)
