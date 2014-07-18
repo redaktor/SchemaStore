@@ -86,10 +86,9 @@
 					"type": "string",
 					"description": "A longer description of the operation."
 				},
-				"nickname": {
+				"operationId": {
 					"type": "string",
-					"description": "A friendly name of the operation. Whitespaces are not allowed",
-					"pattern": "^[a-zA-Z0-9-]+$"
+					"description": "A friendly name of the operation"
 				},
 				"produces": {
 					"type": "array",
