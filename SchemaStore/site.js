@@ -1,5 +1,4 @@
 (function () {
-    // List all schemas in the catalog
     var req = new XMLHttpRequest();
     req.open('GET', "/api/json/catalog.json", true);
     req.onload = function () {
