@@ -103,7 +103,7 @@ header, #main {
 
     #schemalist li a {
         color: dodgerblue;
-        background: url(img/json-icon.png) no-repeat left 6px;
+        background: url(/img/json-icon.png) no-repeat left 6px;
         padding-left: 25px;
     }
 

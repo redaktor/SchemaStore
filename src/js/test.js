@@ -117,11 +117,11 @@
         }
     });
 
-    $.getJSON("hyper-schema.json", null, function (data) {
+    $.getJSON("test/hyper-schema.json", null, function (data) {
         hyperSchema = data;
         tv4.addSchema("http://json-schema.org/draft-04/schema", hyperSchema);
 
-        $.getJSON("tests.json", null, function (data) {
+        $.getJSON("test/tests.json", null, function (data) {
 
             var count = (Object.keys(data).length - 2);
             recap.innerHTML = "Testing " + count + " JSON Schemas...";
@@ -129,7 +129,7 @@
             progress.value = 1;
 
             for (var test in data) {
-                if (test === "catalog" || test == "schemas")
+                if (test === "catalog" || test == "schemas" || test == "options")
                     continue;
 
                 var name = test.replace("_", ".");
