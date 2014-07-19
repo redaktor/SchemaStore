@@ -44,7 +44,7 @@ header, #main {
     }
 
     header aside a{
-        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIgAAACHCAMAAAD6MuG1AAAAM1BMVEUAAABHl0cWfRb///8thi1goGAAYAAAcgAAbwACaAJ7sXtmqWbR4tHu9O6Zvpm71LuqyqrIcDFJAAAAAXRSTlMAQObYZgAABMtJREFUeNrt3MGO5CgMBuAGgyt2gNT7P+3GFMnfW2rt9KXsPYwPM9OHkT4Fkx8Tqb++vrTs6fHnKnsqX58tzXvNf5bkVD4t2YvWxy8kNX1c8qhYnehnsv9qddKnJTXXX3VsdZBozb+gpPJxSegufl+d0F0Mif8u/v93bNH9b8e+Sf47d7az4jt2u8unY5E7PzggScW9Y+FAheQOHDJrSWJy52LsY0m8drGmnxxciQYgeXfp2PzuYHO0JXHMnf0dYo4qjVTs54jcgeNglucGiFPH7vk7ZJ/rwmeJSZxzB5D9tS7pgmyuuZPyBSmng1mSqMqS+OYOnojyWakT9QKJb+5s1/bl0klTf/J3ieNJabslh61P62yS78uTkkvHQmL7d9DgIozU8TwpLYi0ngZ1Kb0x83aUW/Jw69iXpHSiVuzP41TRkAlxzJ1bstU0O1bbdADidlLC1indOtYcDIjnhL7aZGu3IzMgjrlzbZ3yclCnXgQSz9xZkulo9NRqkFnOE/otedJQyswikPhO6EuyKbfGZ8lN8Z7Ql0QyKbMtUrko3hP6kuRWhGcKDhZIAnIny3qnNGVIvHNnrY85tFFlkbiOXclTWam9SbxOSlgdc5TeGykkrrmzKKLmoCTUGRLP3MGok+yhJHryJXG/GV4SnYtDJWvlgNxRZHExR62dqG3/hmTP3BFh69hEpIl2gcRxF98BqJUbtV5JDRKRO5h26CmNehZIfHPnlvQm0ipOBe4T+pLITq2wlYDiPKEvSVVTMCdNfFFCTkpWzDKIaEDimjuIYuFBLQ0qb6/74pQ7kCRqwpWUk/+8U5DFIkpzCMyDKoeclHDHNlInHUStGmRVwIR+EszRtFMWSDa/CX1BuGge1ihKSURCvmUsCas5pFEWq1vjnjvCOh3K/CbxndBNYo7Bs5JqXRLv3DGKmkNY5KCznnlJ3HIHbzYV4flgutbjPqWEzDsi5miZmY8ukLhN6JC8ts9ZdQfEcULHhWynxKuGQuI1oS/JDEDrE3Mk6jhCuuXOoshmkNLK6WCtuC/361hMXocS6TwWCEPi/C1DTEJUT0cvow1IAnJnay+HEg1hHkXklvjmTpkObkRtHiM392/oS8LldFjy1MHDSCISkDsmqYWPmYDTwVu5IcXnpIQZMNExHa/r+z4lERO6FGrJnkefi9RLwDf0JdkPsXUpvZuDI3IH8Wf9kWj+hZOs/0lpO06AbeJDIHHNnSW5TkmV21ybi+LdsSYxR+FGzVCQeE/oIrn1+UaZbxbmsU9KxBfJrbDSwVzX2z4viF/u4KKtkczsQergns3zGzofpLocwoAE3Awf9HJQS4A4fkPHm+0wB+4K/G+GL4kUxl0BIP65YwRKLG9PZHXsl+uErvTUTno7UIC43AyzDebKP0CwND43w7xrxonxe+E/eN0MmyMA8j6hY/oMgCB3UI8ICL6hwxEDwYQORQAEHYsKgSB3wiHo2GAIdnE4BBN6MAS7OByCb+jBEOzicAg6NhqCXRwMQceGQ5A7wRB0bDQEuRMOQccGQ7CLwyHInWAIJvRwCCb0YAh2cTQEHRsOwS4OhiB3wiGY0IMh6NhwCHIHkOiOBSS4YwGJrN1OSpEASIqmYAJ+/wl+CC0twQBI8M/g+gc92YKGlvt0MwAAAABJRU5ErkJggg==') /*/img/forkme.png*/ no-repeat;
+        background: url(/img/forkme.png) no-repeat;
         display: inline-block;
         width: 136px;
         height: 136px;
@@ -111,7 +111,7 @@ header, #main {
 
     #schemalist li a {
         color: dodgerblue;
-        background: url(/img/json-icon.png) no-repeat left 6px;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAABOElEQVQYGQXAv0tUcQAA8M+79zLvvt93HUeRRgiHqERpQYtRUUtTa1NT1H/Q1l8TRFO2hlQQNIQN1xQkNAQiDf4E7/3iVDxJADDwwJxjvwyNAAAGPiqN7Nqy6b2n+kAK7vti2bFGrVJpu2bGgUNSLFkXNRqVUqlUSrTc9tdRKvHOvFph3Sdf7bmsViO35HvmjlWlylt/7PiJF1bVxuasWMk8VGls2HTRbxOsWXCq0Za7l5lVqA1NO1GC0j89Y1FuMXNipFQIGgCF1JSeqNOypVCYFl3XARdMqSzKRbstQyOVS3J9T8ANp7oei4KN1L5bMhNt0bJccNO8564I/nuTYMFLEz1BEEQdXUFb5pnPKQ7tuaqvL8rluoKOzGsfSMGObWcGZuSiINj2yhokAFpmPXJXsO+Hb8bAOb6AYra1e880AAAAAElFTkSuQmCC') /*/img/json-icon.png*/ no-repeat left 6px;
         padding-left: 25px;
     }
 
