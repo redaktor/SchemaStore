@@ -114,7 +114,7 @@
         if (!hasErrors) {
             // Set timeout to delay the reponse. Give people a change to see the loader
             setTimeout(function () {
-                recap.innerHTML = "All tests ran successfully. No errors found";
+                recap.innerHTML = "All tests ran successfully";
                 recap.className = "true";
             }, 1000);
         }
@@ -126,7 +126,7 @@
 
         $.getJSON("test/tests.json", null, function (data) {
 
-            var count = (Object.keys(data).length - 2);
+            var count = (Object.keys(data).length - 3);
             recap.innerHTML = "Testing " + count + " JSON Schemas...";
             progress.max = count + 1;
             progress.value = 1;

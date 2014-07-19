@@ -138,15 +138,3 @@ footer {
             display: inline-block;
             margin: 0 10px;
         }
-
-@media screen and (max-width:800px) {
-    @-ms-viewport {
-        width: 790px;
-    }
-}
-
-@media screen and (max-width:500px) {
-    @-ms-viewport {
-        width: 460px;
-    }
-}
