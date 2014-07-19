@@ -3,8 +3,13 @@
 	"description": "A collection of JSON Schemas",
 	"readme": "../README.md",
 	"private": true,
+	"homepage": "http://schemastore.org",
+	"bugs": {
+		"url": "https://github.com/madskristensen/SchemaStore/issues"
+	},
+	"license": "Apache 2.0",
 	"repository": {
-		"type": "GitHub",
+		"type": "git",
 		"url": "https://github.com/madskristensen/SchemaStore"
 	},
     "devDependencies": {
