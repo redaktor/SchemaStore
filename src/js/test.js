@@ -2,7 +2,7 @@
 /// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 
 (function () {
-    $.ajaxSetup({ cache: false });
+    //$.ajaxSetup({ cache: false });
 
     var list = document.getElementById("result");
     var recap = document.getElementById("recap");
@@ -88,7 +88,10 @@
 
             var a = document.createElement("a");
             a.innerHTML = result.url.replace(result.name.replace(".", "_") + "/", "").replace(".json", "");
-            a.href = result.url.replace("[schema draft v4]", "http://json-schema.org/draft-04/schema");
+            a.href = "test/" + result.url;
+
+            if (result.url.indexOf("schema draft") > -1)
+                a.href = "http://json-schema.org/draft-04/schema";
 
             var li = document.createElement("li");
             li.className = result.valid;

@@ -1,5 +1,12 @@
 {
-    "name": "SchemaStore.org",
+	"name": "SchemaStore.org",
+	"description": "A collection of JSON Schemas",
+	"readme": "../README.md",
+	"private": true,
+	"repository": {
+		"type": "GitHub",
+		"url": "https://github.com/madskristensen/SchemaStore"
+	},
     "devDependencies": {
         "grunt": "~0.4.4",
         "grunt-tv4": "0.4.0"
