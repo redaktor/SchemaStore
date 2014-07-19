@@ -51,7 +51,7 @@ public class FingerPrint : IHttpHandler
         if (!IsValidUrl(path, out url))
             return value;
 
-        if (!context.IsDebuggingEnabled) // Disable CDN when debugging is on
+        if (!context.IsDebuggingEnabled && !context.Request.IsLocal) // Disable CDN when debugging is on
             value = AddCdn(context, value, path);
 
         string physical = context.Server.MapPath(path);

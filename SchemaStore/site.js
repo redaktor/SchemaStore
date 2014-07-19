@@ -1,21 +1,19 @@
-(function () {
-    var req = new XMLHttpRequest();
-    req.open('GET', "/api/json/catalog.json", true);
-    req.onload = function () {
+/// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 
-        var catalog = JSON.parse(req.responseText);
+(function () {
+
+    $.getJSON("/api/json/catalog.json", null, function (catalog) {
         var ul = document.querySelector("#schemalist ul");
         var p = document.getElementById("count");
 
-        if (p) {
-            p.innerHTML = p.innerHTML.replace("{0}", catalog.schemas.length);
-        }
+        p.innerHTML = p.innerHTML.replace("{0}", catalog.schemas.length);
 
         for (var i = 0; i < catalog.schemas.length; i++) {
 
             var schema = catalog.schemas[i];
             var li = document.createElement("li");
             var a = document.createElement("a");
+
             a.href = schema.url.replace("http://schemastore.org", "");
             a.title = schema.description;
             a.innerHTML = schema.name;
@@ -23,10 +21,9 @@
             li.appendChild(a);
             ul.appendChild(li);
         }
+
         setTimeout(function () {
             ul.parentNode.style.maxHeight = "9999px";
         }, 100);
-
-    };
-    req.send(null);
+    });
 })();
