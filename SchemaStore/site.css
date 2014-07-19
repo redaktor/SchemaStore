@@ -58,7 +58,6 @@ header, #main {
         }
 
         #main article pre {
-            white-space: nowrap;
             overflow: auto;
             max-width: 100%;
             background: #f1f1f1;
