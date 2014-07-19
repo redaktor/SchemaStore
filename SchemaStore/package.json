@@ -1,4 +1,4 @@
-﻿{
+{
     "name": "SchemaStore.org",
     "devDependencies": {
         "grunt": "~0.4.4",
