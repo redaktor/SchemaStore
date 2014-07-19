@@ -1,0 +1,7 @@
+{
+    "name": "SchemaStore.org",
+    "devDependencies": {
+        "grunt": "~0.4.4",
+        "grunt-tv4": "0.4.0"
+    }
+}
