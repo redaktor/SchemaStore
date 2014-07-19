@@ -24,7 +24,7 @@
 
             for (var i = 0; i < files.length; i++) {
 
-                gets.push($.getJSON("/" + files[i].replace("src/", ""), null, function (file) {
+                gets.push($.getJSON("/" + files[i], null, function (file) {
                     var result = tv4.validateMultiple(file, schema, true);
                     result.url = cleanUrl(this.url);
                     result.name = name;
