@@ -43,13 +43,13 @@ header, #main {
         border: 0;
     }
 
-    header aside a{
-        background: url(/img/forkme.png) no-repeat;
-        display: inline-block;
-        width: 136px;
-        height: 136px;
-        color: transparent;
-    }
+        header aside a {
+            background: url(/img/forkme.png) no-repeat;
+            display: inline-block;
+            width: 136px;
+            height: 136px;
+            color: transparent;
+        }
 
     #main article {
         overflow: hidden;
