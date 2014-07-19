@@ -14,7 +14,7 @@
             var li = document.createElement("li");
             var a = document.createElement("a");
 
-            a.href = schema.url.replace("http://schemastore.org", "");
+            a.href = schema.url;
             a.title = schema.description;
             a.innerHTML = schema.name;
 

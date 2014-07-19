@@ -40,7 +40,7 @@
         else {
             var url = select.options[select.selectedIndex].value;
 
-            $.get(url, null, function (data) {
+            $.get("/schemas/json/" + url, null, function (data) {
                 schema.setValue(data);
                 validate();
             });
@@ -72,16 +72,16 @@
 
                 var schema = data.schemas[i];
 
+                // Only show schemas hosted on SchemaStore.org
                 if (schema.url.indexOf("schemastore.org") < 0)
                     continue;
 
                 var option = document.createElement("option");
                 option.text = schema.name;
-                option.value = schema.url.replace("http://schemastore.org", "");
+                option.value = schema.url.replace("http://json.schemastore.org/", "");
 
-                if (location.hash === "#" + option.value) {
+                if (location.hash === "#" + option.value)
                     option.selected = "selected";
-                }
 
                 select.querySelector("optgroup").appendChild(option);
             }
@@ -108,7 +108,6 @@
         var result = tv4.validateMultiple(JSON.parse(jsonValue), JSON.parse(schemaValue), true);
 
         if (result.valid) {
-            clear();
             output.innerHTML = "Congrats! All " + json.getDoc().lineCount() + " lines of JSON validates against the schema";
             output.className = "true";
             jsonheader.className = "true";
@@ -141,7 +140,6 @@
     function clear() {
         jsonheader.className = "";
         jsonheader.innerHTML = ""
-        jsonheader.className = "";
         output.className = "";
         output.innerHTML = "";
     }
