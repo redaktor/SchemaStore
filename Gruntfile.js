@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         }
     });
 
-    // Dynamically load schema validation based on the files and folders in /test/
+    // Dynamically load schema validation based on the files and folders in /test/ 
     var fs = require("fs");
     var dir = "src/test";
     var folders = fs.readdirSync(dir);
