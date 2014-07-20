@@ -43,17 +43,23 @@
     color: green;
 }*/
 
-    :not(progress)[aria-invalid=false]:before {
-        content: '✔ ';
-        color: green;
-    }
+ul ul li:before {
+    content: '⌛ ';
+    width: 25px;
+    display: inline-block;
+}
 
-:not(progress)[aria-invalid=true],
-:not(progress)[aria-invalid=true] a {
+[aria-invalid=false]:not(progress):before {
+    content: '✔ ';
+    color: green;
+}
+
+[aria-invalid=true],
+[aria-invalid=true] a {
     color: red;
 }
 
-    :not(progress)[aria-invalid=true]:before {
+    [aria-invalid=true]:not(progress):before {
         content: '✘ ';
     }
 
@@ -73,13 +79,12 @@ progress {
         background: green;
     }
 
-    progress[aria-invalid=true]::-moz-progress-bar{
+    progress[aria-invalid=true]::-moz-progress-bar {
         background: red;
     }
 
     progress::-webkit-progress-bar {
         background: #f1f1f1;
-        background: green;
     }
 
     progress[aria-invalid=true]::-webkit-progress-value {

@@ -33,6 +33,7 @@ module.exports = function (grunt) {
         var fs = require("fs");
         var dir = "test";
         var folders = fs.readdirSync(dir);
+        var tv4 = {};
 
         folders.forEach(function (folder) {
 
@@ -40,7 +41,8 @@ module.exports = function (grunt) {
             if (folder.indexOf('.') > -1)
                 return;
 
-            var schema = grunt.file.readJSON("schemas/json/" + folder.replace("_", ".") + ".json");
+            var name = folder.replace("_", ".");
+            var schema = grunt.file.readJSON("schemas/json/" + name + ".json");
             var files = fs.readdirSync(dir + "/" + folder).map(function (file) { return dir + "/" + folder + "/" + file });
 
             grunt.config.set("tv4." + folder, {
@@ -50,8 +52,11 @@ module.exports = function (grunt) {
                 src: files
             });
 
+            tv4[name] = {}
+            tv4[name].files = files;
+
             // Write the config to disk so it can be consumed by the browser based test infrastru
-            fs.writeFile("test/tests.json", JSON.stringify(grunt.config.get("tv4")));
+            fs.writeFile("test/tests.json", JSON.stringify(tv4));
         });
     });
 

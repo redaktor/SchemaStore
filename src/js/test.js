@@ -9,121 +9,112 @@
     var progress = document.querySelector("progress");
     var hyperSchema;
 
-    function runTest(name, files) {
+    function validateFile(element, schema, file) {
+        get("/" + file + "?" + Math.random(), true, function (data) {
+            validateSchema(element, data, schema);
+        });
+    }
 
-        var schemaUrl = "../schemas/json/" + name + ".json?_" + Math.random();
-        var results = [];
+    function validateSchema(element, data, schema) {
+        var result = tv4.validateMultiple(data, schema, true);
 
-        get(schemaUrl, true, function (schema) {
-            var gets = [];
+        element.setAttribute("aria-invalid", !result.valid);
 
-            var hyper = tv4.validateMultiple(schema, hyperSchema, true);
-            hyper.url = "[schema draft v4]";
-            hyper.name = name;
-            results.push(hyper);
+        if (!result.valid) {
+            var error = result.errors.map(function (e) { return "<strong>" + e.dataPath + "</strong> " + e.message; }).join("<br />");
+            var msg = document.createElement("span");
+            msg.innerHTML = error;
+            element.appendChild(msg);
+            progress.setAttribute("aria-invalid", true);
+            recap.innerHTML = "One or more tests failed";
+            recap.setAttribute("aria-invalid", true);
+        }
 
-            for (var i = 0; i < files.length; i++) {
-                get("/" + files[i] + "?" + Math.random(), true, function (file, url) {
-                    var result = tv4.validateMultiple(file, schema, true);
-                    result.url = cleanUrl(url);
-                    result.name = name;
-                    results.push(result);
-                }, true);
-            }
+        progress.value = 1 + progress.value;
 
-            progress.value = 1 + progress.value;
-            Draw(results);
-
-        }, true);
+        if (progress.value >= progress.max && progress.attributes["aria-invalid"] === undefined) {
+            recap.innerHTML = "All tests ran successfully";
+            recap.setAttribute("aria-invalid", false);
+        }
     }
 
     function cleanUrl(url) {
-        var index = url.indexOf("/", 1);
+
+        var index = url.lastIndexOf("/");
         url = url.substring(index + 1);
 
         index = url.indexOf("?");
 
         if (index > -1)
-            return url.substring(0, index);
+            url = url.substring(0, index);
 
-        return url;
+        return url.replace(".json", "");
     }
 
-    function Draw(results) {
+    function createElement(ul, name, file) {
+        var a = document.createElement("a");
+        a.innerHTML = file == "http://json-schema.org/draft-04/schema" ? "[schema draft v4]" : cleanUrl(file);
+        a.href = file;
+        a.setAttribute("aria-describedby", name);
 
-        var last = "";
-        var ul = null;
-        var hasErrors = false;
+        var li = document.createElement("li");
+        li.appendChild(a);
+        ul.appendChild(li);
+        return li;
+    }
 
-        for (var i = 0; i < results.length; i++) {
-            var result = results[i];
+    function createBlock(test) {
 
-            if (result.name !== last) {
-                ul = document.createElement("ul");
-                ul.setAttribute("role", "group");
+        var ul = document.createElement("ul");
+        ul.setAttribute("role", "group");
 
-                var cat = document.createElement("li");
-                cat.innerHTML = result.name;
-                cat.id = result.name;
+        var cat = document.createElement("li");
+        cat.innerHTML = test.name
+        cat.id = test.name;
+        cat.appendChild(ul);
 
-                cat.appendChild(ul);
-                list.appendChild(cat);
+        get("schemas/json/" + test.name + ".json?" + Math.random(), true, function (data) {
+
+            var li = createElement(ul, test.name, "http://json-schema.org/draft-04/schema");
+            validateSchema(li, data, hyperSchema);
+
+            for (var i = 0; i < test.files.length; i++) {
+                var file = test.files[i];
+                var li = createElement(ul, test.name, file);
+                validateFile(li, data, file);
             }
+        });
 
-            last = result.name;
+        list.appendChild(cat);
+    }
 
-            var a = document.createElement("a");
-            a.innerHTML = result.url.replace(result.name.replace(".", "_") + "/", "").replace(".json", "");
-            a.href = "test/" + result.url;
-            a.setAttribute("aria-describedby", result.name);
+    function setupTests(data) {
 
-            if (result.url.indexOf("schema draft") > -1)
-                a.href = "http://json-schema.org/draft-04/schema";
+        var count = (Object.keys(data).length);
+        recap.innerHTML = "Testing " + count + " JSON Schemas...";
 
-            var li = document.createElement("li");
-            li.setAttribute("aria-invalid", !result.valid);
-            li.appendChild(a);
-
-            if (!result.valid) {
-                var error = result.errors.map(function (e) { return "<strong>" + e.dataPath + "</strong> " + e.message; }).join("<br />");
-                var msg = document.createElement("span");
-                msg.innerHTML = error;
-                li.appendChild(msg);
-                hasErrors = true;
-                progress.setAttribute("aria-invalid", true);
-                recap.innerHTML = "One or more tests failed";
-                recap.setAttribute("aria-invalid", true);
-            }
-
-            ul.appendChild(li);
+        for (var test in data) {
+            var files = data[test].files;
+            data[test].name = test;
+            progress.max += files.length;
+            createBlock(data[test]);
         }
     }
 
     get("test/hyper-schema.json", true, function (data) {
-
         hyperSchema = data;
-        tv4.addSchema("http://json-schema.org/draft-04/schema", hyperSchema);
+        tv4.addSchema("http://json-schema.org/draft-04/schema", data);
+    }, true);
 
-        get("test/tests.json", true, function (data) {
-
-            var count = (Object.keys(data).length - 3);
-            recap.innerHTML = "Testing " + count + " JSON Schemas...";
-            progress.max = count + 1;
-            progress.value = 1;
-
-            for (var test in data) {
-                if (test === "catalog" || test === "schemas" || test === "options")
-                    continue;
-
-                var name = test.replace("_", ".");
-                var files = data[test].src;
-                runTest(name, files);
-            }
-
-            if (document.querySelector("progress[aria-invalid=true]") === null) {
-                recap.innerHTML = "All tests ran successfully";
-                recap.setAttribute("aria-invalid", false);
-            }
-        });
+    get("test/tests.json?_=" + Math.random(), true, function (data) {
+        setTimeout(function () { setupTests(data) }, 100);
     });
+
+
+
+    //if (document.querySelector("progress[aria-invalid=true]") === null) {
+    //    recap.innerHTML = "All tests ran successfully";
+    //    recap.setAttribute("aria-invalid", false);
+    //}
+    //});
 })();
