@@ -17,7 +17,7 @@
 
     function validateSchema(element, data, schema) {
         progress.value = 1 + progress.value;
-        var result = tv4.validateMultiple(data, schema, true);
+        var result = tv4.validateResult(data, schema, true);
         element.setAttribute("aria-invalid", !result.valid);
 
         if (!result.valid) {
@@ -32,15 +32,17 @@
 
             element.appendChild(msg);
 
-            errorCount += result.errors.length;
+            errorCount += 1;
             progress.setAttribute("aria-invalid", true);
             recap.innerHTML = errorCount + " of the " + progress.max + " tests failed";
             recap.setAttribute("aria-invalid", true);
         }
 
         if (progress.value === progress.max && progress.attributes["aria-invalid"] === undefined) {
-            recap.innerHTML = "All tests ran successfully";
-            recap.setAttribute("aria-invalid", false);
+            setTimeout(function () {
+                recap.innerHTML = "All " + progress.max + " tests ran successfully";
+                recap.setAttribute("aria-invalid", false);
+            }, 1000);
         }
 
         return result.valid;
@@ -93,8 +95,7 @@
 
         get("schemas/json/" + test.name + ".json?" + Math.random(), true, function (data, url) {
 
-            var result = validateSchema(schema, data, hyperSchema);
-            if (!result)
+            if (!validateSchema(schema, data, hyperSchema))
                 return;
 
             var links = ul.getElementsByTagName("li");
@@ -111,6 +112,7 @@
 
         var count = (Object.keys(data).length);
         recap.innerHTML = "Testing " + count + " JSON Schemas...";
+        progress.max = count;
 
         for (var test in data) {
             var files = data[test].files;
