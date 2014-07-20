@@ -73,15 +73,21 @@
         cat.id = test.name;
         cat.appendChild(ul);
 
+        var schema = createElement(ul, test.name, "http://json-schema.org/draft-04/schema");
+
+        for (var i = 0; i < test.files.length; i++) {
+            var file = test.files[i];
+            var li = createElement(ul, test.name, file);
+        }
+
         get("schemas/json/" + test.name + ".json?" + Math.random(), true, function (data) {
 
-            var li = createElement(ul, test.name, "http://json-schema.org/draft-04/schema");
-            validateSchema(li, data, hyperSchema);
+            validateSchema(schema, data, hyperSchema);
 
-            for (var i = 0; i < test.files.length; i++) {
-                var file = test.files[i];
-                var li = createElement(ul, test.name, file);
-                validateFile(li, data, file);
+            var links = ul.getElementsByTagName("a");
+
+            for (var i = 0; i < links.length; i++) {
+                validateFile(links[i].parentNode, data, file);
             }
         });
 
