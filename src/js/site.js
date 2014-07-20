@@ -1,7 +1,6 @@
 /* global ga */
 
 (function (global) {
-    'use strict';
 
     global.get = function (url, asJson, callback) {
         var xhr = new XMLHttpRequest();
@@ -10,7 +9,7 @@
             if (asJson)
                 callback(JSON.parse(xhr.responseText));
             else
-            callback(xhr.responseText);
+                callback(xhr.responseText);
         };
 
         xhr.send();
@@ -45,40 +44,8 @@
             ul.appendChild(li);
         }
 
-        setTimeout(function () {
-            ul.parentNode.style.maxHeight = "9999px";
-        }, 100);
+        ul.parentNode.style.maxHeight = "9999px";
     });
-
-    //var req = new XMLHttpRequest();
-    //req.open('GET', "/api/json/catalog.json", true);
-    //req.onload = function () {
-
-    //    var catalog = JSON.parse(req.responseText);
-    //    var ul = document.querySelector("#schemalist ul");
-    //    var p = document.getElementById("count");
-
-    //    p.innerHTML = p.innerHTML.replace("{0}", catalog.schemas.length);
-
-    //    for (var i = 0; i < catalog.schemas.length; i++) {
-
-    //        var schema = catalog.schemas[i];
-    //        var li = document.createElement("li");
-    //        var a = document.createElement("a");
-    //        a.href = schema.url;
-    //        a.title = schema.description;
-    //        a.innerHTML = schema.name;
-
-    //        li.appendChild(a);
-    //        ul.appendChild(li);
-    //    }
-
-    //    setTimeout(function () {
-    //        ul.parentNode.style.maxHeight = "9999px";
-    //    }, 100);
-
-    //};
-    //req.send(null);
 
 })();
 
