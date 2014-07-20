@@ -2,6 +2,8 @@
     font: 14pt/1.5 'Century Gothic', Verdana, Geneva, 'DejaVu Sans', sans-serif;
     margin: 0;
     -ms-text-size-adjust: 120%;
+    background: white;
+    color: #333;
 }
 
 img {

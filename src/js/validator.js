@@ -99,7 +99,7 @@
             clear();
 
         if (!IsJsonString(jsonValue) || !IsJsonString(schemaValue)) {
-            valid.style.visibility = "visible";
+            valid.setAttribute("aria-invalid", "true");
             return;
         }
 
@@ -134,7 +134,7 @@
             jsonheader.className = "false";
         }
 
-        valid.style.visibility = "hidden";
+        valid.removeAttribute("aria-invalid");
     }
 
     function clear() {

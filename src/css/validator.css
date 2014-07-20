@@ -47,6 +47,10 @@ textarea {
     font-size: .7em;
 }
 
+    #valid[aria-invalid] {
+        visibility: visible;
+    }
+
 #toggle {
     font-size: .7em;
     padding-left: 5px;
