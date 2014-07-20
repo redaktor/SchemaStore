@@ -12,6 +12,14 @@ img {
     border: none;
 }
 
+a {
+    color: #0071dc;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
 ol {
     list-style-position: inside;
     padding: 0;
@@ -50,7 +58,7 @@ header, #main {
             display: inline-block;
             width: 136px;
             height: 136px;
-            color: transparent;
+            text-indent: -9999em;
         }
 
     #main article {
@@ -112,7 +120,6 @@ header, #main {
     }
 
     #schemalist li a {
-        color: dodgerblue;
         background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAABOElEQVQYGQXAv0tUcQAA8M+79zLvvt93HUeRRgiHqERpQYtRUUtTa1NT1H/Q1l8TRFO2hlQQNIQN1xQkNAQiDf4E7/3iVDxJADDwwJxjvwyNAAAGPiqN7Nqy6b2n+kAK7vti2bFGrVJpu2bGgUNSLFkXNRqVUqlUSrTc9tdRKvHOvFph3Sdf7bmsViO35HvmjlWlylt/7PiJF1bVxuasWMk8VGls2HTRbxOsWXCq0Za7l5lVqA1NO1GC0j89Y1FuMXNipFQIGgCF1JSeqNOypVCYFl3XARdMqSzKRbstQyOVS3J9T8ANp7oei4KN1L5bMhNt0bJccNO8564I/nuTYMFLEz1BEEQdXUFb5pnPKQ7tuaqvL8rluoKOzGsfSMGObWcGZuSiINj2yhokAFpmPXJXsO+Hb8bAOb6AYra1e880AAAAAElFTkSuQmCC') /*/img/json-icon.png*/ no-repeat left 6px;
         padding-left: 25px;
     }
