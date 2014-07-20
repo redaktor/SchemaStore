@@ -40,8 +40,7 @@
         }
         else {
             var url = select.options[select.selectedIndex].value;
-
-            $.get("/schemas/json/" + url, null, function (data) {
+            get("/schemas/json/" + url, false, function (data) {
                 schema.setValue(data);
                 validate();
             });
@@ -69,7 +68,7 @@
     }
 
     function loadSelect() {
-        $.getJSON("/api/json/catalog.json", null, function (data) {
+        get("/api/json/catalog.json", true, function (data) {
 
             for (var i = 0; i < data.schemas.length; i++) {
 
@@ -156,7 +155,7 @@
         return true;
     }
 
-    $(function () {
+    window.onload = function () {
 
         json.setValue(localStorage.json || "{\n\t\n}");
 
@@ -171,21 +170,18 @@
         json.on("change", validate);
         toggle.onclick = toggleSchemaEditor;
         window.onpopstate = function () {
-            $(select).val(location.hash.substr(1));
+
+            for (var i = 0; i < select.options; i++) {
+                var option = select.options[i];
+                if (option.value === location.hash.substr(1)) {
+                    option.selected = "selected";
+                }
+            }
+
             loadSchema();
         };
-    });
+    };
 
     loadSelect();
 
 })();
-
-(function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments);
-    }, i[r].l = 1 * new Date(); a = s.createElement(o),
-    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
-})(window, document, 'script', '//google-analytics.com.m82.be/analytics.js', 'ga');
-
-ga('create', 'UA-51110136-1', 'auto');
-ga('send', 'pageview');
