@@ -1,4 +1,4 @@
-﻿/* global ga, tv4 */
+﻿/* global ga, tv4, get */
 /// <reference path="http://geraintluff.github.io/tv4/tv4.js" />
 /// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 
@@ -7,12 +7,12 @@
     var list = document.getElementById("result");
     var recap = document.getElementById("recap");
     var progress = document.querySelector("progress");
-    var results = [];
     var hyperSchema;
 
     function runTest(name, files) {
 
-        var schemaUrl = "../schemas/json/" + name + ".json";
+        var schemaUrl = "../schemas/json/" + name + ".json?_" + Math.random();
+        var results = [];
 
         get(schemaUrl, true, function (schema) {
             var gets = [];
@@ -23,7 +23,7 @@
             results.push(hyper);
 
             for (var i = 0; i < files.length; i++) {
-                get("/" + files[i], true, function (file, url) {
+                get("/" + files[i] + "?" + Math.random(), true, function (file, url) {
                     var result = tv4.validateMultiple(file, schema, true);
                     result.url = cleanUrl(url);
                     result.name = name;
@@ -32,40 +32,24 @@
             }
 
             progress.value = 1 + progress.value;
+            Draw(results);
 
         }, true);
     }
 
     function cleanUrl(url) {
         var index = url.indexOf("/", 1);
-        if (index > -1)
-            url = url.substring(index + 1);
+        url = url.substring(index + 1);
 
         index = url.indexOf("?");
 
-        if (index > -1) {
+        if (index > -1)
             return url.substring(0, index);
-        }
 
         return url;
     }
 
-    function sortResults(a, b) {
-        if (a.name > b.name)
-            return 1;
-        else if (a.name < b.name)
-            return -1;
-        else if (a.url > b.url)
-            return 1;
-
-        return -1;
-    }
-
-    function Draw() {
-
-        results = results.sort(sortResults);
-
-        list.innerHTML = "";
+    function Draw(results) {
 
         var last = "";
         var ul = null;
@@ -101,29 +85,22 @@
             li.appendChild(a);
 
             if (!result.valid) {
-                var error = result.errors.map(function (e) { return "<strong>" + e.dataPath + "</strong>: " + e.message; }).join("<br />");
+                var error = result.errors.map(function (e) { return "<strong>" + e.dataPath + "</strong> " + e.message; }).join("<br />");
                 var msg = document.createElement("span");
                 msg.innerHTML = error;
                 li.appendChild(msg);
                 hasErrors = true;
-                progress.style.color = "red"; //This only works in IE. How to fix?
+                progress.setAttribute("aria-invalid", true);
                 recap.innerHTML = "One or more tests failed";
                 recap.setAttribute("aria-invalid", true);
             }
 
             ul.appendChild(li);
         }
-
-        if (!hasErrors) {
-            // Set timeout to delay the reponse. Give people a change to see the loader
-            setTimeout(function () {
-                recap.innerHTML = "All tests ran successfully";
-                recap.setAttribute("aria-invalid", false);
-            }, 1000);
-        }
-    };
+    }
 
     get("test/hyper-schema.json", true, function (data) {
+
         hyperSchema = data;
         tv4.addSchema("http://json-schema.org/draft-04/schema", hyperSchema);
 
@@ -143,7 +120,10 @@
                 runTest(name, files);
             }
 
-            Draw();
+            if (document.querySelector("progress[aria-invalid=true]") === null) {
+                recap.innerHTML = "All tests ran successfully";
+                recap.setAttribute("aria-invalid", false);
+            }
         });
     });
 })();

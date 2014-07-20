@@ -38,21 +38,22 @@
         color: black;
     }
 
-[aria-invalid=false],
+/*[aria-invalid=false],
 [aria-invalid=false] a {
     color: green;
-}
+}*/
 
-    [aria-invalid=false]:before {
+    :not(progress)[aria-invalid=false]:before {
         content: '✔ ';
+        color: green;
     }
 
-[aria-invalid=true],
-[aria-invalid=true] a {
+:not(progress)[aria-invalid=true],
+:not(progress)[aria-invalid=true] a {
     color: red;
 }
 
-    [aria-invalid=true]:before {
+    :not(progress)[aria-invalid=true]:before {
         content: '✘ ';
     }
 
@@ -72,6 +73,15 @@ progress {
         background: green;
     }
 
+    progress[aria-invalid=true]::-moz-progress-bar{
+        background: red;
+    }
+
     progress::-webkit-progress-bar {
         background: #f1f1f1;
+        background: green;
+    }
+
+    progress[aria-invalid=true]::-webkit-progress-value {
+        background: red;
     }

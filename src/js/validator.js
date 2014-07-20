@@ -1,4 +1,4 @@
-﻿/* global ga, CodeMirror, tv4 */
+﻿/* global ga, CodeMirror, tv4, get */
 /// <reference path="http://geraintluff.github.io/tv4/tv4.js" />
 /// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 

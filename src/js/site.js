@@ -1,4 +1,4 @@
-/* global ga */
+/* global ga, get */
 
 (function (global) {
 
@@ -14,12 +14,6 @@
 
         xhr.send();
     };
-
-}(typeof window !== undefined ? window : this));
-
-
-
-(function () {
 
     var ul = document.querySelector("#schemalist ul");
     var p = document.getElementById("count");
@@ -47,7 +41,7 @@
         ul.parentNode.style.maxHeight = "9999px";
     });
 
-})();
+}(typeof window !== undefined ? window : this));
 
 
 (function (i, s, o, g, r, a, m) {
