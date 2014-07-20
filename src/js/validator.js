@@ -58,6 +58,8 @@
         var element = schema.getWrapperElement();
         element.style.height = visible ? "" : "0px";
         toggle.innerHTML = visible ? "Hide schema" : "Show schema";
+        toggle.setAttribute("aria-expanded", visible);
+        element.setAttribute("aria-hidden", !visible);
         localStorage.toggle = visible;
 
         if (visible)

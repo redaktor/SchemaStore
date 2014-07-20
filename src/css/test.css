@@ -3,7 +3,7 @@
 }
 
 .test {
-    min-height: 600px;
+    min-height: 900px;
 }
 
     .test ul {
@@ -17,20 +17,18 @@
         column-width: 300px;
     }
 
+        .test > ul > li {
+            -webkit-column-break-inside: avoid;
+            -webkit-break-inside: avoid-column;
+            break-inside: avoid-column;
+            page-break-inside: avoid;
+            margin-bottom: 1em;
+            font-weight: bold;
+        }
+
     .test ul ul {
-        -webkit-column-break-inside: avoid;
-        -webkit-break-inside: avoid-column;
-        break-inside: avoid-column;
-        page-break-inside: avoid;
-        margin-bottom: 1em;
-    }
-
-    .test ul li:not(:first-child) {
+        font-weight: normal;
         padding-left: .5em;
-    }
-
-    .test ul > li:first-child {
-        font-weight: bold;
     }
 
     .test span {
@@ -40,19 +38,21 @@
         color: black;
     }
 
-.true, .true a {
+[aria-invalid=false],
+[aria-invalid=false] a {
     color: green;
 }
 
-    .true:before {
+    [aria-invalid=false]:before {
         content: '✔ ';
     }
 
-.false, .false a {
+[aria-invalid=true],
+[aria-invalid=true] a {
     color: red;
 }
 
-    .false:before {
+    [aria-invalid=true]:before {
         content: '✘ ';
     }
 

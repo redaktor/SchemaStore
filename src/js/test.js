@@ -79,10 +79,14 @@
 
             if (result.name !== last) {
                 ul = document.createElement("ul");
+                ul.setAttribute("role", "group");
+
                 var cat = document.createElement("li");
                 cat.innerHTML = result.name;
-                ul.appendChild(cat);
-                list.appendChild(ul);
+                cat.id = result.name;
+
+                cat.appendChild(ul);
+                list.appendChild(cat);
             }
 
             last = result.name;
@@ -90,12 +94,13 @@
             var a = document.createElement("a");
             a.innerHTML = result.url.replace(result.name.replace(".", "_") + "/", "").replace(".json", "");
             a.href = "test/" + result.url;
+            a.setAttribute("aria-describedby", result.name);
 
             if (result.url.indexOf("schema draft") > -1)
                 a.href = "http://json-schema.org/draft-04/schema";
 
             var li = document.createElement("li");
-            li.className = result.valid;
+            li.setAttribute("aria-invalid", !result.valid);
             li.appendChild(a);
 
             if (!result.valid) {
@@ -106,7 +111,7 @@
                 hasErrors = true;
                 progress.style.color = "red"; //This only works in IE. How to fix?
                 recap.innerHTML = "One or more tests failed";
-                recap.className = "false";
+                recap.setAttribute("aria-invalid", true);
             }
 
             ul.appendChild(li);
@@ -116,7 +121,7 @@
             // Set timeout to delay the reponse. Give people a change to see the loader
             setTimeout(function () {
                 recap.innerHTML = "All tests ran successfully";
-                recap.className = "true";
+                recap.setAttribute("aria-invalid", false);
             }, 1000);
         }
     });

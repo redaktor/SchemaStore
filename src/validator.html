@@ -22,7 +22,7 @@
 		</aside>
 	</header>
 
-	<div id="main">
+	<div role="main" id="main">
 		<section>
 			<label for="schemas">Select schema:&nbsp;</label>
 			<select id="schemas" aria-controls="schema">
@@ -31,7 +31,7 @@
 			</select>
 
 			<label for="schema">
-				<a href="#" id="toggle" title="Schema" aria-controls="schema">Hide schema</a>
+				<a href="#" id="toggle" title="Schema" aria-controls="schema" aria-expanded="true">Hide schema</a>
 			</label>
 			<textarea id="schema" placeholder="Enter or paste your JSON Schema" cols="100" rows="10"></textarea>
 		</section>
@@ -45,8 +45,8 @@
 		<output></output>
 	</div>
 
-	<footer>
-		<nav>
+	<footer role="contentinfo">
+		<nav role="navigation">
 			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="/validator.html">Validator</a></li>
