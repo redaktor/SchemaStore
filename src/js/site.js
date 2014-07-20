@@ -2,14 +2,14 @@
 
 (function (global) {
 
-    global.get = function (url, asJson, callback) {
+    global.get = function (url, asJson, callback, sync) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
+        xhr.open('GET', url, !sync);
         xhr.onload = function () {
             if (asJson)
-                callback(JSON.parse(xhr.responseText));
+                callback(JSON.parse(xhr.responseText), url);
             else
-                callback(xhr.responseText);
+                callback(xhr.responseText, url);
         };
 
         xhr.send();

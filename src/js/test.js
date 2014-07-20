@@ -3,7 +3,6 @@
 /// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 
 (function () {
-    //$.ajaxSetup({ cache: false });
 
     var list = document.getElementById("result");
     var recap = document.getElementById("recap");
@@ -15,7 +14,7 @@
 
         var schemaUrl = "../schemas/json/" + name + ".json";
 
-        $.getJSON(schemaUrl, null, function (schema) {
+        get(schemaUrl, true, function (schema) {
             var gets = [];
 
             var hyper = tv4.validateMultiple(schema, hyperSchema, true);
@@ -24,19 +23,17 @@
             results.push(hyper);
 
             for (var i = 0; i < files.length; i++) {
-
-                gets.push($.getJSON("/" + files[i], null, function (file) {
+                get("/" + files[i], true, function (file, url) {
                     var result = tv4.validateMultiple(file, schema, true);
-                    result.url = cleanUrl(this.url);
+                    result.url = cleanUrl(url);
                     result.name = name;
                     results.push(result);
-                }));
+                }, true);
             }
 
-            $.when.apply($, gets).then(function () {
-                progress.value = 1 + progress.value;
-            });
-        });
+            progress.value = 1 + progress.value;
+
+        }, true);
     }
 
     function cleanUrl(url) {
@@ -64,7 +61,7 @@
         return -1;
     }
 
-    $(document).ajaxStop(function () {
+    function Draw() {
 
         results = results.sort(sortResults);
 
@@ -124,13 +121,13 @@
                 recap.setAttribute("aria-invalid", false);
             }, 1000);
         }
-    });
+    };
 
-    $.getJSON("test/hyper-schema.json", null, function (data) {
+    get("test/hyper-schema.json", true, function (data) {
         hyperSchema = data;
         tv4.addSchema("http://json-schema.org/draft-04/schema", hyperSchema);
 
-        $.getJSON("test/tests.json", null, function (data) {
+        get("test/tests.json", true, function (data) {
 
             var count = (Object.keys(data).length - 3);
             recap.innerHTML = "Testing " + count + " JSON Schemas...";
@@ -145,6 +142,8 @@
                 var files = data[test].src;
                 runTest(name, files);
             }
+
+            Draw();
         });
     });
 })();
