@@ -15,13 +15,13 @@ module.exports = function (grunt) {
             schemas: {
                 options: {
                     fresh: true,
-                    root: grunt.file.readJSON("test/hyper-schema.json"),
+                    root: grunt.file.readJSON("schemas/json/_schema.json"),
                 },
                 src: ["schemas/json/*.json"]
             },
             options: {
                 schemas: {
-                    "http://json-schema.org/draft-04/schema#": grunt.file.readJSON("test/hyper-schema.json"),
+                    "http://json-schema.org/draft-04/schema#": grunt.file.readJSON("schemas/json/_schema.json"),
                     "http://schemastore.org/schemas/json/jshintrc.json": grunt.file.readJSON("schemas/json/jshintrc.json"),
                     "http://schemastore.org/schemas/json/grunt-task.json": grunt.file.readJSON("schemas/json/grunt-task.json")
                 },

@@ -7,7 +7,7 @@
     var list = document.getElementById("result");
     var recap = document.getElementById("recap");
     var progress = document.querySelector("progress");
-    var hyperSchema;
+    var hyperSchema, errorCount = 0;
 
     function validateFile(element, schema, file) {
         get("/" + file + "?" + Math.random(), true, function (data) {
@@ -16,26 +16,34 @@
     }
 
     function validateSchema(element, data, schema) {
+        progress.value = 1 + progress.value;
         var result = tv4.validateMultiple(data, schema, true);
-
         element.setAttribute("aria-invalid", !result.valid);
 
         if (!result.valid) {
-            var error = result.errors.map(function (e) { return "<strong>" + e.dataPath + "</strong> " + e.message; }).join("<br />");
-            var msg = document.createElement("span");
-            msg.innerHTML = error;
+            var href = element.firstChild.attributes["href"].value;
+            var msg = document.createElement("a");
+            msg.innerHTML = "Show in validator";
+
+            if (href == "schemas/json/_schema.json")
+                msg.href = "/validator.html#_schema|" + element.parentNode.parentNode.id;
+            else
+                msg.href = "/validator.html#" + element.parentNode.parentNode.id + "|" + href;
+
             element.appendChild(msg);
+
+            errorCount += result.errors.length;
             progress.setAttribute("aria-invalid", true);
-            recap.innerHTML = "One or more tests failed";
+            recap.innerHTML = errorCount + " of the " + progress.max + " tests failed";
             recap.setAttribute("aria-invalid", true);
         }
 
-        progress.value = 1 + progress.value;
-
-        if (progress.value >= progress.max && progress.attributes["aria-invalid"] === undefined) {
+        if (progress.value === progress.max && progress.attributes["aria-invalid"] === undefined) {
             recap.innerHTML = "All tests ran successfully";
             recap.setAttribute("aria-invalid", false);
         }
+
+        return result.valid;
     }
 
     function cleanUrl(url) {
@@ -52,9 +60,12 @@
     }
 
     function createElement(ul, name, file) {
+        var isDraft = file == "http://json-schema.org/draft-04/schema";
         var a = document.createElement("a");
-        a.innerHTML = file == "http://json-schema.org/draft-04/schema" ? "[schema draft v4]" : cleanUrl(file);
-        a.href = file;
+        a.innerHTML = isDraft ? "[schema draft v4]" : cleanUrl(file);
+        a.href = isDraft ? "schemas/json/_schema.json" : file;
+        a.title = "The '" + a.innerHTML + "' JSON file";
+        a.setAttribute("data-id", file);
         a.setAttribute("aria-describedby", name);
 
         var li = document.createElement("li");
@@ -80,14 +91,16 @@
             var li = createElement(ul, test.name, file);
         }
 
-        get("schemas/json/" + test.name + ".json?" + Math.random(), true, function (data) {
+        get("schemas/json/" + test.name + ".json?" + Math.random(), true, function (data, url) {
 
-            validateSchema(schema, data, hyperSchema);
+            var result = validateSchema(schema, data, hyperSchema);
+            if (!result)
+                return;
 
-            var links = ul.getElementsByTagName("a");
+            var links = ul.getElementsByTagName("li");
 
-            for (var i = 0; i < links.length; i++) {
-                validateFile(links[i].parentNode, data, file);
+            for (var i = 1; i < links.length; i++) {
+                validateFile(links[i], data, links[i].firstChild.attributes["data-id"].value);
             }
         });
 
@@ -107,7 +120,7 @@
         }
     }
 
-    get("test/hyper-schema.json", true, function (data) {
+    get("schemas/json/_schema.json", true, function (data) {
         hyperSchema = data;
         tv4.addSchema("http://json-schema.org/draft-04/schema", data);
     }, true);
@@ -115,12 +128,4 @@
     get("test/tests.json?_=" + Math.random(), true, function (data) {
         setTimeout(function () { setupTests(data) }, 100);
     });
-
-
-
-    //if (document.querySelector("progress[aria-invalid=true]") === null) {
-    //    recap.innerHTML = "All tests ran successfully";
-    //    recap.setAttribute("aria-invalid", false);
-    //}
-    //});
 })();

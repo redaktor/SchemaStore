@@ -26,7 +26,7 @@
         if (select.selectedIndex > 0)
             history.pushState(null, "Schema selected", "#" + select.options[select.selectedIndex].value); //location.hash = select.options[select.selectedIndex].value;
         else
-            history.pushState(null, "Custom schema", "/validator");
+            history.pushState(null, "Custom schema", location.pathname);
 
         loadSchema();
     }
@@ -40,9 +40,10 @@
         }
         else {
             var url = select.options[select.selectedIndex].value;
+            location.hash.substr(1).split("|")[0]
             get("/schemas/json/" + url, false, function (data) {
                 schema.setValue(data);
-                validate();
+                setTimeout(function () { validate(); }, 500);
             });
         }
     }
@@ -82,14 +83,21 @@
                 option.text = schema.name;
                 option.value = schema.url.replace("http://json.schemastore.org/", "");
 
-                if (location.hash === "#" + option.value)
-                    option.selected = "selected";
-
                 select.querySelector("optgroup").appendChild(option);
             }
 
+            selectCurrent();
             loadSchema();
         });
+    }
+
+    function selectCurrent() {
+        for (var i = 0; i < select.options.length; i++) {
+            var option = select.options[i];
+            if (option.value === location.hash.substr(1).split("|")[0]) {
+                option.selected = "selected";
+            }
+        }
     }
 
     function validate() {
@@ -157,27 +165,31 @@
 
     window.onload = function () {
 
-        json.setValue(localStorage.json || "{\n\t\n}");
+        var args = location.hash.substr(1).split("|");
 
-        if (localStorage.toggle === "false")
-            toggleEditor(false);
+        if (args.length === 2) {
+            get("/schemas/json/" + args[0] + "?" + Math.random(), false, function (data) {
+                schema.setValue(data);
+            });
+            var url = args[1].indexOf("/") > -1 ? args[1] : "schemas/json/" + args[1];
+            get(url + "?" + Math.random(), false, function (data) {
+                json.setValue(data);
+            });
+        }
+        else
+            json.setValue(localStorage.json || "{\n\t\n}");
 
         if (location.hash === "")
             toggleEditor(true);
-
+        else if (localStorage.toggle === "false")
+            toggleEditor(false);
+        
         select.onchange = onSelectChange;
         schema.on("change", validate);
         json.on("change", validate);
         toggle.onclick = toggleSchemaEditor;
         window.onpopstate = function () {
-
-            for (var i = 0; i < select.options; i++) {
-                var option = select.options[i];
-                if (option.value === location.hash.substr(1)) {
-                    option.selected = "selected";
-                }
-            }
-
+            selectCurrent();
             loadSchema();
         };
     };
