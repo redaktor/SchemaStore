@@ -1,4 +1,5 @@
-﻿/// <reference path="http://geraintluff.github.io/tv4/tv4.js" />
+﻿/* global ga, tv4 */
+/// <reference path="http://geraintluff.github.io/tv4/tv4.js" />
 /// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 
 (function () {
@@ -43,7 +44,7 @@
         if (index > -1)
             url = url.substring(index + 1);
 
-        var index = url.indexOf("?");
+        index = url.indexOf("?");
 
         if (index > -1) {
             return url.substring(0, index);
@@ -76,7 +77,7 @@
         for (var i = 0; i < results.length; i++) {
             var result = results[i];
 
-            if (result.name != last) {
+            if (result.name !== last) {
                 ul = document.createElement("ul");
                 var cat = document.createElement("li");
                 cat.innerHTML = result.name;
@@ -98,7 +99,7 @@
             li.appendChild(a);
 
             if (!result.valid) {
-                var error = result.errors.map(function (e) { return "<strong>" + e.dataPath + "</strong>: " + e.message }).join("<br />");
+                var error = result.errors.map(function (e) { return "<strong>" + e.dataPath + "</strong>: " + e.message; }).join("<br />");
                 var msg = document.createElement("span");
                 msg.innerHTML = error;
                 li.appendChild(msg);
@@ -132,7 +133,7 @@
             progress.value = 1;
 
             for (var test in data) {
-                if (test === "catalog" || test == "schemas" || test == "options")
+                if (test === "catalog" || test === "schemas" || test === "options")
                     continue;
 
                 var name = test.replace("_", ".");
@@ -145,9 +146,9 @@
 
 (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
+        (i[r].q = i[r].q || []).push(arguments);
     }, i[r].l = 1 * new Date(); a = s.createElement(o),
-    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
 ga('create', 'UA-51110136-1', 'auto');

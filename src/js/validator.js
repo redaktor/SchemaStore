@@ -1,4 +1,5 @@
-﻿/// <reference path="http://geraintluff.github.io/tv4/tv4.js" />
+﻿/* global ga, CodeMirror, tv4 */
+/// <reference path="http://geraintluff.github.io/tv4/tv4.js" />
 /// <reference path="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js" />
 
 (function () {
@@ -17,7 +18,7 @@
     var json = createTextEditor(document.getElementById("json"));
     var toggle = document.getElementById("toggle");
     var output = document.querySelector("output");
-    var header = document.getElementById("jsonheader");
+    var jsonheader = document.getElementById("jsonheader");
     var valid = document.getElementById("valid");
 
     function onSelectChange() {
@@ -62,7 +63,7 @@
         if (visible)
             element.style.visibility = "visible";
         else
-            setTimeout(function () { element.style.visibility = "hidden" }, 1000);
+            setTimeout(function () { element.style.visibility = "hidden"; }, 1000);
     }
 
     function loadSelect() {
@@ -95,7 +96,7 @@
         var jsonValue = json.getValue();
         var schemaValue = schema.getValue();
 
-        if (jsonValue.trim().length == 0 || jsonValue.trim().length == 0)
+        if (jsonValue.trim().length === 0 || jsonValue.trim().length === 0)
             clear();
 
         if (!IsJsonString(jsonValue) || !IsJsonString(schemaValue)) {
@@ -111,7 +112,7 @@
             output.innerHTML = "Congrats! All " + json.getDoc().lineCount() + " lines of JSON validates against the schema";
             output.className = "true";
             jsonheader.className = "true";
-            jsonheader.innerHTML = "No errors found"
+            jsonheader.innerHTML = "No errors found";
         }
         else {
             var errors = "";
@@ -130,7 +131,7 @@
 
             output.innerHTML = errors;
             output.className = "false";
-            jsonheader.innerHTML = "Found " + result.errors.length + " error(s)"
+            jsonheader.innerHTML = "Found " + result.errors.length + " error(s)";
             jsonheader.className = "false";
         }
 
@@ -139,7 +140,7 @@
 
     function clear() {
         jsonheader.className = "";
-        jsonheader.innerHTML = ""
+        jsonheader.innerHTML = "";
         output.className = "";
         output.innerHTML = "";
     }
@@ -179,9 +180,9 @@
 
 (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
+        (i[r].q = i[r].q || []).push(arguments);
     }, i[r].l = 1 * new Date(); a = s.createElement(o),
-    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
 ga('create', 'UA-51110136-1', 'auto');
