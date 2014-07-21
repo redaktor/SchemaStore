@@ -44,8 +44,13 @@ textarea {
     margin-top: -1.9em;
     display: block;
     color: red;
+    text-align: right;
     font-size: .7em;
 }
+
+    .valid:first-letter {
+        text-transform: uppercase;
+    }
 
     .valid[aria-invalid=true] {
         visibility: visible;

@@ -26,8 +26,8 @@
             var msg = document.createElement("a");
             msg.innerHTML = "Show in validator";
 
-            if (href == "schemas/json/_schema.json")
-                msg.href = "/validator.html#_schema|" + element.parentNode.parentNode.id;
+            if (href == "schemas/json/schema-draft-v4.json")
+                msg.href = "/validator.html#schema-draft-v4|" + element.parentNode.parentNode.id;
             else
                 msg.href = "/validator.html#" + element.parentNode.parentNode.id + "|" + href;
 
@@ -53,7 +53,7 @@
         }
     }
 
-    function cleanUrl(url) {
+    function cleanName(url) {
 
         var index = url.lastIndexOf("/");
         url = url.substring(index + 1);
@@ -63,14 +63,14 @@
         if (index > -1)
             url = url.substring(0, index);
 
-        return url.replace(".json", "");
+        return url.replace(".json", "").replace(/-/g, " ");
     }
 
     function createElement(ul, name, file) {
         var isDraft = file == "http://json-schema.org/draft-04/schema";
         var a = document.createElement("a");
-        a.innerHTML = isDraft ? "[schema draft v4]" : cleanUrl(file);
-        a.href = isDraft ? "schemas/json/_schema.json" : file;
+        a.innerHTML = isDraft ? "[schema draft v4]" : cleanName(file);
+        a.href = isDraft ? "schemas/json/schema-draft-v4.json" : file;
         a.title = "The '" + a.innerHTML + "' JSON file";
         a.setAttribute("data-id", file);
         a.setAttribute("aria-describedby", name);
@@ -87,7 +87,7 @@
         ul.setAttribute("role", "group");
 
         var cat = document.createElement("li");
-        cat.innerHTML = test.name
+        cat.innerHTML = cleanName(test.name)
         cat.id = test.name;
         cat.appendChild(ul);
 
@@ -129,7 +129,7 @@
         recap.innerHTML = "Executing tests...";
     }
 
-    get("schemas/json/_schema.json", true, function (data) {
+    get("schemas/json/schema-draft-v4.json", true, function (data) {
         hyperSchema = data;
         tv4.addSchema("http://json-schema.org/draft-04/schema", data);
     }, true);

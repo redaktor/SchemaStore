@@ -15,13 +15,13 @@ module.exports = function (grunt) {
             schemas: {
                 options: {
                     fresh: true,
-                    root: grunt.file.readJSON("schemas/json/_schema.json"),
+                    root: grunt.file.readJSON("schemas/json/schema-draft-v4.json"),
                 },
                 src: ["schemas/json/*.json"]
             },
             options: {
                 schemas: {
-                    "http://json-schema.org/draft-04/schema#": grunt.file.readJSON("schemas/json/_schema.json"),
+                    "http://json-schema.org/draft-04/schema#": grunt.file.readJSON("schemas/json/schema-draft-v4.json"),
                     "http://schemastore.org/schemas/json/jshintrc.json": grunt.file.readJSON("schemas/json/jshintrc.json"),
                     "http://schemastore.org/schemas/json/grunt-task.json": grunt.file.readJSON("schemas/json/grunt-task.json")
                 },
@@ -32,8 +32,16 @@ module.exports = function (grunt) {
     grunt.registerTask("setup", "Dynamically load schema validation based on the files and folders in /test/", function () {
         var fs = require("fs");
         var dir = "test";
+        var schemas = fs.readdirSync("schemas/json");
+
         var folders = fs.readdirSync(dir);
         var tv4 = {};
+
+        schemas.forEach(function (schema) {
+            var name = schema.replace(".json", "")//.replace(".", "_");
+            tv4[name] = {};
+            tv4[name].files = [];
+        });
 
         folders.forEach(function (folder) {
 
@@ -52,7 +60,6 @@ module.exports = function (grunt) {
                 src: files
             });
 
-            tv4[name] = {}
             tv4[name].files = files;
 
             // Write the config to disk so it can be consumed by the browser based test infrastru
