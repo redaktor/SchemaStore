@@ -26,8 +26,10 @@
 		<section>
 			<label for="schemas">Select schema:&nbsp;</label>
 			<select id="schemas" aria-controls="schema">
-				<option>Custom schema</option>
-				<option value="_schema">Schema Draft v4</option>
+				<optgroup label="General">
+					<option>Empty schema</option>
+					<option value="_schema">Schema Draft v4</option>
+				</optgroup>
 				<optgroup label="SchemaStore.org"></optgroup>
 			</select>
 
@@ -35,12 +37,13 @@
 				<a href="#" id="toggle" title="Schema" aria-controls="schema" aria-expanded="true">Hide schema</a>
 			</label>
 			<textarea id="schema" placeholder="Enter or paste your JSON Schema" cols="100" rows="10"></textarea>
+			<span class="valid" id="schemavalid">Invalid syntax</span>
 		</section>
 
 		<section>
 			<label for="json">Input JSON: <span id="jsonheader" aria-live="polite" role="status"></span></label>
 			<textarea id="json" placeholder="Enter or paste the JSON you want to validate against the schema" cols="100" rows="10"></textarea>
-			<span id="valid">Invalid syntax</span>
+			<span class="valid" id="jsonvalid">Invalid syntax</span>
 		</section>
 
 		<output></output>

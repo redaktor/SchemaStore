@@ -19,7 +19,8 @@
     var toggle = document.getElementById("toggle");
     var output = document.querySelector("output");
     var jsonheader = document.getElementById("jsonheader");
-    var valid = document.getElementById("valid");
+    var schemavalid = document.getElementById("schemavalid");
+    var jsonvalid = document.getElementById("jsonvalid");
 
     function onSelectChange() {
 
@@ -34,9 +35,9 @@
     function loadSchema() {
 
         if (select.selectedIndex === 0) {
-            schema.setValue("");
+            schema.setValue("{\n\t\"$schema\": \"http://json-schema.org/draft-04/schema#\"\n\}");
             toggleEditor(true);
-            clear();
+            setTimeout(function () { validate(); }, 100);
         }
         else {
             var url = select.options[select.selectedIndex].value;
@@ -83,7 +84,7 @@
                 option.text = schema.name;
                 option.value = schema.url.replace("http://json.schemastore.org/", "");
 
-                select.querySelector("optgroup").appendChild(option);
+                select.lastChild.appendChild(option);
             }
 
             selectCurrent();
@@ -104,14 +105,14 @@
 
         var jsonValue = json.getValue();
         var schemaValue = schema.getValue();
+        var isSchemaValid = IsJsonString(schemaValue);
+        var isJsonValid = IsJsonString(jsonValue);
 
-        if (jsonValue.trim().length === 0 || jsonValue.trim().length === 0)
-            clear();
+        showSyntaxError(schemavalid, isSchemaValid);
+        showSyntaxError(jsonvalid, isJsonValid);
 
-        if (!IsJsonString(jsonValue) || !IsJsonString(schemaValue)) {
-            valid.setAttribute("aria-invalid", "true");
+        if (isSchemaValid !== true || isJsonValid !== true)
             return;
-        }
 
         localStorage.json = jsonValue;
 
@@ -144,10 +145,22 @@
             jsonheader.className = "false";
         }
 
-        valid.removeAttribute("aria-invalid");
+        jsonvalid.removeAttribute("aria-invalid");
+        schemavalid.removeAttribute("aria-invalid");
     }
 
-    function clear() {
+    function showSyntaxError(element, valid) {
+        if (valid === true)
+            element.removeAttribute("aria-invalid");
+        else {
+            var error = valid.toString();
+            element.setAttribute("aria-invalid", true);
+            element.innerHTML = error.substr(error.lastIndexOf(":") + 1);
+            clearValidation();
+        }
+    }
+
+    function clearValidation() {
         jsonheader.className = "";
         jsonheader.innerHTML = "";
         output.className = "";
@@ -158,7 +171,7 @@
         try {
             JSON.parse(str);
         } catch (e) {
-            return false;
+            return e;
         }
         return true;
     }
@@ -183,7 +196,7 @@
             toggleEditor(true);
         else if (localStorage.toggle === "false")
             toggleEditor(false);
-        
+
         select.onchange = onSelectChange;
         schema.on("change", validate);
         json.on("change", validate);

@@ -39,15 +39,15 @@ textarea {
     text-align: right;
 }
 
-#valid {
+.valid {
     visibility: hidden;
-    margin-top: -1.6em;
+    margin-top: -1.9em;
     display: block;
     color: red;
     font-size: .7em;
 }
 
-    #valid[aria-invalid] {
+    .valid[aria-invalid=true] {
         visibility: visible;
     }
 
