@@ -7,10 +7,10 @@
     var list = document.getElementById("result");
     var recap = document.getElementById("recap");
     var progress = document.querySelector("progress");
-    var hyperSchema, errorCount = 0;
+    var draftV4, errorCount = 0, rnd = Math.random();
 
     function validateFile(element, schema, file) {
-        get("/" + file + "?" + Math.random(), true, function (data) {
+        get("/" + file + "?" + rnd, true, function (data) {
             validateSchema(element, data, schema);
         });
     }
@@ -98,10 +98,9 @@
             var li = createElement(ul, test.name, file);
         }
 
-        get("schemas/json/" + test.name + ".json?" + Math.random(), true, function (data, url) {
+        get("schemas/json/" + test.name + ".json?" + rnd, true, function (data, url) {
 
-
-            if (!validateSchema(schema, data, hyperSchema))
+            if (!validateSchema(schema, data, draftV4))
                 return;
 
             var links = ul.getElementsByTagName("li");
@@ -129,8 +128,8 @@
         recap.innerHTML = "Executing tests...";
     }
 
-    get("schemas/json/schema-draft-v4.json", true, function (data) {
-        hyperSchema = data;
+    get("schemas/json/schema-draft-v4.json?" + rnd, true, function (data) {
+        draftV4 = data;
         tv4.addSchema("http://json-schema.org/draft-04/schema", data);
     }, true);
 
