@@ -64,7 +64,7 @@ ul ul li:before {
     }
 
 #recap {
-    display: inline;
+    margin-bottom: 0;
 }
 
 progress {
@@ -73,10 +73,12 @@ progress {
     color: green;
     border: none;
     height: 15px;
+    border-radius: 2px;
 }
 
     progress::-moz-progress-bar {
         background: green;
+        border-radius: 2px;
     }
 
     progress[aria-invalid=true]::-moz-progress-bar {

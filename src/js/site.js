@@ -2,9 +2,9 @@
 
 (function (global) {
 
-    global.get = function (url, asJson, callback, sync) {
+    global.get = function (url, asJson, callback) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, !sync);
+        xhr.open('GET', url, true);
         xhr.onload = function () {
             if (asJson)
                 callback(JSON.parse(xhr.responseText), url);

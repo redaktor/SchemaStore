@@ -16,9 +16,10 @@
     }
 
     function validateSchema(element, data, schema) {
-        progress.value = 1 + progress.value;
+
         var result = tv4.validateResult(data, schema, true);
         element.setAttribute("aria-invalid", !result.valid);
+        reportProgress();
 
         if (!result.valid) {
             var href = element.firstChild.attributes["href"].value;
@@ -38,14 +39,18 @@
             recap.setAttribute("aria-invalid", true);
         }
 
+        return result.valid;
+    }
+
+    function reportProgress() {
+        progress.value = 1 + progress.value;
+
         if (progress.value === progress.max && progress.attributes["aria-invalid"] === undefined) {
             setTimeout(function () {
                 recap.innerHTML = "All " + progress.max + " tests ran successfully";
                 recap.setAttribute("aria-invalid", false);
             }, 1000);
         }
-
-        return result.valid;
     }
 
     function cleanUrl(url) {
@@ -95,6 +100,7 @@
 
         get("schemas/json/" + test.name + ".json?" + Math.random(), true, function (data, url) {
 
+
             if (!validateSchema(schema, data, hyperSchema))
                 return;
 
@@ -111,7 +117,6 @@
     function setupTests(data) {
 
         var count = (Object.keys(data).length);
-        recap.innerHTML = "Testing " + count + " JSON Schemas...";
         progress.max = count;
 
         for (var test in data) {
@@ -120,6 +125,8 @@
             progress.max += files.length;
             createBlock(data[test]);
         }
+
+        recap.innerHTML = "Executing tests...";
     }
 
     get("schemas/json/_schema.json", true, function (data) {
