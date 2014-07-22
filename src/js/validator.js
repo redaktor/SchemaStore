@@ -21,6 +21,7 @@
     var jsonheader = document.getElementById("jsonheader");
     var schemavalid = document.getElementById("schemavalid");
     var jsonvalid = document.getElementById("jsonvalid");
+    var rnd = Math.random();
 
     function onSelectChange() {
 
@@ -42,7 +43,7 @@
         else {
             var url = select.options[select.selectedIndex].value;
             location.hash.substr(1).split("|")[0]
-            get("/schemas/json/" + url, false, function (data) {
+            get("/schemas/json/" + url + "?" + rnd, false, function (data) {
                 schema.setValue(data);
                 setTimeout(function () { validate(); }, 500);
             });
@@ -70,7 +71,7 @@
     }
 
     function loadSelect() {
-        get("/api/json/catalog.json", true, function (data) {
+        get("/api/json/catalog.json?" + rnd, true, function (data) {
 
             for (var i = 0; i < data.schemas.length; i++) {
 
@@ -84,7 +85,7 @@
                 option.text = schema.name;
                 option.value = schema.url.replace("http://json.schemastore.org/", "");
 
-                select.lastChild.appendChild(option);
+                select.lastElementChild.appendChild(option);
             }
 
             selectCurrent();
@@ -181,11 +182,11 @@
         var args = location.hash.substr(1).split("|");
 
         if (args.length === 2) {
-            get("/schemas/json/" + args[0] + "?" + Math.random(), false, function (data) {
+            get("/schemas/json/" + args[0] + "?" + rnd, false, function (data) {
                 schema.setValue(data);
             });
             var url = args[1].indexOf("/") > -1 ? args[1] : "schemas/json/" + args[1];
-            get(url + "?" + Math.random(), false, function (data) {
+            get(url + "?" + rnd, false, function (data) {
                 json.setValue(data);
             });
         }

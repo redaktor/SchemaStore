@@ -1,7 +1,8 @@
-
+/// <vs AfterBuild='default' SolutionOpened='watch' />
 module.exports = function (grunt) {
     "use strict";
 
+    grunt.file.preserveBOM = false;
     grunt.initConfig({
 
         tv4: {
@@ -25,6 +26,20 @@ module.exports = function (grunt) {
                     "http://schemastore.org/schemas/json/jshintrc.json": grunt.file.readJSON("schemas/json/jshintrc.json"),
                     "http://schemastore.org/schemas/json/grunt-task.json": grunt.file.readJSON("schemas/json/grunt-task.json")
                 },
+            }
+        },
+
+        watch: {
+            tv4: {
+                files: ["test/**/*.json", "schemas/json/*.json", "api/json/*.json"],
+                tasks: ["default"]
+            },
+            gruntfile: {
+                files: "gruntfile.js"
+            },
+            options: {
+                swawn: false,
+                event: ["changed"]
             }
         }
     });
@@ -63,11 +78,12 @@ module.exports = function (grunt) {
             tv4[name].files = files;
 
             // Write the config to disk so it can be consumed by the browser based test infrastru
-            fs.writeFile("test/tests.json", JSON.stringify(tv4));
+            fs.writeFileSync("test/tests.json", JSON.stringify(tv4));
         });
     });
 
     grunt.loadNpmTasks("grunt-tv4");
+    grunt.loadNpmTasks("grunt-contrib-watch");
 
     grunt.registerTask("default", ["setup", "tv4"]);
 };

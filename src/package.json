@@ -12,8 +12,9 @@
 		"type": "git",
 		"url": "https://github.com/madskristensen/SchemaStore"
 	},
-    "devDependencies": {
-        "grunt": "~0.4.4",
-        "grunt-tv4": "0.4.0"
-    }
+	"devDependencies": {
+		"grunt": "~0.4.4",
+		"grunt-contrib-watch": "^0.6.1",
+		"grunt-tv4": "0.4.0"
+	}
 }
