@@ -21,7 +21,7 @@
     var jsonheader = document.getElementById("jsonheader");
     var schemavalid = document.getElementById("schemavalid");
     var jsonvalid = document.getElementById("jsonvalid");
-    var rnd = Math.random();
+    var rnd = new Date().getDate();
 
     function onSelectChange() {
 

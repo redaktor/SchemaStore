@@ -1,4 +1,4 @@
-﻿{
+{
   "default": {
     "files": {
       "css/mybundle.css": [ "css/1.css", "css/2.css" ]
