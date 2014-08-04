@@ -91,6 +91,7 @@ header, #main {
             background: #f1f1f1;
             padding: .6em;
             border: 1px solid silver;
+            -webkit-border-radius: 5px;
             border-radius: 5px;
             line-height: normal;
         }
@@ -120,9 +121,11 @@ header, #main {
 
     #schemalist ul {
         -moz-column-width: 300px;
+        -ms-column-width: 300px;
         -webkit-column-width: 300px;
         column-width: 300px;
         -moz-column-gap: 1em;
+        -ms-column-gap: 1em;
         -webkit-column-gap: 1em;
         column-gap: 1em;
         padding: 0;
