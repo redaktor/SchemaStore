@@ -1,9 +1,13 @@
 ﻿body {
     font: 14pt/1.5 'Century Gothic', Verdana, Geneva, 'DejaVu Sans', sans-serif;
     margin: 0;
+    -webkit-text-size-adjust: 120%;
     -ms-text-size-adjust: 120%;
+    text-size-adjust: 120%;
     background: white;
     color: #333;
+    -ms-touch-action: auto;
+    touch-action: auto;
 }
 
 h1 {
