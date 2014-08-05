@@ -31,11 +31,17 @@
             "fileMatch": [ "component.json" ],
             "url": "http://json.schemastore.org/component"
         },
-        {
-            "name": "config.json",
-            "description": "ASP.NET project config file",
-            "fileMatch": [ "config.json" ],
-            "url": "http://json.schemastore.org/config"
+		{
+			"name": "config.json",
+			"description": "ASP.NET project config file",
+			"fileMatch": [ "config.json" ],
+			"url": "http://json.schemastore.org/config"
+		},
+		{
+            "name": "epr-manifest.json",
+            "description": "Entry Point Regulation manifest file",
+            "fileMatch": [ "epr-manifest.json" ],
+            "url": "http://json.schemastore.org/epr-manifest"
         },
         {
             "name": "global.json",
