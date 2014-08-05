@@ -1,4 +1,4 @@
-﻿{
+{
 	"site": "https://[Your EPR-enabled website]",
 	"maxAge": 31536000,
 	"reportUrl": "https://[Report URL]",
