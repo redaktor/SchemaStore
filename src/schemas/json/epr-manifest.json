@@ -6,9 +6,9 @@
 	"required": [ "rules" ],
 
 	"definitions": {
-		"behaviors": {
+		"behavior": {
 			"type": "string",
-			"enum": [ "block" ]
+			"enum": [ "block", "allow", "noAuth" ]
 		},
 		"rule": {
 			"type": "object",
@@ -25,7 +25,7 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"enum": [ "navigation", "image" ]
+						"enum": [ "navigation", "image", "stylesheet", "script", "xhr", "other" ]
 					}
 				},
 				"allowData": {
@@ -51,10 +51,10 @@
 			"format": "uri"
 		},
 		"defaultNavBehavior": {
-			"$ref": "#/definitions/behaviors"
+			"$ref": "#/definitions/behavior"
 		},
 		"defaultResBehavior": {
-			"$ref": "#/definitions/behaviors"
+			"$ref": "#/definitions/behavior"
 		},
 		"rules": {
 			"type": "array",
