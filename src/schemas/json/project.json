@@ -41,8 +41,7 @@
 				"minLength": 1,
 				"properties": {
 					"version": {
-						"type": "string",
-						"minLength": 1
+						"type": "string"
 					},
 					"type": {
 						"type": "string",
