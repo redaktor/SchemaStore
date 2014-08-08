@@ -9,7 +9,7 @@
 	"commands": {
 		"web": "Microsoft.AspNet.Hosting server=Microsoft.AspNet.Server.WebListener server.urls=http://localhost:5001"
 	},
-	"configurations": {
+	"frameworks": {
 		"foo": {
 			"dependencies": {
 				"System.Runtime": "1.0.0.0",

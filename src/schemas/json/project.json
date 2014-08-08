@@ -31,6 +31,10 @@
 					"type": "string",
 					"enum": [ "full", "pdbOnly" ],
 					"default": "full"
+				},
+				"languageVersion": {
+					"type": "string",
+					"enum": [ "csharp1", "csharp2", "csharp3", "csharp4", "csharp5", "csharp6", "experimental" ]
 				}
 			}
 		},
@@ -74,7 +78,6 @@
 	"properties": {
 		"compilationOptions": { "$ref": "#/definitions/compilationOptions" },
 		"dependencies": { "$ref": "#/definitions/dependencies" },
-		"configurations": { "$ref": "#/definitions/configurations" },
 		"frameworks": { "$ref": "#/definitions/configurations" },
 		"description": {
 			"description": "The description of the application",
@@ -131,7 +134,8 @@
 				"prepack": { "$ref": "#/definitions/script" },
 				"postpack": { "$ref": "#/definitions/script" },
 				"prerestore": { "$ref": "#/definitions/script" },
-				"postrestore": { "$ref": "#/definitions/script" }
+				"postrestore": { "$ref": "#/definitions/script" },
+				"prepare": { "$ref": "#/definitions/script" }
 			}
 		}
 	}
