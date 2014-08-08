@@ -38,6 +38,13 @@
 				}
 			}
 		},
+		"configType": {
+			"type": "object",
+			"properties": {
+				"dependencies": { "$ref": "#/definitions/dependencies" },
+				"compilationOptions": { "$ref": "#/definitions/compilationOptions" }
+			}
+		},
 		"dependencies": {
 			"type": "object",
 			"additionalProperties": {
@@ -54,21 +61,6 @@
 				}
 			}
 		},
-		"configType": {
-			"type": "object",
-			"properties": {
-				"dependencies": { "$ref": "#/definitions/dependencies" },
-				"compilationOptions": { "$ref": "#/definitions/compilationOptions" }
-			}
-		},
-		"configurations": {
-			"type": "object",
-			"additionalProperties": { "$ref": "#/definitions/configType" },
-			"properties": {
-				"net451": { "$ref": "#/definitions/configType" },
-				"k10": { "$ref": "#/definitions/configType" }
-			}
-		},
 		"script": {
 			"type": "string",
 			"description": "A command line script.\r\rAvailable variables:\r%project:Directory% - The project directory\r%project:Name% - The project name\r%project:Version% - The project version"
@@ -76,17 +68,6 @@
 	},
 
 	"properties": {
-		"compilationOptions": { "$ref": "#/definitions/compilationOptions" },
-		"dependencies": { "$ref": "#/definitions/dependencies" },
-		"frameworks": { "$ref": "#/definitions/configurations" },
-		"description": {
-			"description": "The description of the application",
-			"type": "string"
-		},
-		"version": {
-			"description": "The version of the application. Example: 1.2.0.0",
-			"type": "string"
-		},
 		"authors": {
 			"type": "array",
 			"items": {
@@ -99,15 +80,36 @@
 			"type": "string",
 			"default": "**\\*.cs"
 		},
-		"shared": {
-			"description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
-			"type": "string",
-			"default": "Compiler\\Shared\\**\\*.cs"
+		"commands": {
+			"type": "object",
+			"additionalProperties": {
+				"type": "string"
+			}
+		},
+		"compilationOptions": { "$ref": "#/definitions/compilationOptions" },
+		"configurations": {
+			"type": "object",
+			"description": "Specify separate configuration options",
+			"additionalProperties": {
+				"type": "object",
+				"properties": {
+					"compilationOptions": { "$ref": "#/definitions/compilationOptions" }
+				}
+			}
+		},
+		"dependencies": { "$ref": "#/definitions/dependencies" },
+		"description": {
+			"description": "The description of the application",
+			"type": "string"
 		},
 		"exclude": {
 			"description": "RegEx pattern to indicate all the code files to be excluded from compilation. (data type: semicolon separated RegEx pattern(s)).",
 			"type": "string",
 			"default": ""
+		},
+		"frameworks": {
+			"type": "object",
+			"additionalProperties": { "$ref": "#/definitions/configType" }
 		},
 		"preprocess": {
 			"description": "RegEx pattern to indicate all the code files to be preprocessed. (data type: semicolon separated RegEx pattern(s)).",
@@ -118,12 +120,6 @@
 			"description": "RegEx pattern to indicate all the files that needs to be compiled as resources. (data type: semicolon separated RegEx pattern(s)).",
 			"type": "string",
 			"default": "Compiler\\Resources\\**\\*.cs"
-		},
-		"commands": {
-			"type": "object",
-			"additionalProperties": {
-				"type": "string"
-			}
 		},
 		"scripts": {
 			"type": "object",
@@ -137,6 +133,15 @@
 				"postrestore": { "$ref": "#/definitions/script" },
 				"prepare": { "$ref": "#/definitions/script" }
 			}
+		},
+		"shared": {
+			"description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
+			"type": "string",
+			"default": "Compiler\\Shared\\**\\*.cs"
+		},
+		"version": {
+			"description": "The version of the application. Example: 1.2.0.0",
+			"type": "string"
 		}
 	}
 }
