@@ -38,7 +38,6 @@
 			"type": "object",
 			"additionalProperties": {
 				"type": [ "string", "object" ],
-				"minLength": 1,
 				"properties": {
 					"version": {
 						"type": "string"
@@ -54,43 +53,29 @@
 		"configType": {
 			"type": "object",
 			"properties": {
-				"dependencies": {
-					"$ref": "#/definitions/dependencies"
-				},
-				"compilationOptions": {
-					"$ref": "#/definitions/compilationOptions"
-				}
+				"dependencies": { "$ref": "#/definitions/dependencies" },
+				"compilationOptions": { "$ref": "#/definitions/compilationOptions" }
 			}
 		},
 		"configurations": {
 			"type": "object",
-			"additionalProperties": {
-				"$ref": "#/definitions/configType"
-			},
+			"additionalProperties": { "$ref": "#/definitions/configType" },
 			"properties": {
-				"net451": {
-					"$ref": "#/definitions/configType"
-				},
-				"k10": {
-					"$ref": "#/definitions/configType"
-				}
+				"net451": { "$ref": "#/definitions/configType" },
+				"k10": { "$ref": "#/definitions/configType" }
 			}
+		},
+		"script": {
+			"type": "string",
+			"description": "A command line script.\r\rAvailable variables:\r%project:Directory% - The project directory\r%project:Name% - The project name\r%project:Version% - The project version"
 		}
 	},
 
 	"properties": {
-		"compilationOptions": {
-			"$ref": "#/definitions/compilationOptions"
-		},
-		"dependencies": {
-			"$ref": "#/definitions/dependencies"
-		},
-		"configurations": {
-			"$ref": "#/definitions/configurations"
-		},
-		"frameworks": {
-			"$ref": "#/definitions/configurations"
-		},
+		"compilationOptions": { "$ref": "#/definitions/compilationOptions" },
+		"dependencies": { "$ref": "#/definitions/dependencies" },
+		"configurations": { "$ref": "#/definitions/configurations" },
+		"frameworks": { "$ref": "#/definitions/configurations" },
 		"description": {
 			"description": "The description of the application",
 			"type": "string"
@@ -135,6 +120,18 @@
 			"type": "object",
 			"additionalProperties": {
 				"type": "string"
+			}
+		},
+		"scripts": {
+			"type": "object",
+			"description": "Scripts to execute during the various stages.",
+			"properties": {
+				"prebuild": { "$ref": "#/definitions/script" },
+				"postbuild": { "$ref": "#/definitions/script" },
+				"prepack": { "$ref": "#/definitions/script" },
+				"postpack": { "$ref": "#/definitions/script" },
+				"prerestore": { "$ref": "#/definitions/script" },
+				"postrestore": { "$ref": "#/definitions/script" }
 			}
 		}
 	}
