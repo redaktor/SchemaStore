@@ -23,8 +23,8 @@ module.exports = function (grunt) {
             options: {
                 schemas: {
                     "http://json-schema.org/draft-04/schema#": grunt.file.readJSON("schemas/json/schema-draft-v4.json"),
-                    "http://schemastore.org/schemas/json/jshintrc.json": grunt.file.readJSON("schemas/json/jshintrc.json"),
-                    "http://schemastore.org/schemas/json/grunt-task.json": grunt.file.readJSON("schemas/json/grunt-task.json")
+                    "http://json.schemastore.org/jshintrc": grunt.file.readJSON("schemas/json/jshintrc.json"),
+                    "http://json.schemastore.org/grunt-task": grunt.file.readJSON("schemas/json/grunt-task.json")
                 },
             }
         },

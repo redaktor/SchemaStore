@@ -8,7 +8,7 @@
 		"options": {
 			"description": "Set the options for JSHint",
 			"anyOf": [
-				{ "$ref": "http://schemastore.org/schemas/json/jshintrc.json#" },
+				{ "$ref": "http://json.schemastore.org/jshintrc#" },
 				{
 					"type": "object",
 					"properties": {
@@ -31,7 +31,7 @@
 
 	"additionalProperties": {
 		"allOf": [
-			{ "$ref": "http://schemastore.org/schemas/json/grunt-task.json" },
+			{ "$ref": "http://json.schemastore.org/grunt-task#" },
 			{
 				"type": "object",
 				"properties": {

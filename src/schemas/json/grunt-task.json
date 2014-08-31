@@ -65,7 +65,6 @@
 			}
 		},
 		"fileFormat": {
-			"additionalProperties": false,
 			"properties": {
 				"files": {
 					"oneOf": [
@@ -89,9 +88,6 @@
 					]
 				}
 			}
-		},
-		"task": {
-			"$ref": "#/definitions/fileFormat"
 		}
 	},
 
@@ -103,7 +99,7 @@
 
 	"additionalProperties": {
 		"oneOf": [
-			{ "$ref": "#/definitions/task" },
+			{ "$ref": "#/definitions/fileFormat" },
 			{ "$ref": "#/definitions/dynamic" }
 		]
 	}
