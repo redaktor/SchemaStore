@@ -183,6 +183,11 @@
 			"description": "Azure Webjobs publish settings file",
 			"fileMatch": [ "webjobpublishsettings.json" ],
 			"url": "http://json.schemastore.org/webjob-publish-settings"
+		},
+		{
+			"name": "contribute.json",
+			"description": "A JSON schema for open-source project contribution data by Mozilla",
+			"url": "https://raw.githubusercontent.com/mozilla/contribute.json/master/schema.json"
 		}
 	]
 }
