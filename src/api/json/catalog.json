@@ -14,6 +14,12 @@
 			"url": "http://json.schemastore.org/bowerrc"
 		},
 		{
+			"name": "chutzpah.json",
+			"description": "Chutzpah configuration file",
+			"fileMatch": [ "chutzpah.json" ],
+			"url": "http://json.schemastore.org/chutzpah"
+		},
+		{
 			"name": "coffeelint.json",
 			"description": "CoffeeLint configuration file",
 			"fileMatch": [ "coffeelint.json" ],

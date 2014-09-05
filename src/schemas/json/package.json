@@ -14,10 +14,12 @@
 					"type": "string"
 				},
 				"url": {
-					"type": "string"
+					"type": "string",
+					"format": "uri"
 				},
 				"email": {
-					"type": "string"
+					"type": "string",
+					"format": "email"
 				}
 			}
 		},
@@ -58,7 +60,8 @@
 			"properties": {
 				"url": {
 					"type": "string",
-					"description": "The url to your project's issue tracker."
+					"description": "The url to your project's issue tracker.",
+					"format": "uri"
 				},
 				"email": {
 					"type": "string",
@@ -80,7 +83,7 @@
 					},
 					"url": {
 						"type": "string",
-						"format": "url"
+						"format": "uri"
 					}
 				}
 			}
