@@ -91,6 +91,10 @@
 					"description": "Disallows access to the constructors of String, Number and Boolean",
 					"type": "boolean"
 				},
+				"no-constructor-vars": {
+					"description": "Disallows the `public` and `private` modifiers for constructor parameters",
+					"type": "boolean"
+				},
 				"no-debugger": {
 					"description": "Disallows debugger statements",
 					"type": "boolean"
