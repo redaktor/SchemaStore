@@ -118,6 +118,14 @@
 			"type": "object",
 			"additionalProperties": { "$ref": "#/definitions/configType" }
 		},
+		"pack-exclude": {
+			"description": "List of files to exclude from publish output (kpm pack).",
+			"type": [ "string", "array" ],
+			"items": {
+				"type": "string"
+			},
+			"default": ""
+		},
 		"preprocess": {
 			"description": "RegEx pattern to indicate all the code files to be preprocessed. (data type: semicolon separated RegEx pattern(s)).",
 			"type": "string",
