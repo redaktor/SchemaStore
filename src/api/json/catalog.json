@@ -170,8 +170,8 @@
 			"url": "https://raw.githubusercontent.com/wordnik/swagger-spec/master/schemas/v1.2/apiDeclaration.json"
 		},
 		{
-			"name": "Swagger API 2.0 (alpha)",
-			"description": "Swagger API 2.0  schema",
+			"name": "Swagger API 2.0",
+			"description": "Swagger API 2.0 schema",
 			"url": "http://json.schemastore.org/swagger-2.0"
 		},
 		{
