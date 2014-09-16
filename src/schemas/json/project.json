@@ -78,7 +78,10 @@
 		},
 		"code": {
 			"description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
-			"type": "string",
+			"type": [ "string", "array" ],
+			"items": {
+				"type": "string"
+			},
 			"default": "**\\*.cs"
 		},
 		"commands": {
@@ -105,7 +108,10 @@
 		},
 		"exclude": {
 			"description": "RegEx pattern to indicate all the code files to be excluded from compilation. (data type: semicolon separated RegEx pattern(s)).",
-			"type": "string",
+			"type": [ "string", "array" ],
+			"items": {
+				"type": "string"
+			},
 			"default": ""
 		},
 		"frameworks": {
@@ -119,7 +125,10 @@
 		},
 		"resources": {
 			"description": "RegEx pattern to indicate all the files that needs to be compiled as resources. (data type: semicolon separated RegEx pattern(s)).",
-			"type": "string",
+			"type": [ "string", "array" ],
+			"items": {
+				"type": "string"
+			},
 			"default": "Compiler\\Resources\\**\\*.cs"
 		},
 		"scripts": {
@@ -137,11 +146,18 @@
 		},
 		"shared": {
 			"description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
-			"type": "string",
+			"type": [ "string", "array" ],
+			"items": {
+				"type": "string"
+			},
 			"default": "Compiler\\Shared\\**\\*.cs"
 		},
 		"version": {
 			"description": "The version of the application. Example: 1.2.0.0",
+			"type": "string"
+		},
+		"webroot": {
+			"description": "Specifying the webroot property in the project.json file specifies the web server root (aka public folder). In visual studio, this folder will be used to root IIS. Static files should be put in here.",
 			"type": "string"
 		}
 	}
