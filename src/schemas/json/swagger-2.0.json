@@ -4,7 +4,7 @@
 
 	"type": "object",
 	"required": [ "swagger", "info", "paths" ],
-	"additionalProperties": false,
+
 	"patternProperties": {
 		"^x-": {
 			"$ref": "#/definitions/vendorExtension"
