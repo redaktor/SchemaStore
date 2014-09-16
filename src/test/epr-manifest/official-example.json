@@ -1,7 +1,9 @@
 {
-	"site": "https://[Your EPR-enabled website]",
+	"$schema": "http://json.schemastore.org/epr-manifest",
+
+	"site": "https://eample.com",
 	"maxAge": 31536000,
-	"reportUrl": "https://[Report URL]",
+	"reportUrl": "https://example.com",
 	"defaultNavBehavior": "block",
 	"defaultResBehavior": "block",
 	"rules": [

@@ -3,6 +3,7 @@
 	"title": "JSON schema for component.json files",
 
 	"type": "object",
+	"additionalProperties": true,
 
 	"properties": {
 		"private": {

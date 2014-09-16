@@ -1,3 +1,5 @@
 {
-    "sources": []
+	"$schema": "http://json.schemastore.org/global",
+
+	"sources": [ ]
 }

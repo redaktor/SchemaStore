@@ -1,3 +1,5 @@
 {
-    "sources": ["/foo/bar.baz"]
+	"$schema": "http://json.schemastore.org/global",
+
+	"sources": [ "/foo/bar.baz" ]
 }

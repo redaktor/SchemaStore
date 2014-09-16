@@ -1,10 +1,12 @@
 {
-    "directory": "public/bower",
-    "json": "bower.json",
-    "storage": {
-        "cache": ".bower-cache",
-        "registry": ".bower-registry"
-    },
+	"$schema": "http://json.schemastore.org/bowerrc",
 
-    "tmp": ".bower-tmp"
+	"directory": "public/bower",
+	"json": "bower.json",
+	"storage": {
+		"cache": ".bower-cache",
+		"registry": ".bower-registry"
+	},
+
+	"tmp": ".bower-tmp"
 }

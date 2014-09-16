@@ -1,4 +1,6 @@
-﻿{
+{
+	"$schema": "http://json.schemastore.org/host-meta",
+
 	"subject": "http://blog.example.com/article/id/314",
 	"expires": "2010-01-30T09:30:00Z",
 
@@ -34,7 +36,7 @@
 		},
 		{
 			"rel": "copyright",
-			"template": "http://example.com/copyright?id={uri}"
+			"template": "http://example.com/copyright?id=uri"
 		}
 	]
 }
