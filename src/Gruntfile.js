@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 
             schemas: {
                 options: {
-                    fresh: true,
+                    banUnknown: false,
                     root: grunt.file.readJSON("schemas/json/schema-draft-v4.json"),
                 },
                 src: ["schemas/json/*.json"]
@@ -70,7 +70,8 @@ module.exports = function (grunt) {
 
             grunt.config.set("tv4." + folder, {
                 options: {
-                    root: schema
+                    root: schema,
+                    banUnknown: false
                 },
                 src: files
             });
