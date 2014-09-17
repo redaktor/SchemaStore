@@ -112,7 +112,7 @@
 			"items": {
 				"type": "string"
 			},
-			"default": ""
+			"default": [ "bin/**/*.*", "obj/**/*.*" ]
 		},
 		"frameworks": {
 			"type": "object",
