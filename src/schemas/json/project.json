@@ -28,11 +28,6 @@
 					"type": "boolean",
 					"default": false
 				},
-				"debugSymbols": {
-					"type": "string",
-					"enum": [ "full", "pdbOnly" ],
-					"default": "full"
-				},
 				"languageVersion": {
 					"type": "string",
 					"enum": [ "csharp1", "csharp2", "csharp3", "csharp4", "csharp5", "csharp6", "experimental" ]
