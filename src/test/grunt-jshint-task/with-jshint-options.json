@@ -2,8 +2,7 @@
 	"default": {
 		"src": [ "scripts/**/*.js" ],
 		"options": {
-			"asi": false,
-			"jshintrc": true
+			"asi": false
 		}
 	},
 	"options": {
