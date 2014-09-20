@@ -1,0 +1,10 @@
+{
+	"foo": [ "" ],
+	"main": {
+		"src": [ "path1/", "path2/" ]
+	},
+	"options": {
+		"force": true,
+		"no-write": true
+	}
+}

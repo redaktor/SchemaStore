@@ -70,6 +70,12 @@
 			"url": "http://json.schemastore.org/grunt-copy-task"
 		},
 		{
+			"name": "Grunt clean task",
+			"description": "Grunt clean task configuration file",
+			"fileMatch": [ "clean.json" ],
+			"url": "http://json.schemastore.org/grunt-clean-task"
+		},
+		{
 			"name": "Grunt cssmin task",
 			"description": "Grunt cssmin task configuration file",
 			"fileMatch": [ "cssmin.json" ],
