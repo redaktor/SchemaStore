@@ -1,7 +1,8 @@
 {
-	"foo": [ "" ],
+	"foo": [ "path" ],
 	"main": {
-		"src": [ "path1/", "path2/" ]
+		"files": { },
+		"src": [ "path" ]
 	},
 	"options": {
 		"force": true,

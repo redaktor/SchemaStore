@@ -8,9 +8,9 @@
 		"options": {
 			"description": "Set the options for JSHint",
 			"anyOf": [
-				{ "$ref": "http://json.schemastore.org/jshintrc#" },
 				{
 					"type": "object",
+					"additionalProperties": false,
 					"properties": {
 						"jshintrc": {
 							"description": "Either a boolean value or a string containing the file name of the jshintrc file.",
@@ -18,7 +18,8 @@
 							"enum": [ true ]
 						}
 					}
-				}
+				},
+				{ "$ref": "http://json.schemastore.org/jshintrc#" }
 			]
 		}
 	},
@@ -30,8 +31,9 @@
 	},
 
 	"additionalProperties": {
-		"allOf": [
-			{ "$ref": "http://json.schemastore.org/grunt-task#" },
+		"anyOf": [
+			{ "$ref": "http://json.schemastore.org/grunt-task#/definitions/fileFormat" },
+			{ "$ref": "http://json.schemastore.org/grunt-task#/definitions/dynamic" },
 			{
 				"type": "object",
 				"properties": {

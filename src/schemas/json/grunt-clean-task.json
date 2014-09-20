@@ -31,7 +31,8 @@
 
 	"additionalProperties": {
 		"anyOf": [
-			{ "$ref": "http://json.schemastore.org/grunt-task#/additionalProperties" },
+			{ "$ref": "http://json.schemastore.org/grunt-task#/definitions/fileFormat" },
+			{ "$ref": "http://json.schemastore.org/grunt-task#/definitions/dynamic" },
 			{
 				"type": "object",
 				"properties": {

@@ -58,7 +58,9 @@
 					"description": "Pattern(s) to match, relative to the 'cwd'.",
 					"type": "array",
 					"items": {
-						"type": "string"
+						"type": "string",
+						"minLength": 1,
+						"uniqueItems": true
 					}
 				}
 			}
@@ -97,7 +99,7 @@
 	},
 
 	"additionalProperties": {
-		"oneOf": [
+		"anyOf": [
 			{ "$ref": "#/definitions/fileFormat" },
 			{ "$ref": "#/definitions/dynamic" }
 		]
