@@ -38,7 +38,7 @@ module.exports = function (grunt) {
                 files: "gruntfile.js"
             },
             options: {
-                swawn: false,
+                spawn: false,
                 event: ["changed"]
             }
         }
