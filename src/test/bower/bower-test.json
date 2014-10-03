@@ -9,6 +9,11 @@
 	],
 	"license": "MIT",
 	"private": false,
+	"exportsOverride": {
+		"jquery": {
+			"js/lib": "**/*.js"
+		}
+	},
 	"ignore": [
 		"**/.*",
 		"node_modules",

@@ -94,6 +94,16 @@
 		"private": {
 			"description": "If you set it to  true  it will refuse to publish it. This is a way to prevent accidental publication of private repositories.",
 			"type": "boolean"
+		},
+		"exportsOverride": {
+			"description": "Used by grunt-bower-task to specify custom install locations.",
+			"type": "object",
+			"additionalProperties": {
+				"type": "object",
+				"additionalProperties": {
+					"type": "string"
+				}
+			}
 		}
 	}
 }
