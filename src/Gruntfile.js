@@ -1,4 +1,4 @@
-/// <vs AfterBuild='default' SolutionOpened='watch' />
+
 module.exports = function (grunt) {
     "use strict";
 
