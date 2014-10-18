@@ -9,11 +9,16 @@
 			"fileMatch": [ "bower.json", ".bower.json" ],
 			"url": "http://json.schemastore.org/bower"
 		},
-		{
-			"name": ".bowerrc",
-			"description": "Bower configuration file",
-			"fileMatch": [ ".bowerrc" ],
-			"url": "http://json.schemastore.org/bowerrc"
+        {
+            "name": ".bowerrc",
+            "description": "Bower configuration file",
+            "fileMatch": [ ".bowerrc" ],
+            "url": "http://json.schemastore.org/bowerrc"
+        },
+        {
+			"name": "Chrome Extension",
+			"description": "Google Chrome extension manifest file",
+			"url": "http://json.schemastore.org/manifest"
 		},
 		{
 			"name": "chutzpah.json",
@@ -122,11 +127,6 @@
 			"description": "JSON Linked Data files",
 			"fileMatch": [ "*.jsonld" ],
 			"url": "http://json.schemastore.org/jsonld"
-		},
-		{
-			"name": "chrome-manifest.json",
-			"description": "Google Chrome extension manifest file",
-			"url": "http://json.schemastore.org/manifest"
 		},
 		{
 			"name": "package.json",
