@@ -1,3 +1,4 @@
+/// <binding SolutionOpened='watch' />
 
 module.exports = function (grunt) {
     "use strict";
