@@ -3,7 +3,6 @@
 	"$schema": "http://json-schema.org/draft-04/schema#",
 
 	"type": "object",
-	"required": [ "name" ],
 
 	"properties": {
 		"name": {
@@ -38,7 +37,6 @@
 	"definitions": {
 		"icon": {
 			"type": "object",
-			"required": [ "src" ],
 			"properties": {
 				"density": {
 					"description": "The density member of an icon is the device pixel density for which this icon was designed.",
