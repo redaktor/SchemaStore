@@ -116,7 +116,7 @@
 			"type": "object",
 			"additionalProperties": { "$ref": "#/definitions/configType" }
 		},
-		"pack-exclude": {
+		"packExclude": {
 			"description": "List of files to exclude from publish output (kpm pack).",
 			"type": [ "string", "array" ],
 			"items": {
