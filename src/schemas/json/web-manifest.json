@@ -46,7 +46,16 @@
 					"default": 1.0
 				},
 				"sizes": {
-					"$ref": "#/definitions/size"
+					"description": "The sizes member is a string consisting of an unordered set of unique space-separated tokens which are ASCII case-insensitive that represents the dimensions of an icon for visual media.",
+					"oneOf": [
+						{
+							"type": "string",
+							"pattern": "^[0-9 x]+$"
+						},
+						{
+							"enum": [ "any" ]
+						}
+					]
 				},
 				"src": {
 					"description": "The src member of an icon is a URL from which a user agent can fetch the icon's data.",
@@ -59,18 +68,6 @@
 					"pattern": "^[\\sa-z0-9\\-+;\\.=\\/]+$"
 				}
 			}
-		},
-		"size": {
-			"description": "The sizes member is a string consisting of an unordered set of unique space-separated tokens which are ASCII case-insensitive that represents the dimensions of an icon for visual media.",
-			"oneOf": [
-				{
-					"type": "string",
-					"pattern": "^([0-9 x]+)$"
-				},
-				{
-					"enum": [ "any" ]
-				}
-			]
 		}
 	}
 }
