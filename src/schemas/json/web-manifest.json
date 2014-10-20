@@ -30,6 +30,7 @@
 			"enum": [ "any", "natural", "landscape", "portrait", "portrait-primary", "portrait-secondary", "landscape-primary", "landscape-secondary" ]
 		},
 		"start_url": {
+			"description": "Represents the URL that the developer would prefer the user agent load when the user launches the web application.",
 			"type": "string",
 			"format": "uri"
 		}
@@ -60,11 +61,15 @@
 			}
 		},
 		"size": {
-			"description": "The sizes member is a string consisting of an  unordered set of unique space-separated tokens which are  ASCII case-insensitive that represents the dimensions of an icon for visual media.",
-			"type": "string",
+			"description": "The sizes member is a string consisting of an unordered set of unique space-separated tokens which are ASCII case-insensitive that represents the dimensions of an icon for visual media.",
 			"oneOf": [
-				{ "pattern": "^([\\d x]+)$" },
-				{ "enum": [ "any" ] }
+				{
+					"type": "string",
+					"pattern": "^([0-9 x]+)$"
+				},
+				{
+					"enum": [ "any" ]
+				}
 			]
 		}
 	}
