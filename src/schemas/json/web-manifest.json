@@ -37,7 +37,7 @@
 
 	"patternProperties": {
 		".+_.+": {
-			"description": "Vendor extensions must follow the pattern 'vendor_feature'."
+			"description": "Vendor extensions are recommended to follow the pattern 'vendor_feature'."
 		}
 	},
 
