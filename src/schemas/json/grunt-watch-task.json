@@ -9,12 +9,18 @@
 			"required": [ "files" ],
 			"properties": {
 				"files": {
-					"type": [ "string", "array" ],
-					"description": "One or more files to watch."
+					"type": "array",
+					"description": "One or more files to watch.",
+					"items": {
+						"type": "string"
+					}
 				},
 				"tasks": {
-					"type": [ "string", "array" ],
-					"description": "One or more tasks to run."
+					"type": "array",
+					"description": "One or more tasks to run.",
+					"items": {
+						"type": "string"
+					}
 				},
 				"options": {
 					"$ref": "#/definitions/options"
