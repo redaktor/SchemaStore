@@ -160,3 +160,10 @@ footer {
             display: inline-block;
             margin: 0 10px;
         }
+
+@media print {
+    header aside,
+    footer {
+        display: none;
+    }
+}
