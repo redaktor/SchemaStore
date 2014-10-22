@@ -158,8 +158,20 @@ footer {
 
         footer ul li {
             display: inline-block;
-            margin: 0 15px;
+            margin: 0 10px;
         }
+
+@media only screen and (max-width : 800px) {
+    @-ms-viewport {
+        width: 700px;
+    }
+}
+
+@media only screen and (min-width : 800px) {
+    @-ms-viewport {
+        width: 100%;
+    }
+}
 
 @media print {
     header aside,
