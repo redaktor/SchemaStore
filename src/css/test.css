@@ -41,6 +41,7 @@ ul {
 ul ul li:before {
     content: '⌛ ';
     width: 25px;
+    line-height: 25px;
     display: inline-block;
 }
 
