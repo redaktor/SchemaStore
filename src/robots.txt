@@ -1,2 +1,2 @@
-﻿user-agent: *
+User-agent: *
 crawl-delay: 2

@@ -24,7 +24,12 @@
 		"run": "run server.urls=http://localhost:5003"
 	},
 	"frameworks": {
-		"net451": { },
+		"aspnet50": {
+			"frameworkAssemblies": {
+				"Microsoft.Framework.ConfigurationModel": "1.0.0-alpha2",
+				"Microsoft.Framework.ConfigurationModel.Json": { "type": "dev", "version": "sd" }
+			}
+		},
 		"k10": { }
 	}
 }

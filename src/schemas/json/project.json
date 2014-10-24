@@ -38,7 +38,8 @@
 			"type": "object",
 			"properties": {
 				"dependencies": { "$ref": "#/definitions/dependencies" },
-				"compilationOptions": { "$ref": "#/definitions/compilationOptions" }
+				"compilationOptions": { "$ref": "#/definitions/compilationOptions" },
+				"frameworkAssemblies": { "$ref": "#/definitions/dependencies" }
 			}
 		},
 		"dependencies": {
