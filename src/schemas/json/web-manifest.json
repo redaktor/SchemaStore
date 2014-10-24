@@ -35,12 +35,6 @@
 		}
 	},
 
-	"patternProperties": {
-		".+_.+": {
-			"description": "Vendor extensions are recommended to follow the pattern 'vendor_feature'."
-		}
-	},
-
 	"definitions": {
 		"icon": {
 			"type": "object",
