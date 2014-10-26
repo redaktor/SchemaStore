@@ -18,7 +18,7 @@
         {
 			"name": "Chrome Extension",
 			"description": "Google Chrome extension manifest file",
-			"url": "http://json.schemastore.org/manifest"
+			"url": "http://json.schemastore.org/chrome-manifest"
 		},
 		{
 			"name": "chutzpah.json",
