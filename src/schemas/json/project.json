@@ -76,7 +76,7 @@
 			}
 		},
 		"code": {
-			"description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
+			"description": "Glob pattern to specify all the code files that needs to be compiled. (data type: string or array with glob pattern(s)). Example: [ \"Folder1\\*.cs\", \"Folder2\\*.cs\" ]",
 			"type": [ "string", "array" ],
 			"items": {
 				"type": "string"
@@ -106,7 +106,7 @@
 			"type": "string"
 		},
 		"exclude": {
-			"description": "RegEx pattern to indicate all the code files to be excluded from compilation. (data type: semicolon separated RegEx pattern(s)).",
+			"description": "Glob pattern to indicate all the code files to be excluded from compilation. (data type: string or array with glob pattern(s)).",
 			"type": [ "string", "array" ],
 			"items": {
 				"type": "string"
@@ -126,12 +126,12 @@
 			"default": ""
 		},
 		"preprocess": {
-			"description": "RegEx pattern to indicate all the code files to be preprocessed. (data type: semicolon separated RegEx pattern(s)).",
+			"description": "Glob pattern to indicate all the code files to be preprocessed. (data type: string with glob pattern).",
 			"type": "string",
 			"default": "Compiler\\Preprocess\\**\\*.cs"
 		},
 		"resources": {
-			"description": "RegEx pattern to indicate all the files that needs to be compiled as resources. (data type: semicolon separated RegEx pattern(s)).",
+			"description": "Glob pattern to indicate all the files that need to be compiled as resources. (data type: string or array with glob pattern(s)).",
 			"type": [ "string", "array" ],
 			"items": {
 				"type": "string"
@@ -152,7 +152,7 @@
 			}
 		},
 		"shared": {
-			"description": "RegEx pattern to specify all the code files that needs to be compiled. (data type: semicolon separated RegEx pattern(s)). Example: Folder1\\*.cs;Folder2\\*.cs.",
+			"description": "Glob pattern to specify all the code files that need to be compiled. (data type: string or array with glob pattern(s)). Example: [ \"Folder1\\*.cs\", \"Folder2\\*.cs\" ]",
 			"type": [ "string", "array" ],
 			"items": {
 				"type": "string"
