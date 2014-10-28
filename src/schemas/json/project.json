@@ -131,7 +131,7 @@
 			"default": "Compiler\\Preprocess\\**\\*.cs"
 		},
 		"resources": {
-			"description": "Glob pattern to indicate all the files that need to be compiled as resources. (data type: string or array with glob pattern(s)).",
+			"description": "Glob pattern to indicate all the files that need to be compiled as resources.",
 			"type": [ "string", "array" ],
 			"items": {
 				"type": "string"
@@ -152,7 +152,7 @@
 			}
 		},
 		"shared": {
-			"description": "Glob pattern to specify all the code files that need to be compiled. (data type: string or array with glob pattern(s)). Example: [ \"Folder1\\*.cs\", \"Folder2\\*.cs\" ]",
+			"description": "Glob pattern to specify the code files to share with dependent projects. Example: [ \"Folder1\\*.cs\", \"Folder2\\*.cs\" ]",
 			"type": [ "string", "array" ],
 			"items": {
 				"type": "string"
