@@ -7,6 +7,7 @@
 
 	"definitions": {
 		"person": {
+			"description": "A person who has been involved in creating or maintaining this package",
 			"type": [ "object", "string" ],
 			"required": [ "name" ],
 			"properties": {
@@ -24,6 +25,7 @@
 			}
 		},
 		"dependency": {
+			"description": "Dependencies are specified with a simple hash of package name to version range. The version range is a string which has one or more space-separated descriptors. Dependencies can also be identified with a tarball or git URL.",
 			"type": "object",
 			"additionalProperties": {
 				"type": "string"
@@ -41,22 +43,28 @@
 
 	"properties": {
 		"name": {
+			"description": "The name of the package.",
 			"type": "string"
 		},
 		"version": {
+			"description": "Version must be parseable by node-semver, which is bundled with npm as a dependency.",
 			"type": "string"
 		},
 		"description": {
+			"description": "This helps people discover your package, as it's listed in 'npm search'.",
 			"type": "string"
 		},
 		"keywords": {
+			"description": "This helps people discover your package as it's listed in 'npm search'.",
 			"type": "array"
 		},
 		"homepage": {
+			"description": "The url to the project homepage.",
 			"type": "string"
 		},
 		"bugs": {
-			"type": "object",
+			"description": "The url to your project's issue tracker and / or the email address to which issues should be reported. These are helpful for people who encounter issues with your package.",
+			"type": [ "object", "string" ],
 			"properties": {
 				"url": {
 					"type": "string",
@@ -74,6 +82,7 @@
 			"description": "You should specify a license for your package so that people know how they are permitted to use it, and any restrictions you're placing on it."
 		},
 		"licenses": {
+			"description": "You should specify a license for your package so that people know how they are permitted to use it, and any restrictions you're placing on it.",
 			"type": "array",
 			"items": {
 				"type": "object",
@@ -92,26 +101,29 @@
 			"$ref": "#/definitions/person"
 		},
 		"contributors": {
+			"description": "A list of people who contributed to this package.",
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/person"
 			}
 		},
 		"maintainers": {
+			"description": "A list of people who maintains this package.",
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/person"
 			}
 		},
 		"files": {
+			"description": "The 'files' field is an array of files to include in your project. If you name a folder in the array, then it will also include the files inside that folder.",
 			"type": "array",
 			"items": {
 				"type": "string"
 			}
 		},
 		"main": {
-			"type": "string",
-			"description": "The main field is a module ID that is the primary entry point to your program."
+			"description": "The main field is a module ID that is the primary entry point to your program.",
+			"type": "string"
 		},
 		"bin": {
 			"type": [ "string", "object" ],
@@ -133,18 +145,23 @@
 					"type": "string"
 				},
 				"bin": {
+					"description": "If you specify a 'bin' directory, then all the files in that folder will be used as the 'bin' hash.",
 					"type": "string"
 				},
 				"doc": {
+					"description": "Put markdown files in here. Eventually, these will be displayed nicely, maybe, someday.",
 					"type": "string"
 				},
 				"example": {
+					"description": "Put example scripts in here. Someday, it might be exposed in some clever way.",
 					"type": "string"
 				},
 				"lib": {
+					"description": "Tell people where the bulk of your library is. Nothing special is done with the lib folder in any way, but it's useful meta info.",
 					"type": "string"
 				},
 				"man": {
+					"description": "A folder that is full of man pages. Sugar to generate a 'man' array by walking the folder.",
 					"type": "string"
 				},
 				"test": {
@@ -153,6 +170,7 @@
 			}
 		},
 		"repository": {
+			"description": "Specify the place where your code lives. This is helpful for people who want to contribute.",
 			"type": "object",
 			"properties": {
 				"type": {
@@ -164,12 +182,14 @@
 			}
 		},
 		"scripts": {
+			"description": "The 'scripts' member is an object hash of script commands that are run at various times in the lifecycle of your package. The key is the lifecycle event, and the value is the command to run at that point.",
 			"type": "object",
 			"additionalProperties": {
 				"type": "string"
 			}
 		},
 		"config": {
+			"description": "A 'config' hash can be used to set configuration parameters used in package scripts that persist across upgrades.",
 			"type": "object",
 			"additionalProperties": true
 		},
