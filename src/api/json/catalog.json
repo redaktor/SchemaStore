@@ -129,6 +129,12 @@
 			"url": "http://json.schemastore.org/jsonld"
 		},
 		{
+			"name": "JSONPatch",
+			"description": "JSONPatch files",
+			"fileMatch": [ "*.patch" ],
+			"url": "http://json.schemastore.org/json-patch"
+		},
+		{
 			"name": "package.json",
 			"description": "NPM configuration file",
 			"fileMatch": [ "package.json" ],
