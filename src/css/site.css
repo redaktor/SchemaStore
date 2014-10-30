@@ -45,6 +45,16 @@ ol {
     padding: 0;
 }
 
+::selection {
+    background: #000;
+    color: white;
+}
+
+::-moz-selection {
+    background: #000;
+    color: white;
+}
+
 header, #main {
     margin: 1em auto;
     max-width: 950px;
