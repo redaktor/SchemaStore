@@ -9,13 +9,13 @@
 			"fileMatch": [ "bower.json", ".bower.json" ],
 			"url": "http://json.schemastore.org/bower"
 		},
-        {
-            "name": ".bowerrc",
-            "description": "Bower configuration file",
-            "fileMatch": [ ".bowerrc" ],
-            "url": "http://json.schemastore.org/bowerrc"
-        },
-        {
+		{
+			"name": ".bowerrc",
+			"description": "Bower configuration file",
+			"fileMatch": [ ".bowerrc" ],
+			"url": "http://json.schemastore.org/bowerrc"
+		},
+		{
 			"name": "Chrome Extension",
 			"description": "Google Chrome extension manifest file",
 			"url": "http://json.schemastore.org/chrome-manifest"
@@ -191,16 +191,16 @@
 			"description": "Swagger API 2.0 schema",
 			"url": "http://json.schemastore.org/swagger-2.0"
 		},
-        {
-            "name": "tslint.json",
-            "description": "TypeScript Lint configuration file",
-            "fileMatch": [ "tslint.json" ],
-            "url": "http://json.schemastore.org/tslint"
-        },
-        {
+		{
+			"name": "tslint.json",
+			"description": "TypeScript Lint configuration file",
+			"fileMatch": [ "tslint.json" ],
+			"url": "http://json.schemastore.org/tslint"
+		},
+		{
 			"name": "Web Manifest",
-            "description": "Web Appliation manifest file",
-            "fileMatch": [ "manifest.json" ],
+			"description": "Web Appliation manifest file",
+			"fileMatch": [ "manifest.json" ],
 			"url": "http://json.schemastore.org/web-manifest"
 		},
 		{
