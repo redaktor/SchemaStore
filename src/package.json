@@ -1,5 +1,6 @@
 {
-	"name": "SchemaStore.org",
+    "name": "SchemaStore.org",
+    "version": "1.0.0",
 	"description": "A collection of JSON Schemas",
 	"readme": "../README.md",
 	"private": true,
