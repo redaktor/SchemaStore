@@ -12,7 +12,7 @@ Website: [schemastore.org](http://schemastore.org)
 You can contribute in a various different ways.
 
 1. Submit new JSON schema files
-2. Add a JSON schema file to the [schema catalog](SchemaStore/api/json/catalog.json)
+2. Add a JSON schema file to the [schema catalog](src/api/json/catalog.json)
 2. Modify/update existing schema files
 3. Update the website [schemastore.org](http://schemastore.org)
 
